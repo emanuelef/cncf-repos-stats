@@ -59,7 +59,7 @@ func writeGoDepsMapFile(deps map[string]int) {
 
 func main() {
 	var mutex sync.Mutex
-	sem := semaphore.NewWeighted(100)
+	sem := semaphore.NewWeighted(60)
 	var wg sync.WaitGroup
 
 	currentTime := time.Now()
