@@ -3,7 +3,7 @@ module github.com/emanuelef/cncf-repos-stats
 go 1.21.0
 
 require (
-	github.com/emanuelef/github-repo-activity-stats v0.0.0-20230904212230-b2049a5fe162
+	github.com/emanuelef/github-repo-activity-stats v0.0.0-20230905004937-c2b88e003d4a
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/joho/godotenv v1.5.1
 	golang.org/x/oauth2 v0.11.0
