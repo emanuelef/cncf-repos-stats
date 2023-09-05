@@ -5,13 +5,20 @@ import (
 	"encoding/csv"
 	"fmt"
 	"log"
+	"net/http"
+	"net/http/httptrace"
 	"os"
 	"sync"
 	"time"
 
+	"github.com/emanuelef/cncf-repos-stats/otel_instrumentation"
 	"github.com/emanuelef/github-repo-activity-stats/repostats"
 	"github.com/go-resty/resty/v2"
 	_ "github.com/joho/godotenv/autoload"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace"
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/trace"
 	"golang.org/x/oauth2"
 	"golang.org/x/sync/semaphore"
 	"gopkg.in/yaml.v3"
@@ -57,7 +64,33 @@ func writeGoDepsMapFile(deps map[string]int) {
 	}
 }
 
+var tracer trace.Tracer
+
+func init() {
+	tracer = otel.Tracer("github.com/emanuelef/cncf-repos-stats")
+}
+
 func main() {
+	ctx := context.Background()
+
+	tp, exp, err := otel_instrumentation.InitializeGlobalTracerProvider(ctx)
+	// Handle shutdown to ensure all sub processes are closed correctly and telemetry is exported
+	if err != nil {
+		log.Fatalf("failed to initialize OpenTelemetry: %e", err)
+	}
+
+	ctx, span := tracer.Start(ctx, "fetch-all-stats")
+
+	defer func() {
+		fmt.Println("before End")
+		span.End()
+		time.Sleep(10 * time.Second)
+		fmt.Println("before exp Shutdown")
+		_ = exp.Shutdown(ctx)
+		fmt.Println("before tp Shutdown")
+		_ = tp.Shutdown(ctx)
+	}()
+
 	var mutex sync.Mutex
 	sem := semaphore.NewWeighted(60)
 	var wg sync.WaitGroup
@@ -94,8 +127,18 @@ func main() {
 	// client := repostats.NewClient(&oauthClient.Transport)
 	client := repostats.NewClientGQL(oauthClient)
 
-	restyClient := resty.New()
-	resp, err := restyClient.R().Get(CNCFProjectsYamlUrl)
+	restyClient := resty.NewWithClient(
+		&http.Client{
+			Transport: otelhttp.NewTransport(http.DefaultTransport,
+				otelhttp.WithClientTrace(func(ctx context.Context) *httptrace.ClientTrace {
+					return otelhttptrace.NewClientTrace(ctx)
+				})),
+		},
+	)
+
+	restyReq := restyClient.R()
+	restyReq.SetContext(ctx)
+	resp, err := restyReq.Get(CNCFProjectsYamlUrl)
 	if err == nil {
 		m := make(map[any]any)
 
@@ -103,8 +146,6 @@ func main() {
 		if err != nil {
 			log.Fatalf("error: %v", err)
 		}
-
-		ctx := context.Background()
 
 		for key, val := range m["projects"].(map[string]any) {
 			wg.Add(1)
