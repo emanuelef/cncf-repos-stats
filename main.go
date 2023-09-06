@@ -108,7 +108,7 @@ func main() {
 
 	headerRow := []string{
 		"repo", "stars", "new-stars-last-30d", "new-stars-last-14d",
-		"new-stars-last-7d", "new-stars-last-24H", "stars-per-mille-0d",
+		"new-stars-last-7d", "new-stars-last-24H", "stars-per-mille-30d",
 		"language",
 		"archived", "dependencies",
 		"status",
