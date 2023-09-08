@@ -4,6 +4,7 @@ import Papa from "papaparse";
 import "./App.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Link from "@mui/material/Link";
+import { ResponsiveTreeMap } from "@nivo/treemap";
 
 /*
 archived
@@ -113,14 +114,43 @@ const columns: GridColDef[] = [
 
 // https://raw.githubusercontent.com/emanuelef/awesome-go-repo-stats/main/analysis-latest.csv
 
+let testTreeMapData = {
+  name: "cncf",
+  color: "hsl(146, 70%, 50%)",
+  children: [],
+};
+
 function App() {
   const fetchPositions = () => {
     fetch(csvURL)
       .then((response) => response.text())
       .then((text) => Papa.parse(text, { header: true }))
       .then(function (result) {
-        console.log(result);
         setDataRows(result.data);
+        console.log(result.data);
+
+        result.data.forEach(
+          (element: { status: string; repo: string; stars: string }) => {
+            let catStatus = testTreeMapData.children.find(
+              (category) => category.name === element.status
+            );
+
+            if (!catStatus) {
+              testTreeMapData.children.push({
+                name: element.status,
+                children: [],
+              });
+            } else {
+              catStatus.children.push({
+                name: element.repo,
+                stars: parseInt(element.stars),
+              });
+            }
+          }
+        );
+
+        console.log(testTreeMapData);
+        setTreeMapData(testTreeMapData);
       })
       .catch((e) => {
         console.error(`An error occurred: ${e}`);
@@ -128,6 +158,7 @@ function App() {
   };
 
   const [dataRows, setDataRows] = useState([]);
+  const [treeMapData, setTreeMapData] = useState({});
 
   useEffect(() => {
     fetchPositions();
@@ -152,6 +183,28 @@ function App() {
           },
         }}
         pageSizeOptions={[5, 10]}
+      />
+      <ResponsiveTreeMap
+        data={treeMapData}
+        identity="name"
+        value="stars"
+        valueFormat=".02s"
+        margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+        labelSkipSize={12}
+        labelTextColor={{
+          from: "color",
+          modifiers: [["darker", 1.2]],
+        }}
+        parentLabelPosition="left"
+        parentLabelTextColor={{
+          from: "color",
+          modifiers: [["darker", 2]],
+        }}
+        borderColor={{
+          from: "color",
+          modifiers: [["darker", 0.1]],
+        }}
+        animate={false}
       />
     </div>
   );
