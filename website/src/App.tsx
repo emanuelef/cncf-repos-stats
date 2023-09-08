@@ -185,33 +185,36 @@ function App() {
         pageSizeOptions={[5, 10]}
       />
       <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
-      <ResponsiveTreeMap
-        data={treeMapData}
-        identity="name"
-        value="stars"
-        valueFormat=".02s"
-        margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-        labelSkipSize={12}
-        labelTextColor={{
-          from: "color",
-          modifiers: [["darker", 1.2]],
-        }}
-        parentLabelPosition="top"
-        parentLabelTextColor={{
-          from: "color",
-          modifiers: [["darker", 2]],
-        }}
-        borderColor={{
-          from: "color",
-          modifiers: [["darker", 0.1]],
-        }}
-        animate={false}
-        tooltip={({ node }) => (
-          <strong style={{ color: "black", backgroundColor: "white" }}>
-            {node.pathComponents.join(" - ")}: {node.formattedValue}
-          </strong>
-        )}
-      />
+        <ResponsiveTreeMap
+          data={treeMapData}
+          identity="name"
+          value="stars"
+          valueFormat=".03s"
+          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          labelSkipSize={12}
+          labelTextColor={{
+            from: "color",
+            modifiers: [["darker", 1.2]],
+          }}
+          parentLabelPosition="top"
+          parentLabelTextColor={{
+            from: "color",
+            modifiers: [["darker", 2]],
+          }}
+          borderColor={{
+            from: "color",
+            modifiers: [["darker", 0.1]],
+          }}
+          animate={false}
+          tooltip={({ node }) => (
+            <strong style={{ color: "black", backgroundColor: "white" }}>
+              {node.pathComponents.join(" - ")}: {node.formattedValue}
+            </strong>
+          )}
+          onClick={(data) => {
+            window.open(GitHubURL + data.id, "_blank");
+          }}
+        />
       </div>
     </div>
   );
