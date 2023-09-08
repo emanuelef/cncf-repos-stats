@@ -131,7 +131,7 @@ function App() {
 
         result.data.forEach(
           (element: { status: string; repo: string; stars: string }) => {
-            let catStatus = testTreeMapData.children.find(
+            const catStatus = testTreeMapData.children.find(
               (category) => category.name === element.status
             );
 
