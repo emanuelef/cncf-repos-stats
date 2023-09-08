@@ -109,6 +109,8 @@ func main() {
 	headerRow := []string{
 		"repo", "stars", "new-stars-last-30d", "new-stars-last-14d",
 		"new-stars-last-7d", "new-stars-last-24H", "stars-per-mille-30d",
+		"days-last-star", "days-last-commit",
+		"days-since-creation", "mentionable-users",
 		"language",
 		"archived", "dependencies",
 		"status",
@@ -164,6 +166,10 @@ func main() {
 
 					fmt.Println(result)
 
+					daysSinceLastStar := int(currentTime.Sub(result.LastStarDate).Hours() / 24)
+					daysSinceLastCommit := int(currentTime.Sub(result.LastCommitDate).Hours() / 24)
+					daysSinceCreation := int(currentTime.Sub(result.CreatedAt).Hours() / 24)
+
 					mutex.Lock()
 					csvWriter.Write([]string{
 						fmt.Sprintf("%s", p["main_repo"]),
@@ -173,6 +179,10 @@ func main() {
 						fmt.Sprintf("%d", result.AddedLast7d),
 						fmt.Sprintf("%d", result.AddedLast24H),
 						fmt.Sprintf("%.3f", result.AddedPerMille30d),
+						fmt.Sprintf("%d", daysSinceLastStar),
+						fmt.Sprintf("%d", daysSinceLastCommit),
+						fmt.Sprintf("%d", daysSinceCreation),
+						fmt.Sprintf("%d", result.MentionableUsers),
 						result.Language,
 						fmt.Sprintf("%t", result.Archived),
 						fmt.Sprintf("%d", len(result.DirectDeps)),
