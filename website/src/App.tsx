@@ -184,6 +184,7 @@ function App() {
         }}
         pageSizeOptions={[5, 10]}
       />
+      <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
       <ResponsiveTreeMap
         data={treeMapData}
         identity="name"
@@ -195,7 +196,7 @@ function App() {
           from: "color",
           modifiers: [["darker", 1.2]],
         }}
-        parentLabelPosition="left"
+        parentLabelPosition="top"
         parentLabelTextColor={{
           from: "color",
           modifiers: [["darker", 2]],
@@ -205,7 +206,13 @@ function App() {
           modifiers: [["darker", 0.1]],
         }}
         animate={false}
+        tooltip={({ node }) => (
+          <strong style={{ color: "black", backgroundColor: "white" }}>
+            {node.pathComponents.join(" - ")}: {node.formattedValue}
+          </strong>
+        )}
       />
+      </div>
     </div>
   );
 }
