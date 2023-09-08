@@ -100,6 +100,11 @@ const columns: GridColDef[] = [
     valueGetter: (val) => parseInt(val.row["dependencies"]),
   },
   {
+    field: "status",
+    headerName: "Status",
+    width: 110,
+  },
+  {
     field: "archived",
     headerName: "Archived",
     width: 110,
