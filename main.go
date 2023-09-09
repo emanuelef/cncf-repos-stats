@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -72,6 +73,8 @@ func init() {
 
 func main() {
 	ctx := context.Background()
+
+	starsHistory := map[string][]repostats.StarsPerDay{}
 
 	tp, exp, err := otel_instrumentation.InitializeGlobalTracerProvider(ctx)
 	// Handle shutdown to ensure all sub processes are closed correctly and telemetry is exported
@@ -196,12 +199,18 @@ func main() {
 							depsUse[dep] += 1
 						}
 					}
+
+					starsHistory[p["main_repo"].(string)] = result.StarsTimeline
+
 					mutex.Unlock()
 				}
 			}(key, val)
 		}
 		wg.Wait()
 		writeGoDepsMapFile(depsUse)
+
+		jsonData, _ := json.MarshalIndent(starsHistory, "", " ")
+		_ = os.WriteFile("stars-history-30d.json", jsonData, 0o644)
 	}
 
 	elapsed := time.Since(currentTime)
