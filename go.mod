@@ -3,7 +3,7 @@ module github.com/emanuelef/cncf-repos-stats
 go 1.21.0
 
 require (
-	github.com/emanuelef/github-repo-activity-stats v0.0.0-20230909215508-82367c6eee14
+	github.com/emanuelef/github-repo-activity-stats v0.0.0-20230909222553-d2f598d1192b
 	github.com/go-resty/resty/v2 v2.7.0
 	github.com/joho/godotenv v1.5.1
 	go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace v0.43.0
