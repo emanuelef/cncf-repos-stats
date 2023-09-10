@@ -6,6 +6,11 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Link from "@mui/material/Link";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+
+import TimeSeriesChart from "./TimeSeriesChart";
+
 /*
 archived
 "false"
@@ -169,6 +174,7 @@ function App() {
       <Link href={csvURL} download>
         Link
       </Link>
+      <TimeSeriesChart />
       <DataGrid
         getRowId={(row) => row.repo}
         rows={dataRows}
