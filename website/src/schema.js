@@ -8,6 +8,10 @@ const schema = [
     name: "New Stars",
     type: "number",
   },
+  {
+    name: "Total Stars",
+    type: "number",
+  },
 ];
 
 export default schema;
