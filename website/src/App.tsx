@@ -126,13 +126,15 @@ let testTreeMapData = {
 };
 
 function App() {
-  const fetchPositions = () => {
+  const fetchStats = () => {
     fetch(csvURL)
       .then((response) => response.text())
       .then((text) => Papa.parse(text, { header: true }))
       .then(function (result) {
         setDataRows(result.data);
         console.log(result.data);
+
+        testTreeMapData.children = [];
 
         result.data.forEach(
           (element: { status: string; repo: string; stars: string }) => {
@@ -166,7 +168,7 @@ function App() {
   const [treeMapData, setTreeMapData] = useState({});
 
   useEffect(() => {
-    fetchPositions();
+    fetchStats();
   }, []);
 
   return (
@@ -187,7 +189,7 @@ function App() {
             sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[5, 10, 50]}
       />
       <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
         <ResponsiveTreeMap

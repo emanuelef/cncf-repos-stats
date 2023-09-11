@@ -61,17 +61,23 @@ function TimeSeriesChart() {
   const [ds, setds] = useState(chart_props);
   const loadData = useCallback(async () => {
     try {
+      /*
       const response = await fetch(FULL_URL_CSV);
       const res = await response.text();
       const data = CSVToArray(res);
       console.log(data);
+      */
 
-      let calcMovingAvg = data.map((el) => {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      const dataRepo = data["kubernetes/kubernetes"]
+
+      let calcMovingAvg = dataRepo.map((el) => {
         return el[1];
       });
-      calcMovingAvg = movingAvg(calcMovingAvg, 6, 6);
+      calcMovingAvg = movingAvg(calcMovingAvg, 3, 3);
 
-      const movingAverageData = data.map((el, index) => {
+      const movingAverageData = dataRepo.map((el, index) => {
         el[1] = calcMovingAvg[index];
         return el;
       });
