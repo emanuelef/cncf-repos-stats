@@ -57,7 +57,7 @@ const movingAvg = (array, countBefore, countAfter = 0) => {
   return result;
 };
 
-function TimeSeriesChart() {
+function TimeSeriesChart({ repo }) {
   const [ds, setds] = useState(chart_props);
   const loadData = useCallback(async () => {
     try {
@@ -70,7 +70,7 @@ function TimeSeriesChart() {
 
       const response = await fetch(API_URL);
       const data = await response.json();
-      const dataRepo = data["kubernetes/kubernetes"]
+      const dataRepo = data[repo];
 
       let calcMovingAvg = dataRepo.map((el) => {
         return el[1];
@@ -94,12 +94,12 @@ function TimeSeriesChart() {
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [repo]);
 
   useEffect(() => {
     console.log("render");
     loadData();
-  }, [loadData]);
+  }, [repo]);
 
   return (
     <div>

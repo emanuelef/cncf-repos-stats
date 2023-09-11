@@ -6,6 +6,9 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Link from "@mui/material/Link";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -166,6 +169,7 @@ function App() {
 
   const [dataRows, setDataRows] = useState([]);
   const [treeMapData, setTreeMapData] = useState({});
+  const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
 
   useEffect(() => {
     fetchStats();
@@ -223,7 +227,20 @@ function App() {
           }}
         />
       </div>
-      <TimeSeriesChart />
+      <Autocomplete
+        disablePortal
+        id="combo-box-demo"
+        options={dataRows.map((el) => {
+          return { label: el.repo };
+        })}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} label="Movie" />}
+        onChange={(e, v) => {
+          console.log(v?.label);
+          setSelectedRepo(v?.label);
+        }}
+      />
+      <TimeSeriesChart repo={selectedRepo} />
     </div>
   );
 }
