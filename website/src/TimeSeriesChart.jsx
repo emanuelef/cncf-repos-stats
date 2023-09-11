@@ -43,6 +43,20 @@ const CSVToArray = (data, delimiter = ",", omitFirstRow = true) =>
       return arr;
     });
 
+const movingAvg = (array, countBefore, countAfter = 0) => {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    const subArr = array.slice(
+      Math.max(i - countBefore, 0),
+      Math.min(i + countAfter + 1, array.length)
+    );
+    const avg =
+      subArr.reduce((a, b) => a + (isNaN(b) ? 0 : b), 0) / subArr.length;
+    result.push(avg);
+  }
+  return result;
+};
+
 function TimeSeriesChart() {
   const [ds, setds] = useState(chart_props);
   const loadData = useCallback(async () => {
@@ -51,8 +65,21 @@ function TimeSeriesChart() {
       const res = await response.text();
       const data = CSVToArray(res);
       console.log(data);
+
+      let calcMovingAvg = data.map((el) => {
+        return el[1];
+      });
+      calcMovingAvg = movingAvg(calcMovingAvg, 6, 6);
+
+      const movingAverageData = data.map((el, index) => {
+        el[1] = calcMovingAvg[index];
+        return el;
+      });
+
+      console.log(movingAverageData);
+
       const fusionTable = new FusionCharts.DataStore().createDataTable(
-        data,
+        movingAverageData,
         schema
       );
       const options = { ...ds };
