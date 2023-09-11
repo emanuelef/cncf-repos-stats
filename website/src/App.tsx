@@ -174,7 +174,6 @@ function App() {
       <Link href={csvURL} download>
         Link
       </Link>
-      <TimeSeriesChart />
       <DataGrid
         getRowId={(row) => row.repo}
         rows={dataRows}
@@ -222,6 +221,7 @@ function App() {
           }}
         />
       </div>
+      <TimeSeriesChart />
     </div>
   );
 }
