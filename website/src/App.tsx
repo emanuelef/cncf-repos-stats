@@ -63,13 +63,13 @@ const columns: GridColDef[] = [
   {
     field: "stars",
     headerName: "Stars",
-    width: 130,
+    width: 90,
     valueGetter: (val) => parseInt(val.row["stars"]),
   },
   {
     field: "days-last-star",
     headerName: "Days last star",
-    width: 130,
+    width: 110,
     valueGetter: (params) => parseInt(params.value),
   },
   {
@@ -101,6 +101,11 @@ const columns: GridColDef[] = [
     headerName: "Ment. users",
     width: 110,
     valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "language",
+    headerName: "Lang.",
+    width: 110,
   },
   {
     field: "dependencies",
