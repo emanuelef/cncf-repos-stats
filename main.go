@@ -56,7 +56,7 @@ func writeGoDepsMapFile(deps map[string]int) {
 	csvWriter.Write(headerRow)
 
 	for k, v := range deps {
-		if v > 20 {
+		if v > 10 {
 			csvWriter.Write([]string{
 				k,
 				fmt.Sprintf("%d", v),
