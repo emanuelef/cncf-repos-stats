@@ -59,7 +59,7 @@ const movingAvg = (array, countBefore, countAfter = 0) => {
 
 function TimeSeriesChart({ repo }) {
   const [ds, setds] = useState(chart_props);
-  const loadData = useCallback(async () => {
+  const loadData =  () => {
     try {
       /*
       const response = await fetch(FULL_URL_CSV);
@@ -94,7 +94,7 @@ function TimeSeriesChart({ repo }) {
     } catch (err) {
       console.log(err);
     }
-  }, [repo]);
+  };
 
   useEffect(() => {
     console.log("render");
