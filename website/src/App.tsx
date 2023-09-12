@@ -150,6 +150,10 @@ function App() {
               (category) => category.name === element.status
             );
 
+            if (!element.repo) {
+              return;
+            }
+
             if (!catStatus) {
               testTreeMapData.children.push({
                 name: element.status,
