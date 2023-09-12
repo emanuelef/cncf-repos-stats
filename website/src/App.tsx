@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import "./App.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Link from "@mui/material/Link";
+import Linkweb from "@mui/material/Link";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
 import TextField from "@mui/material/TextField";
@@ -13,6 +13,31 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 import TimeSeriesChart from "./TimeSeriesChart";
+
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  useProSidebar,
+} from "react-pro-sidebar";
+import { Routes, Route, Link } from "react-router-dom";
+
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
+import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
+import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
+import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
+import WalletRoundedIcon from "@mui/icons-material/WalletRounded";
+import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
+import SavingsRoundedIcon from "@mui/icons-material/SavingsRounded";
+import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
+import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
+import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 /*
 archived
@@ -55,9 +80,9 @@ const columns: GridColDef[] = [
     headerName: "Repo",
     width: 200,
     renderCell: (params) => (
-      <Link href={GitHubURL + params.value} target="_blank">
+      <Linkweb href={GitHubURL + params.value} target="_blank">
         {params.value}
-      </Link>
+      </Linkweb>
     ),
   },
   {
@@ -184,72 +209,153 @@ function App() {
     fetchStats();
   }, []);
 
-  return (
-    <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
-      <Link href={csvURL} download>
-        Link
-      </Link>
-      <DataGrid
-        getRowId={(row) => row.repo}
-        rows={dataRows}
-        columns={columns}
-        rowHeight={30}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 50 },
-          },
-          sorting: {
-            sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
-          },
-        }}
-        pageSizeOptions={[5, 10, 50]}
-      />
-      <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
-        <ResponsiveTreeMap
-          data={treeMapData}
-          identity="name"
-          value="stars"
-          valueFormat=".03s"
-          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          labelSkipSize={12}
-          labelTextColor={{
-            from: "color",
-            modifiers: [["darker", 1.2]],
+  const Home = () => {
+    return (
+      <>
+        <DataGrid
+          getRowId={(row) => row.repo}
+          rows={dataRows}
+          columns={columns}
+          rowHeight={30}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 50 },
+            },
+            sorting: {
+              sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
+            },
           }}
-          parentLabelPosition="top"
-          parentLabelTextColor={{
-            from: "color",
-            modifiers: [["darker", 2]],
-          }}
-          borderColor={{
-            from: "color",
-            modifiers: [["darker", 0.1]],
-          }}
-          animate={false}
-          tooltip={({ node }) => (
-            <strong style={{ color: "black", backgroundColor: "white" }}>
-              {node.pathComponents.join(" - ")}: {node.formattedValue}
-            </strong>
-          )}
-          onClick={(data) => {
-            window.open(GitHubURL + data.id, "_blank");
+          pageSizeOptions={[5, 10, 50]}
+        />
+      </>
+    );
+  };
+
+  const StarsTimeline = () => {
+    return (
+      <>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={dataRows.map((el) => {
+            return { label: el.repo };
+          })}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Repo" />}
+          onChange={(e, v) => {
+            console.log(v?.label);
+            setSelectedRepo(v?.label);
           }}
         />
-      </div>
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={dataRows.map((el) => {
-          return { label: el.repo };
-        })}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
-        onChange={(e, v) => {
-          console.log(v?.label);
-          setSelectedRepo(v?.label);
-        }}
-      />
-      <TimeSeriesChart repo={selectedRepo} />
+        <TimeSeriesChart repo={selectedRepo} />
+      </>
+    );
+  };
+
+  const Treemap = () => {
+    return (
+      <>
+        <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+          <ResponsiveTreeMap
+            data={treeMapData}
+            identity="name"
+            value="stars"
+            valueFormat=".03s"
+            margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            labelSkipSize={12}
+            labelTextColor={{
+              from: "color",
+              modifiers: [["darker", 1.2]],
+            }}
+            parentLabelPosition="top"
+            parentLabelTextColor={{
+              from: "color",
+              modifiers: [["darker", 2]],
+            }}
+            borderColor={{
+              from: "color",
+              modifiers: [["darker", 0.1]],
+            }}
+            animate={false}
+            tooltip={({ node }) => (
+              <strong style={{ color: "black", backgroundColor: "white" }}>
+                {node.pathComponents.join(" - ")}: {node.formattedValue}
+              </strong>
+            )}
+            onClick={(data) => {
+              window.open(GitHubURL + data.id, "_blank");
+            }}
+          />
+        </div>
+      </>
+    );
+  };
+
+  const { collapseSidebar } = useProSidebar();
+
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar className="app">
+        <Menu>
+          <MenuItem
+            component={<Link to="/" className="link" />}
+            className="menu1"
+            icon={
+              <MenuRoundedIcon
+                onClick={() => {
+                  collapseSidebar();
+                }}
+              />
+            }
+          >
+            <h2>QUICKPAY</h2>
+          </MenuItem>
+          <MenuItem
+            component={<Link to="dashboard" className="link" />}
+            icon={<GridViewRoundedIcon />}
+          >
+            Dashboard
+          </MenuItem>
+          <MenuItem
+            component={<Link to="treemap" className="link" />}
+            icon={<ReceiptRoundedIcon />}
+          >
+            Treemap
+          </MenuItem>
+          <SubMenu label="Charts" icon={<BarChartRoundedIcon />}>
+            <MenuItem icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
+            <MenuItem icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
+          </SubMenu>
+          <SubMenu label="Wallets" icon={<WalletRoundedIcon />}>
+            <MenuItem icon={<AccountBalanceRoundedIcon />}>
+              Current Wallet
+            </MenuItem>
+            <MenuItem icon={<SavingsRoundedIcon />}>Savings Wallet</MenuItem>
+          </SubMenu>
+          <MenuItem
+            component={<Link to="starstimeline" className="link" />}
+            icon={<MonetizationOnRoundedIcon />}
+          >
+            StarsTimeline
+          </MenuItem>
+          <SubMenu label="Settings" icon={<SettingsApplicationsRoundedIcon />}>
+            <MenuItem icon={<AccountCircleRoundedIcon />}> Account </MenuItem>
+            <MenuItem icon={<ShieldRoundedIcon />}> Privacy </MenuItem>
+            <MenuItem icon={<NotificationsRoundedIcon />}>
+              Notifications
+            </MenuItem>
+          </SubMenu>
+          <MenuItem icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+        </Menu>
+      </Sidebar>
+      <section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Treemap />} />
+          <Route path="treemap" element={<Treemap />} />
+          <Route path="starstimeline" element={<StarsTimeline />} />
+        </Routes>
+      </section>
     </div>
   );
 }
