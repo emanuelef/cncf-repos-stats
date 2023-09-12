@@ -209,7 +209,7 @@ function App() {
     fetchStats();
   }, []);
 
-  const Home = () => {
+  const Table = () => {
     return (
       <>
         <DataGrid
@@ -308,13 +308,13 @@ function App() {
               />
             }
           >
-            <h2>QUICKPAY</h2>
+            <h2>CNCF Stats</h2>
           </MenuItem>
           <MenuItem
-            component={<Link to="dashboard" className="link" />}
+            component={<Link to="table" className="link" />}
             icon={<GridViewRoundedIcon />}
           >
-            Dashboard
+            Table
           </MenuItem>
           <MenuItem
             component={<Link to="treemap" className="link" />}
@@ -322,36 +322,18 @@ function App() {
           >
             Treemap
           </MenuItem>
-          <SubMenu label="Charts" icon={<BarChartRoundedIcon />}>
-            <MenuItem icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
-            <MenuItem icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
-          </SubMenu>
-          <SubMenu label="Wallets" icon={<WalletRoundedIcon />}>
-            <MenuItem icon={<AccountBalanceRoundedIcon />}>
-              Current Wallet
-            </MenuItem>
-            <MenuItem icon={<SavingsRoundedIcon />}>Savings Wallet</MenuItem>
-          </SubMenu>
           <MenuItem
             component={<Link to="starstimeline" className="link" />}
-            icon={<MonetizationOnRoundedIcon />}
+            icon={<TimelineRoundedIcon />}
           >
             StarsTimeline
           </MenuItem>
-          <SubMenu label="Settings" icon={<SettingsApplicationsRoundedIcon />}>
-            <MenuItem icon={<AccountCircleRoundedIcon />}> Account </MenuItem>
-            <MenuItem icon={<ShieldRoundedIcon />}> Privacy </MenuItem>
-            <MenuItem icon={<NotificationsRoundedIcon />}>
-              Notifications
-            </MenuItem>
-          </SubMenu>
-          <MenuItem icon={<LogoutRoundedIcon />}> Logout </MenuItem>
         </Menu>
       </Sidebar>
       <section>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="dashboard" element={<Treemap />} />
+          <Route path="/" element={<Table />} />
+          <Route path="table" element={<Table />} />
           <Route path="treemap" element={<Treemap />} />
           <Route path="starstimeline" element={<StarsTimeline />} />
         </Routes>
