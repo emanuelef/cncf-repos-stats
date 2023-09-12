@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import "./App.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import Linkweb from "@mui/material/Link";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
 import TextField from "@mui/material/TextField";
@@ -38,16 +39,6 @@ import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
-const Home = () => {
-  return (
-    <>
-      <h1 className="header">WELCOME TO QUICKPAY</h1>
-      <h3>Bank of the free</h3>
-      <p>Lorem ipsum dolor sit amet...</p>
-    </>
-  );
-};
-
 /*
 archived
 "false"
@@ -82,6 +73,82 @@ const GitHubURL = "https://github.com/";
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
+
+const columns: GridColDef[] = [
+  {
+    field: "repo",
+    headerName: "Repo",
+    width: 200,
+    renderCell: (params) => (
+      <Linkweb href={GitHubURL + params.value} target="_blank">
+        {params.value}
+      </Linkweb>
+    ),
+  },
+  {
+    field: "stars",
+    headerName: "Stars",
+    width: 90,
+    valueGetter: (val) => parseInt(val.row["stars"]),
+  },
+  {
+    field: "days-last-star",
+    headerName: "Days last star",
+    width: 110,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "days-last-commit",
+    headerName: "Days last commit",
+    width: 130,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "new-stars-last-30d",
+    headerName: "Stars last 30d",
+    width: 110,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "new-stars-last-7d",
+    headerName: "Stars last 7d",
+    width: 110,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "stars-per-mille-30d",
+    headerName: "New Stars 30d ‰",
+    width: 130,
+    valueGetter: (val) => parseFloat(val.row["stars-per-mille-30d"]),
+  },
+  {
+    field: "mentionable-users",
+    headerName: "Ment. users",
+    width: 110,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "language",
+    headerName: "Lang.",
+    width: 110,
+  },
+  {
+    field: "dependencies",
+    headerName: "Direct deps",
+    width: 130,
+    valueGetter: (val) => parseInt(val.row["dependencies"]),
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 110,
+  },
+  {
+    field: "archived",
+    headerName: "Archived",
+    width: 110,
+  },
+];
 
 // https://raw.githubusercontent.com/emanuelef/awesome-go-repo-stats/main/analysis-latest.csv
 
@@ -142,48 +209,85 @@ function App() {
     fetchStats();
   }, []);
 
-  const Transactions = () => {
+  const Home = () => {
     return (
       <>
-        <h1 className="header">KEEP TRACK OF YOUR SPENDINGS</h1>
-        <h3>Seamless Transactions</h3>
-        <p>Lorem ipsum dolor sit amet...</p>
+        <DataGrid
+          getRowId={(row) => row.repo}
+          rows={dataRows}
+          columns={columns}
+          rowHeight={30}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 50 },
+            },
+            sorting: {
+              sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
+            },
+          }}
+          pageSizeOptions={[5, 10, 50]}
+        />
       </>
     );
   };
 
-  const Dashboard = () => {
+  const StarsTimeline = () => {
     return (
-        <ResponsiveTreeMap
-          data={treeMapData}
-          identity="name"
-          value="stars"
-          valueFormat=".03s"
-          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-          labelSkipSize={12}
-          labelTextColor={{
-            from: "color",
-            modifiers: [["darker", 1.2]],
-          }}
-          parentLabelPosition="top"
-          parentLabelTextColor={{
-            from: "color",
-            modifiers: [["darker", 2]],
-          }}
-          borderColor={{
-            from: "color",
-            modifiers: [["darker", 0.1]],
-          }}
-          animate={false}
-          tooltip={({ node }) => (
-            <strong style={{ color: "black", backgroundColor: "white" }}>
-              {node.pathComponents.join(" - ")}: {node.formattedValue}
-            </strong>
-          )}
-          onClick={(data) => {
-            window.open(GitHubURL + data.id, "_blank");
+      <>
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={dataRows.map((el) => {
+            return { label: el.repo };
+          })}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Repo" />}
+          onChange={(e, v) => {
+            console.log(v?.label);
+            setSelectedRepo(v?.label);
           }}
         />
+        <TimeSeriesChart repo={selectedRepo} />
+      </>
+    );
+  };
+
+  const Treemap = () => {
+    return (
+      <>
+        <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+          <ResponsiveTreeMap
+            data={treeMapData}
+            identity="name"
+            value="stars"
+            valueFormat=".03s"
+            margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+            labelSkipSize={12}
+            labelTextColor={{
+              from: "color",
+              modifiers: [["darker", 1.2]],
+            }}
+            parentLabelPosition="top"
+            parentLabelTextColor={{
+              from: "color",
+              modifiers: [["darker", 2]],
+            }}
+            borderColor={{
+              from: "color",
+              modifiers: [["darker", 0.1]],
+            }}
+            animate={false}
+            tooltip={({ node }) => (
+              <strong style={{ color: "black", backgroundColor: "white" }}>
+                {node.pathComponents.join(" - ")}: {node.formattedValue}
+              </strong>
+            )}
+            onClick={(data) => {
+              window.open(GitHubURL + data.id, "_blank");
+            }}
+          />
+        </div>
+      </>
     );
   };
 
@@ -212,7 +316,12 @@ function App() {
           >
             Dashboard
           </MenuItem>
-          <MenuItem icon={<ReceiptRoundedIcon />}> Invoices </MenuItem>
+          <MenuItem
+            component={<Link to="treemap" className="link" />}
+            icon={<ReceiptRoundedIcon />}
+          >
+            Treemap
+          </MenuItem>
           <SubMenu label="Charts" icon={<BarChartRoundedIcon />}>
             <MenuItem icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
             <MenuItem icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
@@ -224,10 +333,10 @@ function App() {
             <MenuItem icon={<SavingsRoundedIcon />}>Savings Wallet</MenuItem>
           </SubMenu>
           <MenuItem
-            component={<Link to="transactions" className="link" />}
+            component={<Link to="starstimeline" className="link" />}
             icon={<MonetizationOnRoundedIcon />}
           >
-            Transactions
+            StarsTimeline
           </MenuItem>
           <SubMenu label="Settings" icon={<SettingsApplicationsRoundedIcon />}>
             <MenuItem icon={<AccountCircleRoundedIcon />}> Account </MenuItem>
@@ -242,8 +351,9 @@ function App() {
       <section>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="transactions" element={<Transactions />} />
+          <Route path="dashboard" element={<Treemap />} />
+          <Route path="treemap" element={<Treemap />} />
+          <Route path="starstimeline" element={<StarsTimeline />} />
         </Routes>
       </section>
     </div>
