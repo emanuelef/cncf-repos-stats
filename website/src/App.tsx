@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Papa from "papaparse";
 import "./App.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import Link from "@mui/material/Link";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
 import TextField from "@mui/material/TextField";
@@ -13,6 +12,41 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 import TimeSeriesChart from "./TimeSeriesChart";
+
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  useProSidebar,
+} from "react-pro-sidebar";
+import { Routes, Route, Link } from "react-router-dom";
+
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
+import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
+import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
+import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
+import WalletRoundedIcon from "@mui/icons-material/WalletRounded";
+import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
+import SavingsRoundedIcon from "@mui/icons-material/SavingsRounded";
+import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
+import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
+import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+
+const Home = () => {
+  return (
+    <>
+      <h1 className="header">WELCOME TO QUICKPAY</h1>
+      <h3>Bank of the free</h3>
+      <p>Lorem ipsum dolor sit amet...</p>
+    </>
+  );
+};
 
 /*
 archived
@@ -48,82 +82,6 @@ const GitHubURL = "https://github.com/";
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
-
-const columns: GridColDef[] = [
-  {
-    field: "repo",
-    headerName: "Repo",
-    width: 200,
-    renderCell: (params) => (
-      <Link href={GitHubURL + params.value} target="_blank">
-        {params.value}
-      </Link>
-    ),
-  },
-  {
-    field: "stars",
-    headerName: "Stars",
-    width: 90,
-    valueGetter: (val) => parseInt(val.row["stars"]),
-  },
-  {
-    field: "days-last-star",
-    headerName: "Days last star",
-    width: 110,
-    valueGetter: (params) => parseInt(params.value),
-  },
-  {
-    field: "days-last-commit",
-    headerName: "Days last commit",
-    width: 130,
-    valueGetter: (params) => parseInt(params.value),
-  },
-  {
-    field: "new-stars-last-30d",
-    headerName: "Stars last 30d",
-    width: 110,
-    valueGetter: (params) => parseInt(params.value),
-  },
-  {
-    field: "new-stars-last-7d",
-    headerName: "Stars last 7d",
-    width: 110,
-    valueGetter: (params) => parseInt(params.value),
-  },
-  {
-    field: "stars-per-mille-30d",
-    headerName: "New Stars 30d ‰",
-    width: 130,
-    valueGetter: (val) => parseFloat(val.row["stars-per-mille-30d"]),
-  },
-  {
-    field: "mentionable-users",
-    headerName: "Ment. users",
-    width: 110,
-    valueGetter: (params) => parseInt(params.value),
-  },
-  {
-    field: "language",
-    headerName: "Lang.",
-    width: 110,
-  },
-  {
-    field: "dependencies",
-    headerName: "Direct deps",
-    width: 130,
-    valueGetter: (val) => parseInt(val.row["dependencies"]),
-  },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 110,
-  },
-  {
-    field: "archived",
-    headerName: "Archived",
-    width: 110,
-  },
-];
 
 // https://raw.githubusercontent.com/emanuelef/awesome-go-repo-stats/main/analysis-latest.csv
 
@@ -184,27 +142,18 @@ function App() {
     fetchStats();
   }, []);
 
-  return (
-    <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
-      <Link href={csvURL} download>
-        Link
-      </Link>
-      <DataGrid
-        getRowId={(row) => row.repo}
-        rows={dataRows}
-        columns={columns}
-        rowHeight={30}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 50 },
-          },
-          sorting: {
-            sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
-          },
-        }}
-        pageSizeOptions={[5, 10, 50]}
-      />
-      <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+  const Transactions = () => {
+    return (
+      <>
+        <h1 className="header">KEEP TRACK OF YOUR SPENDINGS</h1>
+        <h3>Seamless Transactions</h3>
+        <p>Lorem ipsum dolor sit amet...</p>
+      </>
+    );
+  };
+
+  const Dashboard = () => {
+    return (
         <ResponsiveTreeMap
           data={treeMapData}
           identity="name"
@@ -235,21 +184,68 @@ function App() {
             window.open(GitHubURL + data.id, "_blank");
           }}
         />
-      </div>
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-        options={dataRows.map((el) => {
-          return { label: el.repo };
-        })}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Movie" />}
-        onChange={(e, v) => {
-          console.log(v?.label);
-          setSelectedRepo(v?.label);
-        }}
-      />
-      <TimeSeriesChart repo={selectedRepo} />
+    );
+  };
+
+  const { collapseSidebar } = useProSidebar();
+
+  return (
+    <div style={{ display: "flex", height: "100vh" }}>
+      <Sidebar className="app">
+        <Menu>
+          <MenuItem
+            component={<Link to="/" className="link" />}
+            className="menu1"
+            icon={
+              <MenuRoundedIcon
+                onClick={() => {
+                  collapseSidebar();
+                }}
+              />
+            }
+          >
+            <h2>QUICKPAY</h2>
+          </MenuItem>
+          <MenuItem
+            component={<Link to="dashboard" className="link" />}
+            icon={<GridViewRoundedIcon />}
+          >
+            Dashboard
+          </MenuItem>
+          <MenuItem icon={<ReceiptRoundedIcon />}> Invoices </MenuItem>
+          <SubMenu label="Charts" icon={<BarChartRoundedIcon />}>
+            <MenuItem icon={<TimelineRoundedIcon />}> Timeline Chart </MenuItem>
+            <MenuItem icon={<BubbleChartRoundedIcon />}>Bubble Chart</MenuItem>
+          </SubMenu>
+          <SubMenu label="Wallets" icon={<WalletRoundedIcon />}>
+            <MenuItem icon={<AccountBalanceRoundedIcon />}>
+              Current Wallet
+            </MenuItem>
+            <MenuItem icon={<SavingsRoundedIcon />}>Savings Wallet</MenuItem>
+          </SubMenu>
+          <MenuItem
+            component={<Link to="transactions" className="link" />}
+            icon={<MonetizationOnRoundedIcon />}
+          >
+            Transactions
+          </MenuItem>
+          <SubMenu label="Settings" icon={<SettingsApplicationsRoundedIcon />}>
+            <MenuItem icon={<AccountCircleRoundedIcon />}> Account </MenuItem>
+            <MenuItem icon={<ShieldRoundedIcon />}> Privacy </MenuItem>
+            <MenuItem icon={<NotificationsRoundedIcon />}>
+              Notifications
+            </MenuItem>
+          </SubMenu>
+          <MenuItem icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+        </Menu>
+      </Sidebar>
+      <section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions />} />
+        </Routes>
+      </section>
     </div>
   );
 }
