@@ -13,6 +13,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 import TimeSeriesChart from "./TimeSeriesChart";
+import DepsChart from "./DepsChart";
 
 import {
   Sidebar,
@@ -291,6 +292,14 @@ function App() {
     );
   };
 
+  const DepsChartTable = () => {
+    return (
+      <>
+        <DepsChart />
+      </>
+    );
+  };
+
   const { collapseSidebar } = useProSidebar();
 
   return (
@@ -328,6 +337,12 @@ function App() {
           >
             StarsTimeline
           </MenuItem>
+          <MenuItem
+            component={<Link to="deps" className="link" />}
+            icon={<TimelineRoundedIcon />}
+          >
+            DepsChartTable
+          </MenuItem>
         </Menu>
       </Sidebar>
       <section>
@@ -336,6 +351,7 @@ function App() {
           <Route path="table" element={<Table />} />
           <Route path="treemap" element={<Treemap />} />
           <Route path="starstimeline" element={<StarsTimeline />} />
+          <Route path="deps" element={<DepsChartTable />} />
         </Routes>
       </section>
     </div>
