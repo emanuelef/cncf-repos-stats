@@ -319,25 +319,25 @@ function App() {
             <h2>CNCF Stats</h2>
           </MenuItem>
           <MenuItem
-            component={<Link to="table" className="link" />}
+            component={<Link to="/table" className="link" />}
             icon={<GridViewRoundedIcon />}
           >
             Table
           </MenuItem>
           <MenuItem
-            component={<Link to="treemap" className="link" />}
+            component={<Link to="/treemap" className="link" />}
             icon={<ReceiptRoundedIcon />}
           >
             Treemap
           </MenuItem>
           <MenuItem
-            component={<Link to="starstimeline" className="link" />}
+            component={<Link to="/starstimeline" className="link" />}
             icon={<TimelineRoundedIcon />}
           >
             StarsTimeline
           </MenuItem>
           <MenuItem
-            component={<Link to="deps" className="link" />}
+            component={<Link to="/deps" className="link" />}
             icon={<TimelineRoundedIcon />}
           >
             DepsChartTable
@@ -347,10 +347,10 @@ function App() {
       <section>
         <Routes>
           <Route path="/" element={<Table />} />
-          <Route path="table" element={<Table />} />
-          <Route path="treemap" element={<Treemap />} />
-          <Route path="starstimeline" element={<StarsTimeline />} />
-          <Route path="deps" element={<DepsChartTable />} />
+          <Route path="/table" element={<Table />} />
+          <Route path="/treemap" element={<Treemap />} />
+          <Route path="/starstimeline" element={<StarsTimeline />} />
+          <Route path="/deps" element={<DepsChartTable />} />
         </Routes>
       </section>
     </div>
