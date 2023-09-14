@@ -205,6 +205,7 @@ function App() {
   const [dataRows, setDataRows] = useState([]);
   const [treeMapData, setTreeMapData] = useState({});
   const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
+  const [collapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
     fetchStats();
@@ -300,11 +301,9 @@ function App() {
     );
   };
 
-  const { collapseSidebar } = useProSidebar();
-
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar className="app">
+      <Sidebar className="app" collapsed={collapsed}>
         <Menu>
           <MenuItem
             component={<Link to="/" className="link" />}
@@ -312,7 +311,7 @@ function App() {
             icon={
               <MenuRoundedIcon
                 onClick={() => {
-                  collapseSidebar();
+                  setCollapsed(!collapsed);
                 }}
               />
             }
