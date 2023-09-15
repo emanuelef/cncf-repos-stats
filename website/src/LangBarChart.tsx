@@ -87,7 +87,7 @@ function LangBarChart({ dataRows }) {
         padding={0.3}
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
-        colors={{ scheme: "nivo" }}
+        colors={{ scheme: "paired" }}
         borderColor={{
           from: "color",
           modifiers: [["darker", 1.6]],

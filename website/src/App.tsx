@@ -9,12 +9,10 @@ import { ResponsiveTreeMap } from "@nivo/treemap";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-
 import TimeSeriesChart from "./TimeSeriesChart";
 import DepsChart from "./DepsChart";
 import LangBarChart from "./LangBarChart";
+import LangHCBarChart from "./LangHCBarChart";
 
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Routes, Route, Link } from "react-router-dom";
@@ -325,6 +323,12 @@ function App() {
           >
             Languages
           </MenuItem>
+          <MenuItem
+            component={<Link to="/langHC" className="link" />}
+            icon={<BarChartRoundedIcon />}
+          >
+            Languages
+          </MenuItem>
         </Menu>
       </Sidebar>
       <section>
@@ -335,6 +339,10 @@ function App() {
           <Route path="/starstimeline" element={<StarsTimeline />} />
           <Route path="/deps" element={<DepsChart />} />
           <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
+          <Route
+            path="/langHC"
+            element={<LangHCBarChart dataRows={dataRows} />}
+          />
         </Routes>
       </section>
     </div>
