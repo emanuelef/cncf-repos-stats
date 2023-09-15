@@ -14,14 +14,9 @@ import HighchartsReact from "highcharts-react-official";
 
 import TimeSeriesChart from "./TimeSeriesChart";
 import DepsChart from "./DepsChart";
+import LangBarChart from "./LangBarChart";
 
-import {
-  Sidebar,
-  Menu,
-  MenuItem,
-  SubMenu,
-  useProSidebar,
-} from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Routes, Route, Link } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
@@ -29,16 +24,6 @@ import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
-import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
-import WalletRoundedIcon from "@mui/icons-material/WalletRounded";
-import AccountBalanceRoundedIcon from "@mui/icons-material/AccountBalanceRounded";
-import SavingsRoundedIcon from "@mui/icons-material/SavingsRounded";
-import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
-import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
-import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
-import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 /*
 archived
@@ -293,14 +278,6 @@ function App() {
     );
   };
 
-  const DepsChartTable = () => {
-    return (
-      <>
-        <DepsChart />
-      </>
-    );
-  };
-
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar className="app" collapsed={collapsed}>
@@ -342,6 +319,12 @@ function App() {
           >
             DepsChartTable
           </MenuItem>
+          <MenuItem
+            component={<Link to="/lang" className="link" />}
+            icon={<BarChartRoundedIcon />}
+          >
+            Languages
+          </MenuItem>
         </Menu>
       </Sidebar>
       <section>
@@ -350,7 +333,8 @@ function App() {
           <Route path="/table" element={<Table />} />
           <Route path="/treemap" element={<Treemap />} />
           <Route path="/starstimeline" element={<StarsTimeline />} />
-          <Route path="/deps" element={<DepsChartTable />} />
+          <Route path="/deps" element={<DepsChart />} />
+          <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
         </Routes>
       </section>
     </div>
