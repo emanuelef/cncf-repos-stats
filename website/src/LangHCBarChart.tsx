@@ -107,7 +107,7 @@ const ColumnChart = ({ dataRows }) => {
   const options = {
     chart: {
       type: "column",
-      height: 800,
+      height: 760,
     },
     title: {
       text: "CNCF Languages",
@@ -140,7 +140,14 @@ const ColumnChart = ({ dataRows }) => {
   };
 
   return (
-    <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+    <div
+      style={{
+        height: 760,
+        width: 1400,
+        marginTop: 10,
+        backgroundColor: "azure",
+      }}
+    >
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
