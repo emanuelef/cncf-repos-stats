@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 import TimeSeriesChart from "./TimeSeriesChart";
+import K8sTimeSeriesChart from "./K8sTimeSeriesChart";
 import DepsChart from "./DepsChart";
 import LangBarChart from "./LangBarChart";
 import LangHCBarChart from "./LangHCBarChart";
@@ -329,6 +330,12 @@ function App() {
           >
             Languages
           </MenuItem>
+          <MenuItem
+            component={<Link to="/k8sstarstimeline" className="link" />}
+            icon={<TimelineRoundedIcon />}
+          >
+            K8s StarsTimeline
+          </MenuItem>
         </Menu>
       </Sidebar>
       <section>
@@ -337,6 +344,7 @@ function App() {
           <Route path="/table" element={<Table />} />
           <Route path="/treemap" element={<Treemap />} />
           <Route path="/starstimeline" element={<StarsTimeline />} />
+          <Route path="/k8sstarstimeline" element={<K8sTimeSeriesChart />} />
           <Route path="/deps" element={<DepsChart />} />
           <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
           <Route
