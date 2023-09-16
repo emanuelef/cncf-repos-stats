@@ -97,6 +97,8 @@ func main() {
 
 	semWeight, _ := strconv.ParseInt(getEnv("MAX_CONCURRENT_REQUESTS", "10"), 10, 64)
 
+	log.Printf("Running %d concurrent requests", semWeight)
+
 	var mutex sync.Mutex
 	sem := semaphore.NewWeighted(semWeight)
 	var wg sync.WaitGroup
