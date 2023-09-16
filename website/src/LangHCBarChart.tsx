@@ -110,7 +110,7 @@ const ColumnChart = ({ dataRows }) => {
       height: 800,
     },
     title: {
-      text: "Column Chart with Custom Color",
+      text: "CNCF Languages",
     },
     xAxis: {
       categories: ["Graduated", "Incubating", "Sandbox", "Archived"],
