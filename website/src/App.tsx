@@ -241,7 +241,7 @@ function App() {
   const Treemap = () => {
     return (
       <>
-        <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+        <div style={{ height: 820, width: 1420, backgroundColor: "azure" }}>
           <ResponsiveTreeMap
             data={treeMapData}
             identity="name"
