@@ -18,10 +18,10 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Routes, Route, Link } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
-import ReceiptRoundedIcon from "@mui/icons-material/ReceiptRounded";
+import TableViewRounded from "@mui/icons-material/TableViewRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
 
 /*
 archived
@@ -295,13 +295,13 @@ function App() {
           </MenuItem>
           <MenuItem
             component={<Link to="/table" className="link" />}
-            icon={<GridViewRoundedIcon />}
+            icon={<TableViewRounded />}
           >
             Table
           </MenuItem>
           <MenuItem
             component={<Link to="/treemap" className="link" />}
-            icon={<ReceiptRoundedIcon />}
+            icon={<ViewQuiltRounded />}
           >
             Treemap
           </MenuItem>
@@ -313,7 +313,7 @@ function App() {
           </MenuItem>
           <MenuItem
             component={<Link to="/deps" className="link" />}
-            icon={<TimelineRoundedIcon />}
+            icon={<TableViewRounded />}
           >
             DepsChartTable
           </MenuItem>
