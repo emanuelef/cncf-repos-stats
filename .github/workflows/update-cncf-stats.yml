@@ -30,6 +30,7 @@ jobs:
           OTEL_SERVICE_NAME: ${{ vars.OTEL_SERVICE_NAME }}
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ vars.OTEL_EXPORTER_OTLP_ENDPOINT }}
           FILE_SUFFIX: "latest"
+          MAX_CONCURRENT_REQUESTS: "2"
 
       - name: Push generated csv files to the repo
         uses: stefanzweifel/git-auto-commit-action@v4
