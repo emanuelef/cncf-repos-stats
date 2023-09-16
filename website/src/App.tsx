@@ -147,7 +147,7 @@ function App() {
   const fetchStats = () => {
     fetch(csvURL)
       .then((response) => response.text())
-      .then((text) => Papa.parse(text, { header: true }))
+      .then((text) => Papa.parse(text, { header: true, skipEmptyLines: true }))
       .then(function (result) {
         setDataRows(result.data);
         console.log(result.data);
