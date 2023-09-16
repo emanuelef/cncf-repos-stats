@@ -12,7 +12,7 @@ const chart_props = {
     height: "800",
     dataEmptyMessage: "Fetching data...",
     dataSource: {
-      caption: { text: "New stars per day" },
+      caption: { text: "K8s new stars per day" },
       data: null,
       yAxis: [
         {
