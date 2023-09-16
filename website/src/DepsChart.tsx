@@ -22,7 +22,7 @@ const columns: GridColDef[] = [
   },
   {
     field: "go_cncf_repos_using_dep",
-    headerName: "Stars",
+    headerName: "Repos",
     width: 90,
     valueGetter: (params) => parseInt(params.value),
   },
