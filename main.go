@@ -95,7 +95,7 @@ func main() {
 	}()
 
 	var mutex sync.Mutex
-	sem := semaphore.NewWeighted(60)
+	sem := semaphore.NewWeighted(30)
 	var wg sync.WaitGroup
 
 	currentTime := time.Now()
