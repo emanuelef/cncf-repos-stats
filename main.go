@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"net/http/httptrace"
 	"os"
+	"strconv"
 	"sync"
 	"time"
 
@@ -94,8 +95,10 @@ func main() {
 		_ = tp.Shutdown(ctx)
 	}()
 
+	semWeight, _ := strconv.ParseInt(getEnv("MAX_CONCURRENT_REQUESTS", "10"), 10, 64)
+
 	var mutex sync.Mutex
-	sem := semaphore.NewWeighted(30)
+	sem := semaphore.NewWeighted(semWeight)
 	var wg sync.WaitGroup
 
 	currentTime := time.Now()
