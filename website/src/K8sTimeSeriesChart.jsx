@@ -28,7 +28,7 @@ const chart_props = {
 };
 
 const FULL_URL_CSV =
-  "https://raw.githubusercontent.com/emanuelef/github-repo-activity-stats/main/all-stars-k8s.csv";
+  "https://raw.githubusercontent.com/emanuelef/github-repo-activity-stats/main/all-stars-history-k8s/all-stars-k8s.csv";
 
 const CSVToArray = (data, delimiter = ",", omitFirstRow = true) =>
   data
