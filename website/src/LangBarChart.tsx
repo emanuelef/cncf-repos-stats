@@ -78,7 +78,14 @@ function LangBarChart({ dataRows }) {
   }, []);
 
   return (
-    <div style={{ height: 800, width: 1440, backgroundColor: "azure" }}>
+    <div
+      style={{
+        height: 760,
+        width: 1400,
+        marginTop: 10,
+        backgroundColor: "azure",
+      }}
+    >
       <ResponsiveBar
         data={data}
         keys={keys}
