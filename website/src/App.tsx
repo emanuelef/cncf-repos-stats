@@ -16,13 +16,14 @@ import LangBarChart from "./LangBarChart";
 import LangHCBarChart from "./LangHCBarChart";
 
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useParams } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import TableViewRounded from "@mui/icons-material/TableViewRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
 import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
+import { Share } from "@mui/icons-material";
 
 /*
 archived
@@ -58,6 +59,14 @@ const GitHubURL = "https://github.com/";
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
+
+const ShareableLink = ({ repo }) => {
+  return (
+    <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>
+      {repo}
+    </Link>
+  );
+};
 
 const columns: GridColDef[] = [
   {
@@ -132,6 +141,11 @@ const columns: GridColDef[] = [
     field: "archived",
     headerName: "Archived",
     width: 110,
+  },
+  {
+    headerName: "Starstimeline",
+    width: 110,
+    renderCell: (params) => <ShareableLink repo={params.row.repo} />,
   },
 ];
 
@@ -218,8 +232,13 @@ function App() {
   };
 
   const StarsTimeline = () => {
+    const { id } = useParams();
+    const decodedRepositoryId = decodeURIComponent(id);
+    console.log(decodedRepositoryId);
+    setSelectedRepo(decodedRepositoryId);
     return (
       <>
+        <ShareableLink repo={selectedRepo} />
         <Autocomplete
           disablePortal
           id="combo-box-demo"
@@ -230,6 +249,8 @@ function App() {
           renderInput={(params) => <TextField {...params} label="Repo" />}
           onChange={(e, v) => {
             console.log(v?.label);
+            const encodedRepositoryId = encodeURIComponent(v?.label);
+            console.log(encodedRepositoryId);
             setSelectedRepo(v?.label);
           }}
         />
@@ -307,7 +328,7 @@ function App() {
             Treemap
           </MenuItem>
           <MenuItem
-            component={<Link to="/starstimeline" className="link" />}
+            component={<Link to="/starstimeline/:id" className="link" />}
             icon={<TimelineRoundedIcon />}
           >
             StarsTimeline
@@ -343,7 +364,7 @@ function App() {
           <Route path="/" element={<Table />} />
           <Route path="/table" element={<Table />} />
           <Route path="/treemap" element={<Treemap />} />
-          <Route path="/starstimeline" element={<StarsTimeline />} />
+          <Route path="/starstimeline/:id" element={<StarsTimeline />} />
           <Route path="/k8sstarstimeline" element={<K8sTimeSeriesChart />} />
           <Route path="/deps" element={<DepsChart />} />
           <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
