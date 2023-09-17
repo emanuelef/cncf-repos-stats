@@ -1,4 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 import FusionCharts from "fusioncharts";
 import TimeSeries from "fusioncharts/fusioncharts.timeseries";
 import ReactFC from "react-fusioncharts";
@@ -57,6 +62,12 @@ const movingAvg = (array, countBefore, countAfter = 0) => {
 
 function K8sTimeSeriesChart({ repo }) {
   const [ds, setds] = useState(chart_props);
+  const [selectedValue, setSelectedValue] = useState("increment");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
   const loadData = async () => {
     try {
       const response = await fetch(FULL_URL_CSV);
@@ -70,6 +81,8 @@ function K8sTimeSeriesChart({ repo }) {
       );
       const options = { ...ds };
       options.timeseriesDs.dataSource.data = fusionTable;
+      options.timeseriesDs.dataSource.yAxis[0].plot[0].value =
+        selectedValue === "increment" ? "New Stars" : "Cumulative Stars";
       setds(options);
     } catch (err) {
       console.log(err);
@@ -79,10 +92,34 @@ function K8sTimeSeriesChart({ repo }) {
   useEffect(() => {
     console.log("render");
     loadData();
-  }, [repo]);
+  }, [repo, selectedValue]);
 
   return (
     <div>
+      <FormControl
+        component="fieldset"
+        style={{ marginTop: 20, marginLeft: 20 }}
+      >
+        <FormLabel component="legend">Select one option:</FormLabel>
+        <RadioGroup
+          aria-label="options"
+          name="options"
+          value={selectedValue}
+          onChange={handleChange}
+          row
+        >
+          <FormControlLabel
+            value="increment"
+            control={<Radio />}
+            label="Stars per day"
+          />
+          <FormControlLabel
+            value="cumulative"
+            control={<Radio />}
+            label="Cumulative stars"
+          />
+        </RadioGroup>
+      </FormControl>
       <ReactFC {...ds.timeseriesDs} />
     </div>
   );
