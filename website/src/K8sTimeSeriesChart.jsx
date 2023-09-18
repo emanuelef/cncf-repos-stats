@@ -28,6 +28,9 @@ const chart_props = {
           ],
         },
       ],
+      chart: {
+        animation: "0",
+      },
     },
   },
 };

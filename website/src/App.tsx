@@ -61,11 +61,7 @@ const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
 
 const ShareableLink = ({ repo }) => {
-  return (
-    <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>
-      {repo}
-    </Link>
-  );
+  return <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>{repo}</Link>;
 };
 
 const columns: GridColDef[] = [
@@ -211,7 +207,7 @@ function App() {
 
   const Table = () => {
     return (
-      <>
+      <div className="chart-container">
         <DataGrid
           getRowId={(row) => row.repo}
           rows={dataRows}
@@ -227,7 +223,7 @@ function App() {
           }}
           pageSizeOptions={[5, 10, 50]}
         />
-      </>
+      </div>
     );
   };
 
@@ -261,7 +257,7 @@ function App() {
 
   const Treemap = () => {
     return (
-      <>
+      <div className="chart-container">
         <div style={{ height: 820, width: 1400, backgroundColor: "azure" }}>
           <ResponsiveTreeMap
             data={treeMapData}
@@ -294,7 +290,7 @@ function App() {
             }}
           />
         </div>
-      </>
+      </div>
     );
   };
 
