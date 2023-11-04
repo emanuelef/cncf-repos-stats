@@ -150,8 +150,6 @@ const columns: GridColDef[] = [
   },
 ];
 
-// https://raw.githubusercontent.com/emanuelef/awesome-go-repo-stats/main/analysis-latest.csv
-
 let testTreeMapData = {
   name: "CNCF",
   color: "hsl(146, 70%, 50%)",
