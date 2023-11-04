@@ -25,6 +25,8 @@ import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
 import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
 import { Share } from "@mui/icons-material";
 
+import Header from "./Header";
+
 /*
 archived
 "false"
@@ -59,6 +61,9 @@ const GitHubURL = "https://github.com/";
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
+
+const lastUpdateURL =
+  "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/last-update.txt";
 
 const ShareableLink = ({ repo }) => {
   return <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>{repo}</Link>;
@@ -196,13 +201,38 @@ function App() {
       });
   };
 
+  const fetchLastUpdate = () => {
+    fetch(lastUpdateURL)
+      .then((response) => response.text())
+      .then(function (dateString) {
+        console.log(dateString);
+        const parts = dateString.split("-");
+        if (parts.length === 3) {
+          const year = parseInt(parts[0]);
+          const month = parseInt(parts[1]) - 1; // Months are 0-indexed
+          const day = parseInt(parts[2]);
+          const options = { year: "numeric", month: "long", day: "numeric" };
+          const formattedDate = new Date(year, month, day).toLocaleDateString(
+            "en-US",
+            options
+          );
+          setLastUpdate(formattedDate);
+        }
+      })
+      .catch((e) => {
+        console.error(`An error occurred: ${e}`);
+      });
+  };
+
   const [dataRows, setDataRows] = useState([]);
   const [treeMapData, setTreeMapData] = useState({});
   const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
   const [collapsed, setCollapsed] = useState(true);
+  const [lastUpdate, setLastUpdate] = useState("Unknown");
 
   useEffect(() => {
     fetchStats();
+    fetchLastUpdate();
   }, []);
 
   const Table = () => {
@@ -356,6 +386,7 @@ function App() {
         </Menu>
       </Sidebar>
       <section>
+        <Header lastUpdate={lastUpdate} />
         <Routes>
           <Route path="/" element={<Table />} />
           <Route path="/table" element={<Table />} />

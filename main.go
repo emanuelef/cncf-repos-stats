@@ -54,14 +54,22 @@ func writeGoDepsMapFile(deps map[string]int) {
 		"dep", "go_cncf_repos_using_dep",
 	}
 
-	csvWriter.Write(headerRow)
+	err = csvWriter.Write(headerRow)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for k, v := range deps {
 		if v > 10 {
-			csvWriter.Write([]string{
+			err = csvWriter.Write([]string{
 				k,
 				fmt.Sprintf("%d", v),
 			})
+
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 }
@@ -125,7 +133,11 @@ func main() {
 		"start_date", "join_date",
 	}
 
-	csvWriter.Write(headerRow)
+	err = csvWriter.Write(headerRow)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	depsUse := map[string]int{}
 
@@ -161,7 +173,12 @@ func main() {
 			wg.Add(1)
 
 			go func(key string, val any) {
-				sem.Acquire(ctx, 1)
+				err = sem.Acquire(ctx, 1)
+
+				if err != nil {
+					log.Fatalf("Error acquiring semaphore %v", err)
+				}
+
 				defer sem.Release(1)
 				defer wg.Done()
 				p := val.(map[string]any)
@@ -179,7 +196,7 @@ func main() {
 					daysSinceCreation := int(currentTime.Sub(result.CreatedAt).Hours() / 24)
 
 					mutex.Lock()
-					csvWriter.Write([]string{
+					err = csvWriter.Write([]string{
 						fmt.Sprintf("%s", p["main_repo"]),
 						fmt.Sprintf("%d", result.Stars),
 						fmt.Sprintf("%d", result.AddedLast30d),
@@ -198,6 +215,10 @@ func main() {
 						fmt.Sprintf("%s", p["start_date"]),
 						fmt.Sprintf("%s", p["join_date"]),
 					})
+
+					if err != nil {
+						log.Fatal(err)
+					}
 
 					if len(result.DirectDeps) > 0 {
 						for _, dep := range result.DirectDeps {
