@@ -14,6 +14,17 @@ const mapCategoryToColor = (category) => {
 };
 
 const BubbleChart = ({ dataRows }) => {
+  const handleBubbleClick = (event) => {
+    // Extract information about the clicked point from the event
+    console.log(event);
+    const pointIndex = event.points[0].pointIndex;
+    const clickedRepo = event.points[0].data.text[pointIndex];
+
+    // Replace this with the URL or action you want to perform
+    const url = `https://github.com/${clickedRepo}`;
+    window.open(url, "_blank");
+  };
+
   console.log(dataRows);
 
   const categories = ["Sandbox", "Archived", "Incubating", "Graduated"];
@@ -62,7 +73,11 @@ const BubbleChart = ({ dataRows }) => {
 
   return (
     <div className="App" style={{ width: "800px", height: "600px" }}>
-      <Plot data={data} layout={layout} />
+      <Plot
+        data={data}
+        layout={layout}
+        onClick={(event) => handleBubbleClick(event)}
+      />
     </div>
   );
 };
