@@ -14,6 +14,7 @@ import K8sTimeSeriesChart from "./K8sTimeSeriesChart";
 import DepsChart from "./DepsChart";
 import LangBarChart from "./LangBarChart";
 import LangHCBarChart from "./LangHCBarChart";
+import BubbleChart from "./BubbleChart";
 
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Routes, Route, Link, useParams } from "react-router-dom";
@@ -23,6 +24,7 @@ import TableViewRounded from "@mui/icons-material/TableViewRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
 import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
+import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
 import { Share } from "@mui/icons-material";
 
 import Header from "./Header";
@@ -376,6 +378,12 @@ function App() {
             Languages
           </MenuItem>
           <MenuItem
+            component={<Link to="/bubble" className="link" />}
+            icon={<BubbleChartRoundedIcon />}
+          >
+            Bubble
+          </MenuItem>
+          <MenuItem
             component={<Link to="/k8sstarstimeline" className="link" />}
             icon={<TimelineRoundedIcon />}
           >
@@ -397,6 +405,7 @@ function App() {
             path="/langHC"
             element={<LangHCBarChart dataRows={dataRows} />}
           />
+          <Route path="/bubble" element={<BubbleChart dataRows={dataRows} />} />
         </Routes>
       </section>
     </div>

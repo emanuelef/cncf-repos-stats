@@ -22,7 +22,7 @@ function Header({ lastUpdate }) {
 
   return (
     <div className="header" style={headerStyle}>
-      <p>Last Update: {lastUpdate}</p>
+      <p>CNCF Last Update: {lastUpdate}</p>
       <Linkweb href={csvURL} download>
         Link to CSV
       </Linkweb>
