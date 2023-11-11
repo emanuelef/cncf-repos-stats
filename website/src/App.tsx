@@ -22,8 +22,10 @@ import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import TableViewRounded from "@mui/icons-material/TableViewRounded";
+import ViewListRoundedIcon from "@mui/icons-material/ViewListRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
+import LibraryBooksRoundedIcon from "@mui/icons-material/LibraryBooksRounded";
 import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
 import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
 import { Share } from "@mui/icons-material";
@@ -95,13 +97,13 @@ const columns: GridColDef[] = [
   {
     field: "days-last-star",
     headerName: "Days last star",
-    width: 110,
+    width: 100,
     valueGetter: (params) => parseInt(params.value),
   },
   {
     field: "days-last-commit",
     headerName: "Days last commit",
-    width: 130,
+    width: 110,
     valueGetter: (params) => parseInt(params.value),
   },
   {
@@ -125,7 +127,7 @@ const columns: GridColDef[] = [
   {
     field: "mentionable-users",
     headerName: "Ment. users",
-    width: 110,
+    width: 100,
     valueGetter: (params) => parseInt(params.value),
   },
   {
@@ -136,7 +138,7 @@ const columns: GridColDef[] = [
   {
     field: "dependencies",
     headerName: "Direct deps",
-    width: 130,
+    width: 90,
     valueGetter: (val) => parseInt(val.row["dependencies"]),
   },
   {
@@ -147,7 +149,7 @@ const columns: GridColDef[] = [
   {
     field: "archived",
     headerName: "Archived",
-    width: 110,
+    width: 90,
   },
   {
     headerName: "Stars Timeline 30d",
@@ -398,7 +400,7 @@ function App() {
           </MenuItem>
           <MenuItem
             component={<Link to="/table" className="link" />}
-            icon={<TableViewRounded />}
+            icon={<ViewListRoundedIcon />}
           >
             Table
           </MenuItem>
@@ -410,7 +412,10 @@ function App() {
           </MenuItem>
           <MenuItem
             component={
-              <Link to="/starstimeline/:user/:repository" className="link" />
+              <Link
+                to="/starstimeline/kubernetes/kubernetes"
+                className="link"
+              />
             }
             icon={<TimelineRoundedIcon />}
           >
@@ -418,15 +423,9 @@ function App() {
           </MenuItem>
           <MenuItem
             component={<Link to="/deps" className="link" />}
-            icon={<TableViewRounded />}
+            icon={<LibraryBooksRoundedIcon />}
           >
             DepsChartTable
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/lang" className="link" />}
-            icon={<BarChartRoundedIcon />}
-          >
-            Languages
           </MenuItem>
           <MenuItem
             component={<Link to="/langHC" className="link" />}
@@ -440,12 +439,6 @@ function App() {
           >
             Bubble
           </MenuItem>
-          <MenuItem
-            component={<Link to="/k8sstarstimeline" className="link" />}
-            icon={<TimelineRoundedIcon />}
-          >
-            K8s StarsTimeline
-          </MenuItem>
         </Menu>
       </Sidebar>
       <section>
@@ -458,9 +451,7 @@ function App() {
             path="/starstimeline/:user/:repository"
             element={<StarsTimeline />}
           />
-          <Route path="/k8sstarstimeline" element={<K8sTimeSeriesChart />} />
           <Route path="/deps" element={<DepsChart />} />
-          <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
           <Route
             path="/langHC"
             element={<LangHCBarChart dataRows={dataRows} />}
