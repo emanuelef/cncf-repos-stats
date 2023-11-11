@@ -17,7 +17,7 @@ const chart_props = {
     height: "800",
     dataEmptyMessage: "Fetching data...",
     dataSource: {
-      caption: { text: "New stars per day" },
+      caption: { text: "Daily Stars" },
       data: null,
       yAxis: [
         {
@@ -104,6 +104,7 @@ function TimeSeriesChart({ repo }) {
       );
       const options = { ...ds };
       options.timeseriesDs.dataSource.data = fusionTable;
+      options.timeseriesDs.dataSource.caption = { text: `Daily Stars ${repo}` };
       options.timeseriesDs.dataSource.yAxis[0].plot[0].value =
         selectedValue === "increment" ? "New Stars" : "Cumulative Stars";
       setds(options);
