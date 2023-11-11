@@ -34,7 +34,7 @@ const BubbleChart = ({ dataRows }) => {
     const trace = {
       x: dataRows
         .filter((row) => row["status"] === category)
-        .map((row) => row["new-stars-last-14d"]),
+        .map((row) => row["new-stars-last-7d"]),
       y: dataRows
         .filter((row) => row["status"] === category)
         .map((row) => row["mentionable-users"]),

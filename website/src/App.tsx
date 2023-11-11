@@ -15,9 +15,10 @@ import DepsChart from "./DepsChart";
 import LangBarChart from "./LangBarChart";
 import LangHCBarChart from "./LangHCBarChart";
 import BubbleChart from "./BubbleChart";
+import GitHubButton from "react-github-btn";
 
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import TableViewRounded from "@mui/icons-material/TableViewRounded";
@@ -66,6 +67,9 @@ const csvURL =
 
 const lastUpdateURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/last-update.txt";
+
+const fullStarsHistoryURL =
+  "https://emanuelef.github.io/gh-repo-stats-server/#/";
 
 const ShareableLink = ({ repo }) => {
   return <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>{repo}</Link>;
@@ -146,9 +150,11 @@ const columns: GridColDef[] = [
     width: 110,
   },
   {
-    headerName: "Starstimeline",
+    headerName: "Stars Timeline 30d",
     width: 110,
-    renderCell: (params) => <ShareableLink repo={params.row.repo} />,
+    renderCell: (params) => (
+      <Linkweb href={`./#/starstimeline/${params.row.repo}`}>link</Linkweb>
+    ),
   },
 ];
 
@@ -230,6 +236,8 @@ function App() {
   const [collapsed, setCollapsed] = useState(true);
   const [lastUpdate, setLastUpdate] = useState("Unknown");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetchStats();
     fetchLastUpdate();
@@ -258,28 +266,75 @@ function App() {
   };
 
   const StarsTimeline = () => {
-    const { id } = useParams();
-    const decodedRepositoryId = decodeURIComponent(id);
-    console.log(decodedRepositoryId);
-    setSelectedRepo(decodedRepositoryId);
+    const { user, repository } = useParams();
+
+    useEffect(() => {
+      console.log(user + "/" + repository);
+      setSelectedRepo(user + "/" + repository);
+    }, []);
+
     return (
       <>
-        <ShareableLink repo={selectedRepo} />
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={dataRows.map((el) => {
-            return { label: el.repo };
-          })}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Repo" />}
-          onChange={(e, v) => {
-            console.log(v?.label);
-            const encodedRepositoryId = encodeURIComponent(v?.label);
-            console.log(encodedRepositoryId);
-            setSelectedRepo(v?.label);
-          }}
-        />
+        <div
+          style={{ display: "flex", alignItems: "center", marginTop: "10px" }}
+        >
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            size="small"
+            options={dataRows.map((el) => {
+              return { label: el.repo };
+            })}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                style={{
+                  marginRight: "20px",
+                  marginLeft: "10px",
+                  width: "400px",
+                }}
+                label="Enter a GitHub repository"
+                variant="outlined"
+                size="small"
+              />
+            )}
+            value={selectedRepo}
+            onChange={(e, v) => {
+              console.log(v?.label);
+              setSelectedRepo(v?.label);
+              navigate(`/starstimeline/${v?.label}`, {
+                replace: false,
+              });
+            }}
+            onBlur={() => {
+              navigate(`/starstimeline/kubernetes/kubernetes}`, {
+                replace: false,
+              });
+            }}
+            clearOnBlur={false}
+            clearOnEscape
+            onClear={() => {
+              navigate(`/starstimeline/kubernetes/kubernetes}`, {
+                replace: false,
+              });
+            }}
+          />
+          <GitHubButton
+            href={"https://github.com/" + selectedRepo}
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star buttons/github-buttons on GitHub"
+          >
+            Star
+          </GitHubButton>
+          <Linkweb
+            style={{ marginLeft: "10px" }}
+            href={fullStarsHistoryURL + selectedRepo}
+            target="_blank"
+          >
+            Full Stars History
+          </Linkweb>
+        </div>
         <TimeSeriesChart repo={selectedRepo} />
       </>
     );
@@ -354,7 +409,9 @@ function App() {
             Treemap
           </MenuItem>
           <MenuItem
-            component={<Link to="/starstimeline/:id" className="link" />}
+            component={
+              <Link to="/starstimeline/:user/:repository" className="link" />
+            }
             icon={<TimelineRoundedIcon />}
           >
             StarsTimeline
@@ -397,7 +454,10 @@ function App() {
           <Route path="/" element={<Table />} />
           <Route path="/table" element={<Table />} />
           <Route path="/treemap" element={<Treemap />} />
-          <Route path="/starstimeline/:id" element={<StarsTimeline />} />
+          <Route
+            path="/starstimeline/:user/:repository"
+            element={<StarsTimeline />}
+          />
           <Route path="/k8sstarstimeline" element={<K8sTimeSeriesChart />} />
           <Route path="/deps" element={<DepsChart />} />
           <Route path="/lang" element={<LangBarChart dataRows={dataRows} />} />
