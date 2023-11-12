@@ -4,24 +4,21 @@ import Papa from "papaparse";
 import "./App.css";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Linkweb from "@mui/material/Link";
-import { ResponsiveTreeMap } from "@nivo/treemap";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 import TimeSeriesChart from "./TimeSeriesChart";
-import K8sTimeSeriesChart from "./K8sTimeSeriesChart";
 import DepsChart from "./DepsChart";
-import LangBarChart from "./LangBarChart";
 import LangHCBarChart from "./LangHCBarChart";
 import BubbleChart from "./BubbleChart";
+import TreeMapChart from "./TreeMapChart";
 import GitHubButton from "react-github-btn";
 
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Routes, Route, Link, useParams, useNavigate } from "react-router-dom";
 
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import TableViewRounded from "@mui/icons-material/TableViewRounded";
 import ViewListRoundedIcon from "@mui/icons-material/ViewListRounded";
 import BarChartRoundedIcon from "@mui/icons-material/BarChartRounded";
 import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
@@ -160,12 +157,6 @@ const columns: GridColDef[] = [
   },
 ];
 
-let testTreeMapData = {
-  name: "CNCF",
-  color: "hsl(146, 70%, 50%)",
-  children: [],
-};
-
 function App() {
   const fetchStats = () => {
     fetch(csvURL)
@@ -173,36 +164,6 @@ function App() {
       .then((text) => Papa.parse(text, { header: true, skipEmptyLines: true }))
       .then(function (result) {
         setDataRows(result.data);
-        console.log(result.data);
-
-        testTreeMapData.children = [];
-
-        result.data.forEach(
-          (element: { status: string; repo: string; stars: string }) => {
-            const catStatus = testTreeMapData.children.find(
-              (category) => category.name === element.status
-            );
-
-            if (!element.repo) {
-              return;
-            }
-
-            if (!catStatus) {
-              testTreeMapData.children.push({
-                name: element.status,
-                children: [],
-              });
-            } else {
-              catStatus.children.push({
-                name: element.repo,
-                stars: parseInt(element.stars),
-              });
-            }
-          }
-        );
-
-        console.log(testTreeMapData);
-        setTreeMapData(testTreeMapData);
       })
       .catch((e) => {
         console.error(`An error occurred: ${e}`);
@@ -233,7 +194,6 @@ function App() {
   };
 
   const [dataRows, setDataRows] = useState([]);
-  const [treeMapData, setTreeMapData] = useState({});
   const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
   const [collapsed, setCollapsed] = useState(true);
   const [lastUpdate, setLastUpdate] = useState("Unknown");
@@ -342,45 +302,6 @@ function App() {
     );
   };
 
-  const Treemap = () => {
-    return (
-      <div className="chart-container">
-        <div style={{ height: 820, width: 1400, backgroundColor: "azure" }}>
-          <ResponsiveTreeMap
-            data={treeMapData}
-            identity="name"
-            value="stars"
-            valueFormat=".03s"
-            margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-            labelSkipSize={12}
-            labelTextColor={{
-              from: "color",
-              modifiers: [["darker", 1.2]],
-            }}
-            parentLabelPosition="top"
-            parentLabelTextColor={{
-              from: "color",
-              modifiers: [["darker", 2]],
-            }}
-            borderColor={{
-              from: "color",
-              modifiers: [["darker", 0.1]],
-            }}
-            animate={false}
-            tooltip={({ node }) => (
-              <strong style={{ color: "black", backgroundColor: "white" }}>
-                {node.pathComponents.join(" - ")}: {node.formattedValue}
-              </strong>
-            )}
-            onClick={(data) => {
-              window.open(GitHubURL + data.id, "_blank");
-            }}
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar className="app" collapsed={collapsed}>
@@ -446,7 +367,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Table />} />
           <Route path="/table" element={<Table />} />
-          <Route path="/treemap" element={<Treemap />} />
+          <Route
+            path="/treemap"
+            element={<TreeMapChart dataRows={dataRows} />}
+          />
           <Route
             path="/starstimeline/:user/:repository"
             element={<StarsTimeline />}
