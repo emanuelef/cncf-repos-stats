@@ -36,9 +36,7 @@ function LangBarChart({ dataRows }) {
   const [data, setData] = useState([]);
   const [keys, setKeys] = useState([]);
 
-  const loadData = async () => {
-    console.log(dataRows);
-
+{  const buildChartData = (dataRows) => 
     let langData = [];
 
     let keysSet = new Set();
@@ -71,6 +69,24 @@ function LangBarChart({ dataRows }) {
     console.log(langData);
     setData(langData);
     setKeys(Array.from(keysSet));
+  };
+
+  const loadData = async () => {
+    if (dataRows.length == 0) {
+      fetch(csvURL)
+        .then((response) => response.text())
+        .then((text) =>
+          Papa.parse(text, { header: true, skipEmptyLines: true })
+        )
+        .then(function (result) {
+          buildChartData(result.data);
+        })
+        .catch((e) => {
+          console.error(`An error occurred: ${e}`);
+        });
+    } else {
+      buildChartData(dataRows);
+    }
   };
 
   useEffect(() => {

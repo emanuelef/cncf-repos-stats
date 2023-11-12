@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Papa from "papaparse";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
 const GitHubURL = "https://github.com/";
@@ -9,16 +10,17 @@ let testTreeMapData = {
   children: [],
 };
 
+const csvURL =
+  "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
+
 function TreeMapChart({ dataRows }) {
   const [treeMapData, setTreeMapData] = useState({});
 
-  const loadData = async () => {
-    console.log(dataRows);
-
+  const buildTreeData = (dataRows) => {
     testTreeMapData.children = [];
 
     dataRows.forEach(
-      (element: { status: string, repo: string, stars: string }) => {
+      (element: { status: string; repo: string; stars: string }) => {
         const catStatus = testTreeMapData.children.find(
           (category) => category.name === element.status
         );
@@ -43,6 +45,24 @@ function TreeMapChart({ dataRows }) {
 
     console.log(testTreeMapData);
     setTreeMapData(testTreeMapData);
+  };
+
+  const loadData = async () => {
+    if (dataRows.length == 0) {
+      fetch(csvURL)
+        .then((response) => response.text())
+        .then((text) =>
+          Papa.parse(text, { header: true, skipEmptyLines: true })
+        )
+        .then(function (result) {
+          buildTreeData(result.data);
+        })
+        .catch((e) => {
+          console.error(`An error occurred: ${e}`);
+        });
+    } else {
+      buildTreeData(dataRows);
+    }
   };
 
   useEffect(() => {
