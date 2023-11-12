@@ -1,6 +1,8 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
+const logBase = (n, base) => Math.log(n) / Math.log(base);
+
 const mapCategoryToColor = (category) => {
   const colorMappings = {
     Sandbox: "rgb(93, 164, 214)",
