@@ -1,6 +1,7 @@
 import React from "react";
 import Linkweb from "@mui/material/Link";
 import GitHubButton from "react-github-btn";
+import CopyToClipboardButton from "./CopyToClipboardButton";
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
@@ -26,6 +27,7 @@ function Header({ lastUpdate }) {
       <Linkweb href={csvURL} download>
         Link to CSV
       </Linkweb>
+      <CopyToClipboardButton />
       <div style={githubButtonStyle}>
         <GitHubButton
           href="https://github.com/emanuelef/cncf-repos-stats"
