@@ -1,27 +1,40 @@
 import React, { useState, useEffect } from "react";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
 import Papa from "papaparse";
 import { ResponsiveTreeMap } from "@nivo/treemap";
 
 const GitHubURL = "https://github.com/";
 
-let testTreeMapData = {
-  name: "CNCF",
-  color: "hsl(146, 70%, 50%)",
-  children: [],
-};
+const metricsList = [
+  { label: "Total Stars", metric: "stars" },
+  { label: "Last 7d stars", metric: "new-stars-last-7d" },
+  { label: "Last 14d stars", metric: "new-stars-last-14d" },
+  { label: "Last 30d stars", metric: "new-stars-last-30d" },
+  { label: "Mentionable users", metric: "mentionable-users" },
+];
 
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
 
 function TreeMapChart({ dataRows }) {
   const [treeMapData, setTreeMapData] = useState({});
+  const [selectedMetric, setSelectedMetric] = useState(metricsList[0].metric);
 
   const buildTreeData = (dataRows) => {
-    testTreeMapData.children = [];
+    console.log(selectedMetric);
+
+    const newTreeMapData = {
+      name: "CNCF",
+      color: "hsl(146, 70%, 50%)",
+      children: [],
+    };
+
+    newTreeMapData.children = [];
 
     dataRows.forEach(
       (element: { status: string; repo: string; stars: string }) => {
-        const catStatus = testTreeMapData.children.find(
+        const catStatus = newTreeMapData.children.find(
           (category) => category.name === element.status
         );
 
@@ -30,21 +43,21 @@ function TreeMapChart({ dataRows }) {
         }
 
         if (!catStatus) {
-          testTreeMapData.children.push({
+          newTreeMapData.children.push({
             name: element.status,
             children: [],
           });
         } else {
           catStatus.children.push({
             name: element.repo,
-            stars: parseInt(element.stars),
+            stars: parseInt(element[selectedMetric]),
           });
         }
       }
     );
 
-    console.log(testTreeMapData);
-    setTreeMapData(testTreeMapData);
+    console.log(newTreeMapData);
+    setTreeMapData(newTreeMapData);
   };
 
   const loadData = async () => {
@@ -67,17 +80,41 @@ function TreeMapChart({ dataRows }) {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [selectedMetric]);
 
   return (
-    <div className="chart-container">
-      <div style={{ height: 700, width: 1400, backgroundColor: "azure" }}>
+    <div
+      className="chart-container"
+      style={{ marginTop: "10px", marginLeft: "10px" }}
+    >
+      <Autocomplete
+        disablePortal
+        id="treemap-combo-box"
+        size="small"
+        options={metricsList}
+        sx={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Select a metric"
+            variant="outlined"
+            size="small"
+          />
+        )}
+        value={
+          metricsList.find((element) => element.metric === selectedMetric) ?? ""
+        }
+        onChange={(e, v) => {
+          setSelectedMetric(v?.metric);
+        }}
+      />
+      <div style={{ height: 740, width: 1400, backgroundColor: "azure" }}>
         <ResponsiveTreeMap
           data={treeMapData}
           identity="name"
           value="stars"
           valueFormat=".03s"
-          margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+          margin={{ top: 10, right: 10, bottom: 10 }}
           labelSkipSize={12}
           labelTextColor={{
             from: "color",
