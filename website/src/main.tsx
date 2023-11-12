@@ -13,6 +13,7 @@ root.render(
         <GitHubCorners
           position="right"
           href="https://github.com/emanuelef/cncf-repos-stats"
+          fixed={true}
         />
         <App />
       </HashRouter>

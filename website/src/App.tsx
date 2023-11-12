@@ -29,6 +29,15 @@ import { Share } from "@mui/icons-material";
 
 import Header from "./Header";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 /*
 archived
 "false"
@@ -303,87 +312,97 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar className="app" collapsed={collapsed}>
-        <Menu>
-          <MenuItem
-            component={<Link to="/" className="link" />}
-            className="menu1"
-            icon={
-              <MenuRoundedIcon
-                onClick={() => {
-                  setCollapsed(!collapsed);
-                }}
-              />
-            }
-          >
-            <h2>CNCF Stats</h2>
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/table" className="link" />}
-            icon={<ViewListRoundedIcon />}
-          >
-            Table
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/treemap" className="link" />}
-            icon={<ViewQuiltRounded />}
-          >
-            Treemap
-          </MenuItem>
-          <MenuItem
-            component={
-              <Link
-                to="/starstimeline/kubernetes/kubernetes"
-                className="link"
-              />
-            }
-            icon={<TimelineRoundedIcon />}
-          >
-            StarsTimeline
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/deps" className="link" />}
-            icon={<LibraryBooksRoundedIcon />}
-          >
-            DepsChartTable
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/langHC" className="link" />}
-            icon={<BarChartRoundedIcon />}
-          >
-            Languages
-          </MenuItem>
-          <MenuItem
-            component={<Link to="/bubble" className="link" />}
-            icon={<BubbleChartRoundedIcon />}
-          >
-            Bubble
-          </MenuItem>
-        </Menu>
-      </Sidebar>
-      <section>
-        <Header lastUpdate={lastUpdate} />
-        <Routes>
-          <Route path="/" element={<Table />} />
-          <Route path="/table" element={<Table />} />
-          <Route
-            path="/treemap"
-            element={<TreeMapChart dataRows={dataRows} />}
-          />
-          <Route
-            path="/starstimeline/:user/:repository"
-            element={<StarsTimeline />}
-          />
-          <Route path="/deps" element={<DepsChart />} />
-          <Route
-            path="/langHC"
-            element={<LangHCBarChart dataRows={dataRows} />}
-          />
-          <Route path="/bubble" element={<BubbleChart dataRows={dataRows} />} />
-        </Routes>
-      </section>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div style={{ display: "flex", height: "100vh" }}>
+        <Sidebar
+          className="app"
+          collapsed={collapsed}
+          backgroundColor="rgb(51, 117, 117)"
+        >
+          <Menu>
+            <MenuItem
+              component={<Link to="/" className="link" />}
+              className="menu1"
+              icon={
+                <MenuRoundedIcon
+                  onClick={() => {
+                    setCollapsed(!collapsed);
+                  }}
+                />
+              }
+            >
+              <h2>CNCF Stats</h2>
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/table" className="link" />}
+              icon={<ViewListRoundedIcon />}
+            >
+              Table
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/treemap" className="link" />}
+              icon={<ViewQuiltRounded />}
+            >
+              Treemap
+            </MenuItem>
+            <MenuItem
+              component={
+                <Link
+                  to="/starstimeline/kubernetes/kubernetes"
+                  className="link"
+                />
+              }
+              icon={<TimelineRoundedIcon />}
+            >
+              StarsTimeline
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/deps" className="link" />}
+              icon={<LibraryBooksRoundedIcon />}
+            >
+              DepsChartTable
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/langHC" className="link" />}
+              icon={<BarChartRoundedIcon />}
+            >
+              Languages
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/bubble" className="link" />}
+              icon={<BubbleChartRoundedIcon />}
+            >
+              Bubble
+            </MenuItem>
+          </Menu>
+        </Sidebar>
+        <section>
+          <Header lastUpdate={lastUpdate} />
+          <Routes>
+            <Route path="/" element={<Table />} />
+            <Route path="/table" element={<Table />} />
+            <Route
+              path="/treemap"
+              element={<TreeMapChart dataRows={dataRows} />}
+            />
+            <Route
+              path="/starstimeline/:user/:repository"
+              element={<StarsTimeline />}
+            />
+            <Route path="/deps" element={<DepsChart />} />
+            <Route
+              path="/langHC"
+              element={<LangHCBarChart dataRows={dataRows} />}
+            />
+            <Route
+              path="/bubble"
+              element={<BubbleChart dataRows={dataRows} />}
+            />
+          </Routes>
+        </section>
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -7,9 +7,10 @@ import FormLabel from "@mui/material/FormLabel";
 import FusionCharts from "fusioncharts";
 import TimeSeries from "fusioncharts/fusioncharts.timeseries";
 import ReactFC from "react-fusioncharts";
+import CandyTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 import schema from "./schema";
 
-ReactFC.fcRoot(FusionCharts, TimeSeries);
+ReactFC.fcRoot(FusionCharts, TimeSeries, CandyTheme);
 const chart_props = {
   timeseriesDs: {
     type: "timeseries",
@@ -30,6 +31,7 @@ const chart_props = {
       ],
       chart: {
         animation: "0",
+        theme: "candy",
       },
     },
   },
