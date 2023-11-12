@@ -18,12 +18,13 @@ function Header({ lastUpdate }) {
   };
 
   const githubButtonStyle = {
-    marginLeft: "auto", // Push GitHub button to the right
+    marginLeft: "auto",
+    marginRight: "30px",
   };
 
   return (
     <div className="header" style={headerStyle}>
-      <p>CNCF Last Update: {lastUpdate}</p>
+      <p>CNCF Repos Stats Last Update: {lastUpdate}</p>
       <Linkweb href={csvURL} download>
         Link to CSV
       </Linkweb>
