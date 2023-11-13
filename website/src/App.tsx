@@ -292,6 +292,7 @@ function App() {
           />
           <GitHubButton
             href={"https://github.com/" + selectedRepo}
+            data-color-scheme="no-preference: dark; light: dark_dimmed; dark: dark_high_contrast;"
             data-size="large"
             data-show-count="true"
             aria-label="Star buttons/github-buttons on GitHub"
