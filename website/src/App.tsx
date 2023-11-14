@@ -343,7 +343,7 @@ function App() {
                 />
               }
             >
-              <h2>CNCF Stats</h2>
+              <h2 style={{ color: "black" }}>CNCF Stats</h2>
             </MenuItem>
             <MenuItem
               component={<Link to="/table" className="link" />}
