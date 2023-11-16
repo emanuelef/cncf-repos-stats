@@ -14,8 +14,8 @@ ReactFC.fcRoot(FusionCharts, TimeSeries, CandyTheme);
 const chart_props = {
   timeseriesDs: {
     type: "timeseries",
-    width: "1200",
-    height: "800",
+    width: "100%",
+    height: "72%",
     dataEmptyMessage: "Fetching data...",
     dataSource: {
       caption: { text: "Daily Stars" },
@@ -121,7 +121,13 @@ function TimeSeriesChart({ repo }) {
   }, [repo, selectedValue]);
 
   return (
-    <div>
+    <div
+      style={{
+        marginLeft: "10px",
+        marginTop: "10px",
+        marginRight: "10px",
+      }}
+    >
       <FormControl
         component="fieldset"
         style={{ marginTop: 20, marginLeft: 20 }}

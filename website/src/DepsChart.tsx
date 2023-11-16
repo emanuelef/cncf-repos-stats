@@ -49,8 +49,14 @@ function DepsChart() {
   }, []);
 
   return (
-    <div>
-      {" "}
+    <div
+      style={{
+        marginLeft: "10px",
+        marginTop: "10px",
+        width: "400px",
+        height: "86%",
+      }}
+    >
       <DataGrid
         getRowId={(row) => row.dep}
         rows={dataRows}
@@ -58,13 +64,13 @@ function DepsChart() {
         rowHeight={30}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 50 },
+            paginationModel: { page: 0, pageSize: 20 },
           },
           sorting: {
             sortModel: [{ field: "go_cncf_repos_using_dep", sort: "desc" }],
           },
         }}
-        pageSizeOptions={[5, 10, 50]}
+        pageSizeOptions={[5, 10, 2, 50]}
       />
     </div>
   );

@@ -270,12 +270,18 @@ function App() {
               />
             )}
             value={selectedRepo}
-            onChange={(e, v) => {
-              console.log(v?.label);
-              setSelectedRepo(v?.label);
-              navigate(`/starstimeline/${v?.label}`, {
-                replace: false,
-              });
+            onChange={(e, v, reason) => {
+              if (reason === "clear") {
+                setSelectedRepo("kubernetes/kubernetes");
+                navigate(`/starstimeline/kubernetes/kubernetes`, {
+                  replace: false,
+                });
+              } else {
+                setSelectedRepo(v?.label);
+                navigate(`/starstimeline/${v?.label}`, {
+                  replace: false,
+                });
+              }
             }}
             onBlur={() => {
               navigate(`/starstimeline/kubernetes/kubernetes}`, {
@@ -388,7 +394,7 @@ function App() {
             </MenuItem>
           </Menu>
         </Sidebar>
-        <section>
+        <section style={{ width: "100%" }}>
           <Header lastUpdate={lastUpdate} />
           <Routes>
             <Route path="/" element={<Table />} />

@@ -87,28 +87,42 @@ function TreeMapChart({ dataRows }) {
       className="chart-container"
       style={{ marginTop: "10px", marginLeft: "10px" }}
     >
-      <Autocomplete
-        disablePortal
-        id="treemap-combo-box"
-        size="small"
-        options={metricsList}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Select a metric"
-            variant="outlined"
-            size="small"
-          />
-        )}
-        value={
-          metricsList.find((element) => element.metric === selectedMetric) ?? ""
-        }
-        onChange={(e, v) => {
-          setSelectedMetric(v?.metric);
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginTop: "10px",
+          marginBottom: "10px",
         }}
-      />
-      <div style={{ height: 740, width: 1400, backgroundColor: "azure" }}>
+      >
+        <Autocomplete
+          disablePortal
+          id="treemap-combo-box"
+          size="small"
+          options={metricsList}
+          sx={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Select a metric"
+              variant="outlined"
+              size="small"
+            />
+          )}
+          value={
+            metricsList.find((element) => element.metric === selectedMetric) ??
+            ""
+          }
+          onChange={(e, v, reason) => {
+            if (reason === "clear") {
+              setSelectedMetric(metricsList[0].metric);
+            } else {
+              setSelectedMetric(v?.metric);
+            }
+          }}
+        />
+      </div>
+      <div style={{ height: "84%", width: "96%", backgroundColor: "azure" }}>
         <ResponsiveTreeMap
           data={treeMapData}
           identity="name"
