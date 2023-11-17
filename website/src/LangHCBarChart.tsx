@@ -121,7 +121,7 @@ const ColumnChart = ({ dataRows }) => {
   const options = {
     chart: {
       type: "column",
-      height: "55%",
+      height: "52%",
     },
     title: {
       text: "CNCF Languages",
