@@ -156,6 +156,11 @@ const columns: GridColDef[] = [
     field: "archived",
     headerName: "Archived",
     width: 90,
+    renderCell: (params) => (
+      <span style={{ color: params.value === "true" ? "red" : "inherit" }}>
+        {params.value}
+      </span>
+    ),
   },
   {
     headerName: "Stars Timeline 30d",
