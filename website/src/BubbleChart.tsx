@@ -218,8 +218,6 @@ const BubbleChart = ({ dataRows }) => {
                 row["days-last-commit"]
               } days ago<br>Age: ${calculateAge(
                 row["days-since-creation"]
-              )} <br>Age: ${calculateAge(
-                row["days-since-creation"]
               )}<br>Language: ${row["language"]}`
           ),
           mode: "markers",
