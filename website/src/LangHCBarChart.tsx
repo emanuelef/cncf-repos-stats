@@ -156,10 +156,10 @@ const ColumnChart = ({ dataRows }) => {
   return (
     <div
       style={{
-        height: 760,
-        width: 1400,
-        marginTop: 10,
-        backgroundColor: "azure",
+        marginLeft: "10px",
+        marginTop: "10px",
+        marginRight: "10px",
+        height: "90%",
       }}
     >
       <HighchartsReact highcharts={Highcharts} options={options} />
