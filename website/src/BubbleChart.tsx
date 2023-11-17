@@ -8,7 +8,7 @@ const fullStarsHistoryURL =
   "https://emanuelef.github.io/gh-repo-stats-server/#";
 
 const csvURL =
-  "https://raw.githubusercontent.com/emanuelef/cncf-repo-stats/main/analysis-latest.csv";
+  "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
 
 const logBase = (n, base) => Math.log(n) / Math.log(base);
 
