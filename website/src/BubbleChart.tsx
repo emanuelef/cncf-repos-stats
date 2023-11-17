@@ -10,6 +10,9 @@ const fullStarsHistoryURL =
 const csvURL =
   "https://raw.githubusercontent.com/emanuelef/cncf-repos-stats/main/analysis-latest.csv";
 
+const LanguageColoursURL =
+  "https://raw.githubusercontent.com/ozh/github-colors/master/colors.json";
+
 const logBase = (n, base) => Math.log(n) / Math.log(base);
 
 const categories = ["Sandbox", "Archived", "Incubating", "Graduated"];

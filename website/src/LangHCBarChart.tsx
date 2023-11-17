@@ -122,24 +122,48 @@ const ColumnChart = ({ dataRows }) => {
     chart: {
       type: "column",
       height: "52%",
+      backgroundColor: "#333333",
+      textColor: "#ffffff",
     },
     title: {
       text: "CNCF Languages",
+      style: {
+        color: "#ffffff",
+      },
     },
     xAxis: {
       categories: ["Graduated", "Incubating", "Sandbox", "Archived"],
+      labels: {
+        style: {
+          color: "#ffffff",
+        },
+      },
     },
     yAxis: {
       min: 0,
       title: {
         text: "Total",
+        style: {
+          color: "#ffffff",
+        },
       },
       stackLabels: {
         enabled: true,
+        style: {
+          color: "#ffffff",
+        },
+      },
+      labels: {
+        style: {
+          color: "#ffffff",
+        },
       },
     },
     legend: {
       reversed: true,
+      itemStyle: {
+        color: "#ffffff"
+      }
     },
     plotOptions: {
       column: {
@@ -147,6 +171,9 @@ const ColumnChart = ({ dataRows }) => {
         animation: false,
         dataLabels: {
           enabled: true,
+          style: {
+            color: "#ffffff"
+          }
         },
       },
     },
