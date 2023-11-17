@@ -221,7 +221,7 @@ function App() {
 
   const Table = () => {
     return (
-      <div className="chart-container">
+      <div style={{ marginLeft: "10px", marginRight: "90px", height: "86%" }}>
         <DataGrid
           getRowId={(row) => row.repo}
           rows={dataRows}
@@ -229,7 +229,7 @@ function App() {
           rowHeight={30}
           initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 50 },
+              paginationModel: { page: 0, pageSize: 25 },
             },
             sorting: {
               sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
