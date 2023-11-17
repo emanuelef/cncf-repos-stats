@@ -51,22 +51,15 @@ const ColumnChart = ({ dataRows }) => {
       }
     });
 
-    console.log(langData);
-
     const sorted_languages = Object.keys(allLanguagesCount).sort((a, b) => {
       return allLanguagesCount[a] - allLanguagesCount[b];
     });
-
-    console.log(allLanguagesCount);
-    console.log(sorted_languages);
 
     const allLanguageKeys = Array.from(keysSet);
 
     let AllSeries = [];
 
     for (const lang of sorted_languages) {
-      console.log(lang);
-
       let statusList = [];
       statusList.push(
         lang in langData["Graduated"] ? langData["Graduated"][lang] : 0
@@ -87,8 +80,6 @@ const ColumnChart = ({ dataRows }) => {
         color: lang in colours ? colours[lang].color : undefined,
       });
     }
-
-    console.log(AllSeries);
 
     setSeries(AllSeries);
 
