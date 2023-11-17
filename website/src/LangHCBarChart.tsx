@@ -158,12 +158,19 @@ const ColumnChart = ({ dataRows }) => {
           color: "#ffffff",
         },
       },
+      plotLines: [
+        {
+          color: "#ffffff", // Color of the line
+          width: 2, // Width of the line
+          value: 0, // Position on the axis
+        },
+      ],
     },
     legend: {
       reversed: true,
       itemStyle: {
-        color: "#ffffff"
-      }
+        color: "#ffffff",
+      },
     },
     plotOptions: {
       column: {
@@ -172,8 +179,8 @@ const ColumnChart = ({ dataRows }) => {
         dataLabels: {
           enabled: true,
           style: {
-            color: "#ffffff"
-          }
+            color: "#ffffff",
+          },
         },
       },
     },
