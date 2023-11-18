@@ -218,7 +218,33 @@ const columns: GridColDef[] = [
       <Linkweb href={`./#/starstimeline/${params.row.repo}`}>link</Linkweb>
     ),
   },
-  
+  {
+    field: "liveness",
+    headerName: "Liveness",
+    width: 120,
+    valueGetter: (params) => parseFloat(params.value),
+    renderCell: (params) => {
+      const value = params.value;
+      const color = getColorFromValue(value);
+
+      return (
+        <div
+          style={{
+            backgroundColor: color,
+            width: "100%",
+            height: "80%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxSizing: "border-box",
+            border: "1px solid grey",
+          }}
+        >
+          {`${value}%`}
+        </div>
+      );
+    },
+  },
 ];
 
 function App() {
