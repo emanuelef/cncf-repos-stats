@@ -132,6 +132,7 @@ func main() {
 		"archived", "dependencies",
 		"status",
 		"start_date", "join_date",
+		"liveness",
 	}
 
 	err = csvWriter.Write(headerRow)
@@ -215,6 +216,7 @@ func main() {
 						fmt.Sprintf("%s", p["status"]),
 						fmt.Sprintf("%s", p["start_date"]),
 						fmt.Sprintf("%s", p["join_date"]),
+						fmt.Sprintf("%.3f", result.LivenessScore),
 					})
 
 					if err != nil {
