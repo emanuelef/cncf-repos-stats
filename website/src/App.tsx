@@ -132,6 +132,16 @@ const hexToRgb = (hex) => {
   return hexDigits.map((value) => parseInt(value, 16));
 };
 
+const calculateAge = (days) => {
+  const years = Math.floor(days / 365);
+  const months = Math.floor((days % 365) / 30);
+  const remainingDays = days % 30;
+
+  return `${years !== 0 ? `${years}y ` : ""}${
+    months !== 0 ? `${months}m ` : ""
+  }${remainingDays}d`;
+};
+
 const columns: GridColDef[] = [
   {
     field: "repo",
@@ -200,6 +210,13 @@ const columns: GridColDef[] = [
     field: "status",
     headerName: "Status",
     width: 110,
+  },
+  {
+    field: "days-since-creation",
+    headerName: "Age",
+    width: 130,
+    valueGetter: (params) => parseInt(params.value),
+    renderCell: (params) => calculateAge(params.value),
   },
   {
     field: "archived",
