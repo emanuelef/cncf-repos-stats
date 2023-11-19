@@ -29,6 +29,62 @@ const mapCategoryToColor = (category) => {
   return colorMappings[category] || "rgb(0, 0, 0)"; // Default to black if not found
 };
 
+const getColorFromValue = (value) => {
+  // Normalize the value to a scale from 0 to 1
+  const normalizedValue = value / 100;
+
+  // Define the colors for the gradient
+  const colors = [
+    { percent: 0, color: "#D9534F" }, // Adjusted Red
+    { percent: 0.5, color: "#FFA500" }, // Orange
+    { percent: 1, color: "#5CB85C" }, // Adjusted Green
+  ];
+
+  // Find the two colors to interpolate between
+  let startColor, endColor;
+  for (let i = 0; i < colors.length - 1; i++) {
+    if (
+      normalizedValue >= colors[i].percent &&
+      normalizedValue <= colors[i + 1].percent
+    ) {
+      startColor = colors[i];
+      endColor = colors[i + 1];
+      break;
+    }
+  }
+
+  // Interpolate between the two colors
+  const ratio =
+    (normalizedValue - startColor.percent) /
+    (endColor.percent - startColor.percent);
+  const rgbColor = interpolateColor(startColor.color, endColor.color, ratio);
+
+  console.log(value);
+  console.log(rgbColor);
+
+  return rgbColor;
+};
+
+const interpolateColor = (startColor, endColor, ratio) => {
+  const startRGB = hexToRgb(startColor);
+  const endRGB = hexToRgb(endColor);
+
+  const interpolatedRGB = startRGB.map((channel, index) =>
+    Math.round(channel + ratio * (endRGB[index] - channel))
+  );
+
+  return `rgb(${interpolatedRGB.join(", ")})`;
+};
+
+const hexToRgb = (hex) => {
+  const hexDigits = hex.slice(1).match(/.{1,2}/g);
+  return hexDigits.map((value) => parseInt(value, 16));
+};
+
+const mapLivenessToColor = (liveness) => {
+  return getColorFromValue(liveness) || "rgb(0, 0, 0)"; // Default to black if not found
+};
+
 const clickActions = [
   { label: "GH Repo", action: "gh" },
   { label: "Last 30d stars", action: "30d" },
@@ -48,11 +104,13 @@ const axisMetrics = [
 const sizeMetrics = [
   { label: "Stars", metric: "stars" },
   { label: "Same", metric: "same" },
+  { label: "Liveness", metric: "liveness" },
 ];
 
 const bubbleColour = [
   { label: "Status", metric: "status" },
   { label: "Language", metric: "language" },
+  { label: "Liveness", metric: "liveness" },
 ];
 
 const formatStars = (stars) => {
@@ -138,6 +196,19 @@ const BubbleChart = ({ dataRows }) => {
     fetchColors();
   }, []); // Empty dependency array ensures it runs only once on mount
 
+  const getSize = (data) => {
+    switch (selectedSize.metric) {
+      case "stars":
+        return data.map((row) => Math.sqrt(row["stars"]) * 7);
+      case "same":
+        return data.map((row) => 600);
+      case "liveness":
+        return data.map((row) => row["liveness"] * 10);
+      default:
+        return data.map((row) => 600);
+    }
+  };
+
   const buildChartData = async (dataRows) => {
     let updatedData = [];
 
@@ -180,10 +251,7 @@ const BubbleChart = ({ dataRows }) => {
           ),
           mode: "markers",
           marker: {
-            size:
-              selectedSize.metric == "stars"
-                ? updatedCategoryData.map((row) => Math.sqrt(row["stars"]) * 7)
-                : updatedCategoryData.map((row) => 600),
+            size: getSize(updatedCategoryData),
             sizemode: "diameter",
             sizeref: 20.03,
             color: mapCategoryToColor(category),
@@ -222,10 +290,7 @@ const BubbleChart = ({ dataRows }) => {
           ),
           mode: "markers",
           marker: {
-            size:
-              selectedSize.metric == "stars"
-                ? updatedCategoryData.map((row) => Math.sqrt(row["stars"]) * 7)
-                : updatedCategoryData.map((row) => 600),
+            size: getSize(updatedCategoryData),
             sizemode: "diameter",
             sizeref: 20.03,
             color: language in colours ? colours[language].color : undefined,
@@ -236,6 +301,35 @@ const BubbleChart = ({ dataRows }) => {
 
         filteredData.push(trace);
       });
+    }
+
+    if (selectedBubbleColour.metric === "liveness") {
+      const trace = {
+        x: updatedData.map((row) => row[selectedXAxis.metric]),
+        y: updatedData.map((row) => row[selectedYAxis.metric]),
+        repo: updatedData.map((row) => `${row.repo}`),
+        text: updatedData.map(
+          (row) =>
+            `${row.repo}<br>Total Stars: ${formatStars(
+              row.stars
+            )}<br>Last commit: ${
+              row["days-last-commit"]
+            } days ago<br>Age: ${calculateAge(
+              row["days-since-creation"]
+            )}<br>Language: ${row["language"]}`
+        ),
+        mode: "markers",
+        marker: {
+          size: getSize(updatedData),
+          sizemode: "diameter",
+          sizeref: 20.03,
+          color: updatedData.map((row) => mapLivenessToColor(row["liveness"])),
+        },
+        type: "scatter",
+        name: "liveness",
+      };
+
+      filteredData.push(trace);
     }
 
     setData(filteredData);
