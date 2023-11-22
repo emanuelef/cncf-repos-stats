@@ -136,6 +136,7 @@ func main() {
 		"liveness",
 		"unique-contributors",
 		"new-commits-last-30d",
+		"min-go-version",
 	}
 
 	err = csvWriter.Write(headerRow)
@@ -222,6 +223,7 @@ func main() {
 						fmt.Sprintf("%.3f", result.LivenessScore),
 						fmt.Sprintf("%d", result.DifferentAuthors),
 						fmt.Sprintf("%d", result.CommitsHistory.AddedLast30d),
+						fmt.Sprintf(result.GoVersion),
 					})
 
 					if err != nil {
