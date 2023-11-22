@@ -190,6 +190,18 @@ const columns: GridColDef[] = [
     valueGetter: (val) => parseFloat(val.row["stars-per-mille-30d"]),
   },
   {
+    field: "new-commits-last-30d",
+    headerName: "Commits 30d",
+    width: 100,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
+    field: "unique-contributors",
+    headerName: "Commits Authors 30d",
+    width: 100,
+    valueGetter: (params) => parseInt(params.value),
+  },
+  {
     field: "mentionable-users",
     headerName: "Ment. users",
     width: 100,
@@ -227,6 +239,25 @@ const columns: GridColDef[] = [
         {params.value}
       </span>
     ),
+  },
+  {
+    field: "min-go-version",
+    headerName: "Min Go version",
+    width: 80,
+    valueGetter: (params) => params.value,
+    sortComparator: (a, b) => {
+      // Extract the version numbers
+      const versionA = extractVersionNumber(a);
+      const versionB = extractVersionNumber(b);
+
+      // Use a custom comparison for semantic versions
+      if (versionA && versionB) {
+        return compareSemanticVersions(versionA, versionB);
+      }
+
+      // If the versions are not in the correct format, use a basic string comparison
+      return a.localeCompare(b);
+    },
   },
   {
     headerName: "Stars Timeline 30d",
