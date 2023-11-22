@@ -142,6 +142,11 @@ const calculateAge = (days) => {
   }${remainingDays}d`;
 };
 
+const extractVersionNumber = (value) => {
+  const match = value.match(/\d+(\.\d+)+(\.\d+)?/);
+  return match ? match[0] : null;
+};
+
 const compareSemanticVersions = (versionA, versionB) => {
   const semVerA = versionA.split(".");
   const semVerB = versionB.split(".");
