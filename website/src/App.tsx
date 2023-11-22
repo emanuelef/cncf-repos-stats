@@ -142,6 +142,19 @@ const calculateAge = (days) => {
   }${remainingDays}d`;
 };
 
+const compareSemanticVersions = (versionA, versionB) => {
+  const semVerA = versionA.split(".");
+  const semVerB = versionB.split(".");
+
+  for (let i = 0; i < Math.min(semVerA.length, semVerB.length); i++) {
+    if (semVerA[i] !== semVerB[i]) {
+      return semVerA[i] - semVerB[i];
+    }
+  }
+
+  return semVerA.length - semVerB.length;
+};
+
 const columns: GridColDef[] = [
   {
     field: "repo",
