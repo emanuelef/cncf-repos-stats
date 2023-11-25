@@ -107,6 +107,7 @@ const sizeMetrics = [
   { label: "Stars", metric: "stars" },
   { label: "Same", metric: "same" },
   { label: "Liveness", metric: "liveness" },
+  { label: "Commits Last 30 Days", metric: "new-commits-last-30d" },
 ];
 
 const bubbleColour = [
@@ -206,8 +207,19 @@ const BubbleChart = ({ dataRows }) => {
         return data.map((row) => 600);
       case "liveness":
         return data.map((row) => row["liveness"] * 10);
+      case "new-commits-last-30d":
+        return data.map((row) => Math.sqrt(row["new-commits-last-30d"]) * 7);
       default:
         return data.map((row) => 600);
+    }
+  };
+
+  const getSizeRef = (metric) => {
+    switch (metric) {
+      case "new-commits-last-30d":
+        return 2.0;
+      default:
+        return 20.03;
     }
   };
 
@@ -249,13 +261,15 @@ const BubbleChart = ({ dataRows }) => {
                 row["days-last-commit"]
               } days ago<br>Age: ${calculateAge(
                 row["days-since-creation"]
-              )}<br>Language: ${row["language"]}`
+              )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
+                row["new-commits-last-30d"]
+              }`
           ),
           mode: "markers",
           marker: {
             size: getSize(updatedCategoryData),
             sizemode: "diameter",
-            sizeref: 20.03,
+            sizeref: getSizeRef(selectedSize.metric),
             color: mapCategoryToColor(category),
           },
           type: "scatter",
@@ -288,13 +302,15 @@ const BubbleChart = ({ dataRows }) => {
                 row["days-last-commit"]
               } days ago<br>Age: ${calculateAge(
                 row["days-since-creation"]
-              )}<br>Language: ${row["language"]}`
+              )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
+                row["new-commits-last-30d"]
+              }`
           ),
           mode: "markers",
           marker: {
             size: getSize(updatedCategoryData),
             sizemode: "diameter",
-            sizeref: 20.03,
+            sizeref: getSizeRef(selectedSize.metric),
             color: language in colours ? colours[language].color : undefined,
           },
           type: "scatter",
@@ -318,13 +334,15 @@ const BubbleChart = ({ dataRows }) => {
               row["days-last-commit"]
             } days ago<br>Age: ${calculateAge(
               row["days-since-creation"]
-            )}<br>Language: ${row["language"]}`
+            )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
+              row["new-commits-last-30d"]
+            }`
         ),
         mode: "markers",
         marker: {
           size: getSize(updatedData),
           sizemode: "diameter",
-          sizeref: 20.03,
+          sizeref: getSizeRef(selectedSize.metric),
           color: updatedData.map((row) => mapLivenessToColor(row["liveness"])),
         },
         type: "scatter",
