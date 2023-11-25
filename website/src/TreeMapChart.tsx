@@ -11,7 +11,8 @@ const metricsList = [
   { label: "Last 7d stars", metric: "new-stars-last-7d" },
   { label: "Last 14d stars", metric: "new-stars-last-14d" },
   { label: "Last 30d stars", metric: "new-stars-last-30d" },
-  { label: "Mentionable users", metric: "mentionable-users" },
+  { label: "Commits last 30d", metric: "mentionable-users" },
+  { label: "Unique Authors 30d", metric: "unique-contributors" },
 ];
 
 const csvURL =
