@@ -108,6 +108,7 @@ const sizeMetrics = [
   { label: "Same", metric: "same" },
   { label: "Liveness", metric: "liveness" },
   { label: "Commits Last 30 Days", metric: "new-commits-last-30d" },
+  { label: "Unique authors Last 30 Days", metric: "unique-contributors" },
 ];
 
 const bubbleColour = [
@@ -202,13 +203,15 @@ const BubbleChart = ({ dataRows }) => {
   const getSize = (data) => {
     switch (selectedSize.metric) {
       case "stars":
-        return data.map((row) => Math.sqrt(row["stars"]) * 7);
+        return data.map((row) => Math.sqrt(row[selectedSize.metric]) * 7);
       case "same":
         return data.map((row) => 600);
       case "liveness":
-        return data.map((row) => row["liveness"] * 10);
+        return data.map((row) => row[selectedSize.metric] * 10);
       case "new-commits-last-30d":
-        return data.map((row) => Math.sqrt(row["new-commits-last-30d"]) * 7);
+        return data.map((row) => Math.sqrt(row[selectedSize.metric]) * 7);
+      case "unique-contributors":
+        return data.map((row) => Math.sqrt(row[selectedSize.metric]) * 12);
       default:
         return data.map((row) => 600);
     }
@@ -218,6 +221,8 @@ const BubbleChart = ({ dataRows }) => {
     switch (metric) {
       case "new-commits-last-30d":
         return 2.0;
+      case "unique-contributors":
+        return 1.7;
       default:
         return 20.03;
     }
@@ -263,7 +268,7 @@ const BubbleChart = ({ dataRows }) => {
                 row["days-since-creation"]
               )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
                 row["new-commits-last-30d"]
-              }`
+              } <br>Unique authors last 30d: ${row["unique-contributors"]}`
           ),
           mode: "markers",
           marker: {
@@ -304,7 +309,7 @@ const BubbleChart = ({ dataRows }) => {
                 row["days-since-creation"]
               )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
                 row["new-commits-last-30d"]
-              }`
+              } <br>Unique authors last 30d: ${row["unique-contributors"]}`
           ),
           mode: "markers",
           marker: {
@@ -336,7 +341,7 @@ const BubbleChart = ({ dataRows }) => {
               row["days-since-creation"]
             )}<br>Language: ${row["language"]} <br>Commits last 30d: ${
               row["new-commits-last-30d"]
-            }`
+            } <br>Unique authors last 30d: ${row["unique-contributors"]}`
         ),
         mode: "markers",
         marker: {
