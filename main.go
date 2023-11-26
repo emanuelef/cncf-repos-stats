@@ -192,10 +192,10 @@ func main() {
 				if p["status"].(string) != "-" {
 					result, err := client.GetAllStats(ctx, p["main_repo"].(string))
 					if err != nil {
-						log.Fatalf("Error getting all stats %v", err)
 						fmt.Println("retrying after 5 minutes")
 						time.Sleep(5 * time.Minute)
 						result, err = client.GetAllStats(ctx, p["main_repo"].(string))
+						log.Fatalf("Error getting all stats %v", err)
 					}
 
 					fmt.Println(result)
