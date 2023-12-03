@@ -256,6 +256,10 @@ func main() {
 							daysSinceLastCommit := int(currentTime.Sub(result.LastCommitDate).Hours() / 24)
 							daysSinceCreation := int(currentTime.Sub(result.CreatedAt).Hours() / 24)
 
+							if result.Language == "" {
+								result.Language = "unknown"
+							}
+
 							mutex.Lock()
 							err = csvWriter.Write([]string{
 								repo,
