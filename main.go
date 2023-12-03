@@ -10,6 +10,7 @@ import (
 	"net/http/httptrace"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -30,7 +31,35 @@ import (
 const (
 	CNCFProjectsYamlUrl  = "https://raw.githubusercontent.com/cncf/devstats/master/projects.yaml"
 	CNCFLandscapeYamlUrl = "https://raw.githubusercontent.com/cncf/landscape/master/landscape.yml"
+	GitHubBaseUrl        = "https://github.com/"
 )
+
+type Item struct {
+	Name        string `yaml:"name"`
+	HomepageURL string `yaml:"homepage_url"`
+	Project     string `yaml:"project"`
+	RepoURL     string `yaml:"repo_url"`
+	Extra       Extra  `yaml:"extra"`
+}
+
+type Extra struct {
+	Accepted    string `yaml:"accepted"`
+	DevStatsURL string `yaml:"dev_stats_url"`
+}
+
+type Subcategory struct {
+	Name  string `yaml:"name"`
+	Items []Item `yaml:"items"`
+}
+
+type Category struct {
+	Name          string        `yaml:"name"`
+	Subcategories []Subcategory `yaml:"subcategories"`
+}
+
+type Landscape struct {
+	Categories []Category `yaml:"landscape"`
+}
 
 func getEnv(key, defaultValue string) string {
 	value := os.Getenv(key)
@@ -138,6 +167,8 @@ func main() {
 		"unique-contributors",
 		"new-commits-last-30d",
 		"min-go-version",
+		"category",
+		"subcategory",
 	}
 
 	err = csvWriter.Write(headerRow)
@@ -167,86 +198,101 @@ func main() {
 
 	restyReq := restyClient.R()
 	restyReq.SetContext(ctx)
-	resp, err := restyReq.Get(CNCFProjectsYamlUrl)
+	resp, err := restyReq.Get(CNCFLandscapeYamlUrl)
 	if err == nil {
-		m := make(map[any]any)
-
-		err = yaml.Unmarshal([]byte(resp.Body()), &m)
+		var landscape Landscape
+		err = yaml.Unmarshal([]byte(resp.Body()), &landscape)
 		if err != nil {
-			log.Fatalf("error: %v", err)
+			log.Fatalf("Error unmarshalling YAML: %v", err)
 		}
 
-		for key, val := range m["projects"].(map[string]any) {
-			wg.Add(1)
+		for _, category := range landscape.Categories {
+			for _, subcategory := range category.Subcategories {
+				for _, item := range subcategory.Items {
+					// Check if the item has a specific project value
+					if item.Project != "" && strings.Contains(item.RepoURL, GitHubBaseUrl) {
+						// Print or process the item as needed
+						fmt.Printf("Item Name: %s\n", item.Name)
+						fmt.Printf("Project: %s\n", item.Project)
+						fmt.Println("------------------------")
 
-			go func(key string, val any) {
-				err = sem.Acquire(ctx, 1)
+						wg.Add(1)
 
-				if err != nil {
-					log.Fatalf("Error acquiring semaphore %v", err)
+						go func(item Item, category, subcategory string) {
+							err = sem.Acquire(ctx, 1)
+
+							if err != nil {
+								log.Fatalf("Error acquiring semaphore %v", err)
+							}
+
+							repo := strings.TrimPrefix(item.RepoURL, GitHubBaseUrl)
+
+							defer sem.Release(1)
+							defer wg.Done()
+							result, err := client.GetAllStats(ctx, repo)
+							if err != nil {
+								fmt.Println("retrying after 5 minutes")
+								time.Sleep(5 * time.Minute)
+								result, err = client.GetAllStats(ctx, repo)
+								if err != nil {
+									log.Fatalf("Error getting all stats %s %v", repo, err)
+								}
+							}
+
+							fmt.Println(result)
+
+							daysSinceLastStar := int(currentTime.Sub(result.LastStarDate).Hours() / 24)
+							daysSinceLastCommit := int(currentTime.Sub(result.LastCommitDate).Hours() / 24)
+							daysSinceCreation := int(currentTime.Sub(result.CreatedAt).Hours() / 24)
+
+							mutex.Lock()
+							err = csvWriter.Write([]string{
+								repo,
+								fmt.Sprintf("%d", result.Stars),
+								fmt.Sprintf("%d", result.StarsHistory.AddedLast30d),
+								fmt.Sprintf("%d", result.StarsHistory.AddedLast14d),
+								fmt.Sprintf("%d", result.StarsHistory.AddedLast7d),
+								fmt.Sprintf("%d", result.StarsHistory.AddedLast24H),
+								fmt.Sprintf("%.3f", result.StarsHistory.AddedPerMille30d),
+								fmt.Sprintf("%d", daysSinceLastStar),
+								fmt.Sprintf("%d", daysSinceLastCommit),
+								fmt.Sprintf("%d", daysSinceCreation),
+								fmt.Sprintf("%d", result.MentionableUsers),
+								result.Language,
+								fmt.Sprintf("%t", result.Archived),
+								fmt.Sprintf("%d", len(result.DirectDeps)),
+								item.Project,
+								fmt.Sprintf("%s", item.Extra.Accepted),
+								fmt.Sprintf("%s", item.Extra.Accepted),
+								fmt.Sprintf("%.3f", result.LivenessScore),
+								fmt.Sprintf("%d", result.DifferentAuthors),
+								fmt.Sprintf("%d", result.CommitsHistory.AddedLast30d),
+								fmt.Sprintf(result.GoVersion),
+								category,
+								subcategory,
+							})
+
+							if err != nil {
+								log.Fatal(err)
+							}
+
+							if len(result.DirectDeps) > 0 {
+								for _, dep := range result.DirectDeps {
+									depsUse[dep] += 1
+								}
+							}
+
+							starsHistory[repo] = result.StarsTimeline
+							commitsHistory[repo] = result.CommitsTimeline
+
+							mutex.Unlock()
+						}(item, category.Name, subcategory.Name)
+
+					}
 				}
-
-				defer sem.Release(1)
-				defer wg.Done()
-				p := val.(map[string]any)
-				fmt.Printf("%s %s %s\n", key, p["main_repo"], p["status"])
-				if p["status"].(string) != "-" {
-					result, err := client.GetAllStats(ctx, p["main_repo"].(string))
-					if err != nil {
-						fmt.Println("retrying after 5 minutes")
-						time.Sleep(5 * time.Minute)
-						result, err = client.GetAllStats(ctx, p["main_repo"].(string))
-						log.Fatalf("Error getting all stats %v", err)
-					}
-
-					fmt.Println(result)
-
-					daysSinceLastStar := int(currentTime.Sub(result.LastStarDate).Hours() / 24)
-					daysSinceLastCommit := int(currentTime.Sub(result.LastCommitDate).Hours() / 24)
-					daysSinceCreation := int(currentTime.Sub(result.CreatedAt).Hours() / 24)
-
-					mutex.Lock()
-					err = csvWriter.Write([]string{
-						fmt.Sprintf("%s", p["main_repo"]),
-						fmt.Sprintf("%d", result.Stars),
-						fmt.Sprintf("%d", result.StarsHistory.AddedLast30d),
-						fmt.Sprintf("%d", result.StarsHistory.AddedLast14d),
-						fmt.Sprintf("%d", result.StarsHistory.AddedLast7d),
-						fmt.Sprintf("%d", result.StarsHistory.AddedLast24H),
-						fmt.Sprintf("%.3f", result.StarsHistory.AddedPerMille30d),
-						fmt.Sprintf("%d", daysSinceLastStar),
-						fmt.Sprintf("%d", daysSinceLastCommit),
-						fmt.Sprintf("%d", daysSinceCreation),
-						fmt.Sprintf("%d", result.MentionableUsers),
-						result.Language,
-						fmt.Sprintf("%t", result.Archived),
-						fmt.Sprintf("%d", len(result.DirectDeps)),
-						fmt.Sprintf("%s", p["status"]),
-						fmt.Sprintf("%s", p["start_date"]),
-						fmt.Sprintf("%s", p["join_date"]),
-						fmt.Sprintf("%.3f", result.LivenessScore),
-						fmt.Sprintf("%d", result.DifferentAuthors),
-						fmt.Sprintf("%d", result.CommitsHistory.AddedLast30d),
-						fmt.Sprintf(result.GoVersion),
-					})
-
-					if err != nil {
-						log.Fatal(err)
-					}
-
-					if len(result.DirectDeps) > 0 {
-						for _, dep := range result.DirectDeps {
-							depsUse[dep] += 1
-						}
-					}
-
-					starsHistory[p["main_repo"].(string)] = result.StarsTimeline
-					commitsHistory[p["main_repo"].(string)] = result.CommitsTimeline
-
-					mutex.Unlock()
-				}
-			}(key, val)
+			}
 		}
+
 		wg.Wait()
 		writeGoDepsMapFile(depsUse)
 
