@@ -276,7 +276,7 @@ func main() {
 								result.Language,
 								fmt.Sprintf("%t", result.Archived),
 								fmt.Sprintf("%d", len(result.DirectDeps)),
-								item.Project,
+								strings.ToUpper(string(item.Project[0])) + item.Project[1:],
 								fmt.Sprintf("%s", item.Extra.Accepted),
 								fmt.Sprintf("%s", item.Extra.Accepted),
 								fmt.Sprintf("%.3f", result.LivenessScore),
