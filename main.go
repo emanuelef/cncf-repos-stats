@@ -206,6 +206,8 @@ func main() {
 			log.Fatalf("Error unmarshalling YAML: %v", err)
 		}
 
+		uniqueRepos := make(map[string]bool)
+
 		for _, category := range landscape.Categories {
 			for _, subcategory := range category.Subcategories {
 				for _, item := range subcategory.Items {
@@ -229,13 +231,22 @@ func main() {
 
 							defer sem.Release(1)
 							defer wg.Done()
+
+							// TODO: Make it thread safe
+							if _, exists := uniqueRepos[repo]; !exists {
+								uniqueRepos[repo] = true
+							} else {
+								return
+							}
+
 							result, err := client.GetAllStats(ctx, repo)
 							if err != nil {
 								fmt.Println("retrying after 5 minutes")
-								time.Sleep(5 * time.Minute)
+								time.Sleep(1 * time.Minute)
 								result, err = client.GetAllStats(ctx, repo)
 								if err != nil {
-									log.Fatalf("Error getting all stats %s %v", repo, err)
+									//log.Fatalf("Error getting all stats %s %v", repo, err)
+									return
 								}
 							}
 
