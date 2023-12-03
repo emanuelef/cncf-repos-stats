@@ -79,6 +79,8 @@ const lastUpdateURL =
 const fullStarsHistoryURL =
   "https://emanuelef.github.io/gh-repo-stats-server/#/";
 
+const TimelineMetrics = ["Stars", "Commits"];
+
 const ShareableLink = ({ repo }) => {
   return <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>{repo}</Link>;
 };
@@ -353,6 +355,9 @@ function App() {
   const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
   const [collapsed, setCollapsed] = useState(true);
   const [lastUpdate, setLastUpdate] = useState("Unknown");
+  const [selectedTimelineMetric, setSelectedTimelineMetric] = useState(
+    TimelineMetrics[0]
+  );
 
   const navigate = useNavigate();
 
@@ -430,17 +435,29 @@ function App() {
                 });
               }
             }}
-            onBlur={() => {
-              navigate(`/starstimeline/kubernetes/kubernetes}`, {
-                replace: false,
-              });
-            }}
-            clearOnBlur={false}
-            clearOnEscape
-            onClear={() => {
-              navigate(`/starstimeline/kubernetes/kubernetes}`, {
-                replace: false,
-              });
+          />
+          <Autocomplete
+            disablePortal
+            style={{ marginLeft: "10px", marginRight: "20px" }}
+            id="actions-combo-box"
+            size="small"
+            options={TimelineMetrics}
+            sx={{ width: 220 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Select a metric"
+                variant="outlined"
+                size="small"
+              />
+            )}
+            value={selectedTimelineMetric}
+            onChange={(e, v, reason) => {
+              if (reason === "clear") {
+                setSelectedTimelineMetric(TimelineMetrics[0]);
+              } else {
+                setSelectedTimelineMetric(v);
+              }
             }}
           />
           <GitHubButton
@@ -460,7 +477,7 @@ function App() {
             Full Stars History
           </Linkweb>
         </div>
-        <TimeSeriesChart repo={selectedRepo} />
+        <TimeSeriesChart repo={selectedRepo} metric={selectedTimelineMetric} />
       </>
     );
   };
