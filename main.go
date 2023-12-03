@@ -28,7 +28,8 @@ import (
 )
 
 const (
-	CNCFProjectsYamlUrl = "https://raw.githubusercontent.com/cncf/devstats/master/projects.yaml"
+	CNCFProjectsYamlUrl  = "https://raw.githubusercontent.com/cncf/devstats/master/projects.yaml"
+	CNCFLandscapeYamlUrl = "https://raw.githubusercontent.com/cncf/landscape/master/landscape.yml"
 )
 
 func getEnv(key, defaultValue string) string {
