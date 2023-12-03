@@ -4,7 +4,9 @@ This repo uses the [github-repo-activity-stats](https://github.com/emanuelef/git
 
 
 
-https://github.com/emanuelef/cncf-repos-stats/assets/48717/7e788134-082f-4229-9b5f-62592d3cdf80
+https://github.com/emanuelef/cncf-repos-stats/assets/48717/8988cb3b-3523-4a58-94c4-3c6e4f52d6c2
+
+
 
 <img width="1481" alt="Screenshot 2023-11-17 at 20 53 38" src="https://github.com/emanuelef/cncf-repos-stats/assets/48717/28c43141-7751-46d0-a331-e03eb3dfe561">
 <img width="1309" alt="Screenshot 2023-11-17 at 20 52 36" src="https://github.com/emanuelef/cncf-repos-stats/assets/48717/94a2d3e2-ca1a-4d7a-a5b8-41d1b8981808">
