@@ -245,7 +245,7 @@ func main() {
 								time.Sleep(1 * time.Minute)
 								result, err = client.GetAllStats(ctx, repo)
 								if err != nil {
-									//log.Fatalf("Error getting all stats %s %v", repo, err)
+									// log.Fatalf("Error getting all stats %s %v", repo, err)
 									return
 								}
 							}
