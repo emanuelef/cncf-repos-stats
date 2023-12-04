@@ -25,7 +25,6 @@ import TimelineRoundedIcon from "@mui/icons-material/TimelineRounded";
 import LibraryBooksRoundedIcon from "@mui/icons-material/LibraryBooksRounded";
 import ViewQuiltRounded from "@mui/icons-material/ViewQuiltRounded";
 import BubbleChartRoundedIcon from "@mui/icons-material/BubbleChartRounded";
-import { Share } from "@mui/icons-material";
 
 import Header from "./Header";
 
@@ -80,10 +79,6 @@ const fullStarsHistoryURL =
   "https://emanuelef.github.io/gh-repo-stats-server/#/";
 
 const TimelineMetrics = ["Stars", "Commits"];
-
-const ShareableLink = ({ repo }) => {
-  return <Link to={`/starstimeline/${encodeURIComponent(repo)}`}>{repo}</Link>;
-};
 
 const getColorFromValue = (value) => {
   // Normalize the value to a scale from 0 to 1
@@ -322,6 +317,7 @@ function App() {
       .then((text) => Papa.parse(text, { header: true, skipEmptyLines: true }))
       .then(function (result) {
         setDataRows(result.data);
+        setFilteredDataRows(result.data);
       })
       .catch((e) => {
         console.error(`An error occurred: ${e}`);
@@ -352,9 +348,13 @@ function App() {
   };
 
   const [dataRows, setDataRows] = useState([]);
+  const [filteredDataRows, setFilteredDataRows] = useState([]);
   const [selectedRepo, setSelectedRepo] = useState("kubernetes/kubernetes");
   const [collapsed, setCollapsed] = useState(true);
   const [lastUpdate, setLastUpdate] = useState("Unknown");
+  const [mainCategory, setMainCategory] = useState("All");
+  const [subCategory, setSubCategory] = useState("All");
+  const [subCategories, setSubCategories] = useState([]);
   const [selectedTimelineMetric, setSelectedTimelineMetric] = useState(
     TimelineMetrics[0]
   );
@@ -366,25 +366,121 @@ function App() {
     fetchLastUpdate();
   }, []);
 
+  useEffect(() => {
+    const subCategories = [
+      ...new Set(
+        dataRows
+          .filter((el) => el["category"] === mainCategory)
+          .map((el) => el["subcategory"])
+      ),
+    ];
+    setSubCategories(subCategories);
+
+    if (mainCategory === "All") {
+      setFilteredDataRows(dataRows);
+    } else {
+      setFilteredDataRows(
+        dataRows.filter((el) => el["category"] === mainCategory)
+      );
+    }
+  }, [mainCategory]);
+
+  useEffect(() => {
+    if (subCategory === "All") {
+      setFilteredDataRows(
+        dataRows.filter((el) => el["category"] === mainCategory)
+      );
+    } else {
+      setFilteredDataRows(
+        dataRows.filter((el) => el["subcategory"] === subCategory)
+      );
+    }
+  }, [subCategory]);
+
   const Table = () => {
     return (
-      <div style={{ marginLeft: "10px", marginRight: "90px", height: "86%" }}>
-        <DataGrid
-          getRowId={(row) => row.repo}
-          rows={dataRows}
-          columns={columns}
-          rowHeight={30}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 25 },
-            },
-            sorting: {
-              sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
-            },
+      <>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginTop: "10px",
+            marginBottom: "10px",
           }}
-          pageSizeOptions={[5, 10, 50]}
-        />
-      </div>
+        >
+          <Autocomplete
+            disablePortal
+            id="combo-box-main-category"
+            size="small"
+            options={[...new Set(dataRows.map((el) => el["category"]))]}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                style={{
+                  marginRight: "20px",
+                  marginLeft: "10px",
+                  width: "400px",
+                }}
+                label="Enter main category"
+                variant="outlined"
+                size="small"
+              />
+            )}
+            value={mainCategory}
+            onChange={(e, v, reason) => {
+              if (reason === "clear") {
+                setMainCategory("All");
+              } else {
+                setMainCategory(v);
+              }
+            }}
+          />
+          <Autocomplete
+            disablePortal
+            id="combo-box-sub-category"
+            size="small"
+            options={subCategories}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                style={{
+                  marginRight: "20px",
+                  marginLeft: "10px",
+                  width: "400px",
+                }}
+                label="Enter sub category"
+                variant="outlined"
+                size="small"
+              />
+            )}
+            value={subCategory}
+            onChange={(e, v, reason) => {
+              if (reason === "clear") {
+                setSubCategory("All");
+              } else {
+                setSubCategory(v);
+              }
+            }}
+          />
+        </div>
+        <div style={{ marginLeft: "10px", marginRight: "90px", height: "86%" }}>
+          <DataGrid
+            getRowId={(row) => row.repo}
+            rows={filteredDataRows}
+            columns={columns}
+            rowHeight={30}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 25 },
+              },
+              sorting: {
+                sortModel: [{ field: "stars-per-mille-30d", sort: "desc" }],
+              },
+            }}
+            pageSizeOptions={[5, 10, 50]}
+          />
+        </div>
+      </>
     );
   };
 
