@@ -618,10 +618,10 @@ function App() {
               Table
             </MenuItem>
             <MenuItem
-              component={<Link to="/treemap" className="link" />}
-              icon={<ViewQuiltRounded />}
+              component={<Link to="/bubble" className="link" />}
+              icon={<BubbleChartRoundedIcon />}
             >
-              Treemap
+              Bubble
             </MenuItem>
             <MenuItem
               component={
@@ -635,22 +635,22 @@ function App() {
               StarsTimeline
             </MenuItem>
             <MenuItem
-              component={<Link to="/deps" className="link" />}
-              icon={<LibraryBooksRoundedIcon />}
-            >
-              DepsChartTable
-            </MenuItem>
-            <MenuItem
               component={<Link to="/langHC" className="link" />}
               icon={<BarChartRoundedIcon />}
             >
               Languages
             </MenuItem>
             <MenuItem
-              component={<Link to="/bubble" className="link" />}
-              icon={<BubbleChartRoundedIcon />}
+              component={<Link to="/deps" className="link" />}
+              icon={<LibraryBooksRoundedIcon />}
             >
-              Bubble
+              DepsChartTable
+            </MenuItem>
+            <MenuItem
+              component={<Link to="/treemap" className="link" />}
+              icon={<ViewQuiltRounded />}
+            >
+              Treemap
             </MenuItem>
           </Menu>
         </Sidebar>
