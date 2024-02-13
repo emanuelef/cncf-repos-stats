@@ -1,6 +1,6 @@
 module github.com/emanuelef/cncf-repos-stats
 
-go 1.21.0
+go 1.22
 
 require (
 	github.com/emanuelef/github-repo-activity-stats v0.2.9
