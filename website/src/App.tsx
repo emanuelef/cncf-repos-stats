@@ -172,55 +172,55 @@ const columns: GridColDef[] = [
     field: "stars",
     headerName: "Stars",
     width: 90,
-    valueGetter: (val) => parseInt(val.row["stars"]),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "days-last-star",
     headerName: "Days last star",
     width: 100,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "days-last-commit",
     headerName: "Days last commit",
     width: 110,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "new-stars-last-30d",
     headerName: "Stars last 30d",
     width: 110,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "new-stars-last-7d",
     headerName: "Stars last 7d",
     width: 110,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "stars-per-mille-30d",
     headerName: "New Stars 30d ‰",
     width: 130,
-    valueGetter: (val) => parseFloat(val.row["stars-per-mille-30d"]),
+    valueGetter: (val) => parseFloat(val),
   },
   {
     field: "new-commits-last-30d",
     headerName: "Commits 30d",
     width: 100,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "unique-contributors",
     headerName: "Commits Authors 30d",
     width: 100,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "mentionable-users",
     headerName: "Ment. users",
     width: 100,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "language",
@@ -231,7 +231,7 @@ const columns: GridColDef[] = [
     field: "dependencies",
     headerName: "Direct deps",
     width: 90,
-    valueGetter: (val) => parseInt(val.row["dependencies"]),
+    valueGetter: (val) => parseInt(val),
   },
   {
     field: "status",
@@ -242,7 +242,7 @@ const columns: GridColDef[] = [
     field: "days-since-creation",
     headerName: "Age",
     width: 130,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
     renderCell: (params) => calculateAge(params.value),
   },
   {
@@ -259,7 +259,7 @@ const columns: GridColDef[] = [
     field: "min-go-version",
     headerName: "Min Go version",
     width: 80,
-    valueGetter: (params) => params.value,
+    valueGetter: (val) => val,
     sortComparator: (a, b) => {
       // Extract the version numbers
       const versionA = extractVersionNumber(a);
@@ -285,7 +285,7 @@ const columns: GridColDef[] = [
     field: "liveness",
     headerName: "Liveness",
     width: 120,
-    valueGetter: (params) => parseFloat(params.value),
+    valueGetter: (val) => parseFloat(val),
     renderCell: (params) => {
       const value = params.value;
       const color = getColorFromValue(value);

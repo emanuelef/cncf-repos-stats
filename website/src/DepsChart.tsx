@@ -24,7 +24,7 @@ const columns: GridColDef[] = [
     field: "go_cncf_repos_using_dep",
     headerName: "Repos",
     width: 90,
-    valueGetter: (params) => parseInt(params.value),
+    valueGetter: (val) => parseInt(val),
   },
 ];
 
