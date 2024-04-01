@@ -1,5 +1,7 @@
 # cncf-repos-stats
 
+[Medium Article: Exploring CNCF Repos: Daily Stats and Language Distribution](https://medium.com/itnext/exploring-cncf-repos-daily-stats-and-language-distribution-055305faf420)
+
 This repo uses the [github-repo-activity-stats](https://github.com/emanuelef/github-repo-activity-stats) to generate statistics about the CNCF projects on GitHub.  
 
 
