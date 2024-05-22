@@ -1,186 +1,188 @@
 repo,stars,new-stars-last-30d,new-stars-last-14d,new-stars-last-7d,new-stars-last-24H,stars-per-mille-30d,days-last-star,days-last-commit,days-since-creation,mentionable-users,language,archived,dependencies,status,start_date,join_date,liveness,unique-contributors,new-commits-last-30d,min-go-version,category,subcategory
-cdk8s-team/cdk8s,4155,47,20,13,0,11.312,1,0,2420,97,JavaScript,false,22,Sandbox,2020-11-10,2020-11-10,85.000,1,39,,Provisioning,Automation & Configuration
-project-akri/akri,1065,11,5,3,0,10.329,4,118,1319,38,Rust,false,0,Sandbox,2021-09-14,2021-09-14,16.000,0,0,,Provisioning,Automation & Configuration
-hexa-org/policy-orchestrator,92,1,0,0,0,10.870,18,22,866,15,Go,false,27,Sandbox,2022-07-26,2022-07-26,14.000,1,2,1.20,Provisioning,Security & Compliance
-cloud-custodian/cloud-custodian,5248,52,22,9,1,9.909,0,0,3003,433,Python,false,11,Incubating,2020-06-25,2020-06-25,100.000,12,24,,Provisioning,Automation & Configuration
-devstream-io/devstream,843,2,2,1,0,2.372,6,377,954,56,Go,false,7,Sandbox,2022-06-17,2022-06-17,12.000,0,0,1.20,Provisioning,Automation & Configuration
-kcl-lang/kcl,1346,102,21,11,1,75.780,0,0,746,30,Rust,false,0,Sandbox,2023-09-20,2023-09-20,100.000,9,60,,Provisioning,Automation & Configuration
-kptdev/kpt,1648,21,10,5,0,12.743,3,0,1708,97,Go,false,34,Sandbox,2023-06-30,2023-06-30,81.000,6,15,1.21,Provisioning,Automation & Configuration
-kubedl-io/kubedl,485,8,3,1,0,16.495,5,78,1623,26,Go,false,37,Sandbox,2021-06-22,2021-06-22,12.000,0,0,1.18,Provisioning,Automation & Configuration
-kubeedge/kubeedge,6458,74,20,10,1,11.459,0,3,2061,294,Go,false,61,Incubating,2019-03-18,2019-03-18,75.000,9,35,1.20,Provisioning,Automation & Configuration
-metal3-io/baremetal-operator,532,6,2,0,0,11.278,7,3,1944,122,Go,false,19,Sandbox,2020-09-08,2020-09-08,47.000,14,64,1.21,Provisioning,Automation & Configuration
-openyurtio/openyurt,1666,9,4,2,0,5.402,3,3,1460,124,Go,false,50,Sandbox,2020-09-08,2020-09-08,44.000,4,7,1.20,Provisioning,Automation & Configuration
-superedge/superedge,1008,7,3,1,0,6.944,1,90,1248,60,Go,false,37,Sandbox,2021-09-14,2021-09-14,12.000,0,0,1.17,Provisioning,Automation & Configuration
-tinkerbell/tink,879,13,5,1,0,14.790,3,0,1680,48,Go,false,33,Sandbox,2020-11-10,2020-11-10,76.000,3,35,1.22.0,Provisioning,Automation & Configuration
-distribution/distribution,8470,104,58,26,5,12.279,0,4,3437,429,Go,false,37,Sandbox,2021-01-26,2021-01-26,100.000,10,26,1.21.8,Provisioning,Container Registry
-dragonflyoss/Dragonfly2,2033,51,21,10,1,25.086,0,3,1293,80,Go,false,97,Incubating,2018-11-13,2018-11-13,80.000,8,49,1.21,Provisioning,Container Registry
-goharbor/harbor,22665,257,115,61,6,11.339,0,0,3035,316,Go,false,0,Graduated,2018-07-31,2018-07-31,100.000,6,44,,Provisioning,Container Registry
-project-zot/zot,759,38,16,4,1,50.066,0,0,1795,36,Go,false,65,Sandbox,2022-12-13,2022-12-13,87.000,2,7,1.21,Provisioning,Container Registry
-cert-manager/cert-manager,11552,125,61,33,5,10.821,0,3,2553,441,Go,false,44,Incubating,2020-11-10,2020-11-10,100.000,13,134,1.22.0,Provisioning,Security & Compliance
-confidential-containers/confidential-containers,130,5,3,1,1,38.462,0,5,919,57,unknown,false,0,Sandbox,2022-03-08,2022-03-08,54.000,2,4,,Provisioning,Security & Compliance
-containerssh/containerssh,2585,22,14,4,2,8.511,0,51,1447,9,Go,false,5,Sandbox,2022-09-14,2022-09-14,41.000,0,0,1.18,Provisioning,Security & Compliance
-project-copacetic/copacetic,809,33,14,10,2,40.791,0,0,495,18,Go,false,25,Sandbox,2023-09-19,2023-09-19,95.000,5,30,1.21,Provisioning,Security & Compliance
-curiefense/curiefense,715,7,1,0,0,9.790,12,316,1301,31,Rust,false,0,Sandbox,2021-01-26,2021-01-26,7.000,0,0,,Provisioning,Security & Compliance
-dexidp/dex,9091,91,45,14,0,10.010,1,7,3199,267,Go,false,36,Sandbox,2020-06-25,2020-06-25,70.000,4,36,1.21,Provisioning,Security & Compliance
-external-secrets/external-secrets,3993,100,43,25,3,25.044,0,3,1280,368,Go,false,83,Sandbox,2022-07-26,2022-07-26,90.000,19,63,1.22.3,Provisioning,Security & Compliance
-falcosecurity/falco,6966,83,40,19,4,11.915,0,0,3044,189,C++,false,0,Graduated,2018-10-10,2018-10-10,100.000,8,78,,Provisioning,Security & Compliance
-spiffe/spiffe,1412,18,10,4,0,12.748,2,17,2478,50,Shell,false,0,Graduated,2018-03-29,2018-03-29,33.000,1,3,,Provisioning,Key Management
-in-toto/in-toto,842,16,10,4,1,19.002,0,6,2918,41,Python,false,1,Incubating,2019-08-14,2019-08-14,71.000,2,36,,Provisioning,Security & Compliance
-keycloak/keycloak,20173,416,191,79,8,20.622,0,0,3975,1095,Java,false,0,Incubating,2023-04-10,2023-04-10,100.000,64,245,,Provisioning,Security & Compliance
-keylime/keylime,390,15,11,10,0,38.462,1,3,2770,62,Python,false,15,Sandbox,2020-09-22,2020-09-22,51.000,1,1,,Provisioning,Security & Compliance
-kubearmor/kubearmor,1286,22,8,4,0,17.107,1,5,1271,87,Go,false,0,Sandbox,2021-11-16,2021-11-16,65.000,10,27,,Provisioning,Security & Compliance
-kubescape/kubescape,9786,117,71,32,7,11.956,0,11,1012,125,Go,false,54,Sandbox,2022-12-13,2022-12-13,92.000,4,30,1.21.1,Provisioning,Security & Compliance
-kubewarden/kubewarden-controller,177,0,0,0,0,0.000,43,0,1263,17,Go,false,15,Sandbox,2022-06-17,2022-06-17,60.000,5,34,1.22.0,Provisioning,Security & Compliance
-kyverno/kyverno,5183,87,44,18,4,16.786,0,0,1932,298,Go,false,92,Incubating,2020-11-10,2020-11-10,100.000,17,69,1.22.2,Provisioning,Security & Compliance
-notaryproject/notation,292,3,1,1,0,10.274,6,32,1491,38,Go,false,9,Incubating,2017-10-24,2017-10-24,18.000,0,0,1.22,Provisioning,Security & Compliance
-open-policy-agent/opa,9190,75,33,22,4,8.161,0,0,3066,431,Go,false,45,Graduated,2018-03-29,2018-03-29,100.000,11,28,1.21,Provisioning,Security & Compliance
-opcr-io/policy,204,3,1,1,0,14.706,3,17,965,11,Go,false,26,Sandbox,2022-12-13,2022-12-13,22.000,1,1,1.21,Provisioning,Security & Compliance
-openfga/openfga,2341,103,54,34,6,43.998,0,0,712,51,Go,false,48,Sandbox,2022-09-14,2022-09-14,100.000,8,38,1.22.3,Provisioning,Security & Compliance
-paralus/paralus,941,15,10,5,2,15.940,0,25,710,25,Go,false,47,Sandbox,2022-12-14,2022-12-14,41.000,1,1,1.20,Provisioning,Security & Compliance
-parallaxsecond/parsec,457,1,0,0,0,2.188,28,5,1852,35,Rust,false,28,Sandbox,2020-06-25,2020-06-25,38.000,2,17,,Provisioning,Security & Compliance
-slimtoolkit/slim,18316,173,82,25,4,9.445,0,3,3176,63,Go,false,37,Sandbox,2023-05-17,2023-05-17,92.000,2,6,1.21,Provisioning,Security & Compliance
-getsops/sops,15268,198,96,49,5,12.968,0,0,3203,137,Go,false,40,Sandbox,2023-05-17,2023-05-17,100.000,2,18,1.19,Provisioning,Security & Compliance
-theupdateframework/python-tuf,1590,9,6,3,2,5.660,0,6,4127,85,Python,false,0,Graduated,2017-10-24,2017-10-24,67.000,4,49,,Provisioning,Security & Compliance
-AthenZ/athenz,869,13,2,1,0,14.960,6,0,2742,77,Java,false,26,Sandbox,2021-01-26,2021-01-26,76.000,5,36,1.22.0,Provisioning,Key Management
-piraeusdatastore/piraeus-operator,355,12,8,5,2,33.803,0,6,1761,19,Go,false,20,Sandbox,2021-01-26,2021-01-26,67.000,2,13,1.22.0,Runtime,Cloud Native Storage
-spiffe/spire,1683,21,9,4,0,12.478,2,0,2474,172,Go,false,89,Graduated,2018-03-29,2018-03-29,85.000,7,53,1.22.3,Provisioning,Key Management
-tellerops/teller,2559,29,9,7,2,11.333,0,1,1153,31,Rust,false,17,Sandbox,2022-04-26,2022-04-26,85.000,4,35,,Provisioning,Key Management
-carina-io/carina,675,4,1,0,0,5.926,9,35,1006,16,Go,false,28,Sandbox,2022-12-14,2022-12-14,13.000,0,0,1.19,Runtime,Cloud Native Storage
-cubeFS/cubefs,4385,81,52,25,2,18.472,0,0,1917,110,Go,false,41,Incubating,2019-12-16,2019-12-16,100.000,5,18,1.17,Runtime,Cloud Native Storage
-opencurve/curve,2238,24,11,6,0,10.724,2,60,1419,76,C++,false,0,Sandbox,2022-06-17,2022-06-17,25.000,0,0,,Runtime,Cloud Native Storage
-hwameistor/hwameistor,513,7,2,2,0,13.645,5,7,805,38,Go,false,45,Sandbox,2023-06-22,2023-06-22,38.000,5,14,1.18,Runtime,Cloud Native Storage
-k8up-io/k8up,569,15,3,1,0,26.362,3,5,1950,43,Go,false,18,Sandbox,2021-11-16,2021-11-16,52.000,2,13,1.21,Runtime,Cloud Native Storage
-kanisterio/kanister,723,1,1,1,0,1.383,2,0,2372,86,Go,false,47,Sandbox,2023-09-20,2023-09-20,70.000,13,38,1.22,Runtime,Cloud Native Storage
-longhorn/longhorn,5656,102,53,29,7,18.034,0,0,2593,103,Shell,false,0,Incubating,2019-10-11,2019-10-11,100.000,7,14,,Runtime,Cloud Native Storage
-openebs/openebs,8684,53,28,15,4,6.103,0,0,2849,204,unknown,false,0,Archived,2019-05-14,2019-05-14,92.000,5,7,,Runtime,Cloud Native Storage
-oras-project/oras,1283,32,14,8,0,24.942,3,0,1974,61,Go,false,12,Sandbox,2021-07-13,2021-07-13,85.000,5,24,1.22.0,Runtime,Cloud Native Storage
-lima-vm/lima,14119,201,92,44,6,14.236,0,0,1102,105,Go,false,49,Sandbox,2022-09-14,2022-09-14,100.000,5,79,1.21,Runtime,Container Runtime
-rook/rook,11981,99,44,20,4,8.263,0,0,2873,502,Go,false,39,Graduated,2018-01-29,2018-01-29,100.000,17,73,1.21,Runtime,Cloud Native Storage
-v6d-io/v6d,804,4,2,1,0,4.975,5,4,1305,51,C++,false,0,Sandbox,2021-04-28,2021-04-28,44.000,2,4,,Runtime,Cloud Native Storage
-containerd/containerd,16447,178,77,42,5,10.823,0,0,3112,591,Go,false,79,Graduated,2017-03-29,2017-03-29,100.000,30,164,1.22.0,Runtime,Container Runtime
-cri-o/cri-o,5039,30,11,3,0,5.954,2,0,2810,297,Go,false,79,Graduated,2019-04-08,2019-04-08,85.000,13,164,1.22.0,Runtime,Container Runtime
-inclavare-containers/inclavare-containers,574,0,0,0,0,0.000,41,398,1469,26,C,false,0,Sandbox,2021-09-14,2021-09-14,0.000,0,0,,Runtime,Container Runtime
-krustlet/krustlet,3534,9,5,3,0,2.547,3,231,1624,45,Rust,false,14,Sandbox,2021-07-13,2021-07-13,12.000,0,0,,Runtime,Container Runtime
-kuasar-io/kuasar,1187,22,7,5,1,18.534,0,12,657,21,Rust,false,0,Sandbox,2023-12-19,2023-12-19,57.000,2,2,,Runtime,Container Runtime
-fluid-cloudnative/fluid,1540,17,10,5,0,11.039,3,0,1409,749,Go,false,32,Sandbox,2021-04-28,2021-04-28,81.000,146,171,1.21,Orchestration & Management,Scheduling & Orchestration
-rkt/rkt,8825,8,4,2,0,0.907,5,1547,3478,215,Go,true,0,Archived,2017-03-29,2017-03-29,0.000,0,0,,Runtime,Container Runtime
-virtual-kubelet/virtual-kubelet,4100,29,12,6,0,7.073,1,5,2359,134,Go,false,30,Sandbox,2018-12-04,2018-12-04,61.000,3,13,1.20,Runtime,Container Runtime
-WasmEdge/WasmEdge,8020,102,55,28,7,12.718,0,0,1634,165,C++,false,0,Sandbox,2021-04-28,2021-04-28,100.000,8,50,,Runtime,Container Runtime
-antrea-io/antrea,1612,13,7,1,0,8.065,5,0,1670,121,Go,false,79,Sandbox,2021-04-28,2021-04-28,81.000,22,69,1.21.0,Runtime,Cloud Native Network
-cilium/cilium,18730,245,113,47,10,13.081,0,0,3078,747,Go,false,126,Graduated,2021-10-13,2021-10-13,100.000,80,567,1.22.0,Runtime,Cloud Native Network
-cni-genie/CNI-Genie,529,2,1,0,0,3.781,7,179,2613,21,Go,false,0,Sandbox,2020-06-25,2020-06-25,7.000,0,0,,Runtime,Cloud Native Network
-containernetworking/cni,5345,48,25,12,2,8.980,0,7,3333,145,Go,false,4,Incubating,2017-05-23,2017-05-23,62.000,3,8,1.21,Runtime,Cloud Native Network
-FabEdge/fabedge,519,1,1,0,0,1.927,7,61,1039,17,Go,false,31,Sandbox,2022-03-08,2022-03-08,5.000,0,0,1.17,Runtime,Cloud Native Network
-kubeovn/kube-ovn,1840,32,20,7,0,17.391,2,0,1886,99,Go,false,51,Sandbox,2021-01-26,2021-01-26,85.000,12,75,1.22.3,Runtime,Cloud Native Network
-kube-vip/kube-vip,1875,53,29,13,2,28.267,0,3,1569,87,Go,false,33,Sandbox,2021-06-26,2021-06-26,80.000,8,22,1.21,Runtime,Cloud Native Network
-networkservicemesh/api,12,0,0,0,0,0.000,146,1,1578,25,Go,false,4,Sandbox,2019-04-11,2019-04-11,42.000,2,2,1.20,Runtime,Cloud Native Network
-spidernet-io/spiderpool,491,27,18,12,0,54.990,1,4,805,33,Go,false,65,Sandbox,2023-12-19,2023-12-19,65.000,6,60,1.22.0,Runtime,Cloud Native Network
-submariner-io/submariner,2343,24,13,5,0,10.243,1,6,1897,36,Go,false,28,Sandbox,2021-04-28,2021-04-28,65.000,5,37,1.22.0,Runtime,Cloud Native Network
-armadaproject/armada,424,11,6,1,0,25.943,3,1,1797,88,Go,false,76,Sandbox,2022-07-25,2022-07-25,71.000,8,46,1.20,Orchestration & Management,Scheduling & Orchestration
-projectcapsule/capsule,1476,36,17,13,2,24.390,0,3,1421,51,Go,false,17,Sandbox,2022-12-13,2022-12-13,75.000,2,35,1.22.0,Orchestration & Management,Scheduling & Orchestration
-clusternet/clusternet,1310,13,9,3,0,9.924,1,0,1078,43,Go,false,39,Sandbox,2023-03-07,2023-03-07,73.000,2,4,1.21,Orchestration & Management,Scheduling & Orchestration
-clusterpedia-io/clusterpedia,765,48,25,2,0,62.745,3,12,955,45,Go,false,36,Sandbox,2022-06-17,2022-06-17,52.000,2,6,1.20,Orchestration & Management,Scheduling & Orchestration
-crossplane/crossplane,8881,168,82,35,4,18.917,0,0,2082,224,Go,false,46,Incubating,2020-06-25,2020-06-25,100.000,15,133,1.21,Orchestration & Management,Scheduling & Orchestration
-eraser-dev/eraser,436,1,0,0,0,2.294,26,14,1088,30,Go,false,26,Sandbox,2023-06-30,2023-06-30,14.000,1,5,1.18,Orchestration & Management,Scheduling & Orchestration
-wasmCloud/wasmCloud,1278,36,9,3,0,28.169,1,0,1313,72,Rust,false,154,Sandbox,2021-07-13,2021-07-13,85.000,16,201,,Orchestration & Management,Scheduling & Orchestration
-karmada-io/karmada,4149,61,30,17,5,14.702,0,0,1287,234,Go,false,57,Incubating,2021-09-14,2021-09-14,100.000,15,126,1.21.10,Orchestration & Management,Scheduling & Orchestration
-kcp-dev/kcp,2254,14,8,4,0,6.211,2,0,1146,110,Go,false,39,Sandbox,2023-09-19,2023-09-19,81.000,4,25,1.21,Orchestration & Management,Scheduling & Orchestration
-kedacore/keda,7865,146,66,38,3,18.563,0,0,1924,364,Go,false,116,Graduated,2020-03-12,2020-03-12,100.000,14,33,1.21,Orchestration & Management,Scheduling & Orchestration
-knative/serving,5410,29,13,6,1,5.360,0,3,2308,297,Go,false,36,Incubating,2022-03-02,2022-03-02,75.000,7,59,1.21,Orchestration & Management,Scheduling & Orchestration
-kube-rs/kube,2730,59,29,14,3,21.612,0,3,2017,118,Rust,false,58,Sandbox,2021-11-16,2021-11-16,76.000,6,13,,Orchestration & Management,Scheduling & Orchestration
-kubeflow/kubeflow,13765,117,65,31,4,8.500,0,0,2363,372,TypeScript,false,0,Incubating,2023-07-25,2023-07-25,100.000,2,2,,Orchestration & Management,Scheduling & Orchestration
-kubernetes/kubernetes,107297,758,374,190,22,7.065,0,0,3636,3814,Go,false,112,Graduated,2016-03-10,2016-03-10,100.000,81,490,1.22.0,Orchestration & Management,Scheduling & Orchestration
-kubestellar/kubestellar,228,4,4,1,0,17.544,6,0,564,36,Go,false,20,Sandbox,2023-12-19,2023-12-19,72.000,10,158,1.20,Orchestration & Management,Scheduling & Orchestration
-kubereboot/kured,2077,14,2,2,1,6.740,0,5,2589,59,Go,false,14,Sandbox,2022-09-14,2022-09-14,58.000,2,8,1.21,Orchestration & Management,Scheduling & Orchestration
-open-cluster-management-io/api,243,1,1,0,0,4.115,12,14,1531,53,Go,false,14,Sandbox,2021-11-09,2021-11-09,17.000,2,2,1.21,Orchestration & Management,Scheduling & Orchestration
-OpenFunction/OpenFunction,1459,18,9,5,0,12.337,3,241,1250,30,Go,false,18,Sandbox,2022-04-26,2022-04-26,21.000,0,0,1.19,Orchestration & Management,Scheduling & Orchestration
-serverless-devs/serverless-devs,1670,13,7,2,1,7.784,0,12,1307,35,TypeScript,false,0,Sandbox,2022-09-14,2022-09-14,53.000,1,6,,Orchestration & Management,Scheduling & Orchestration
-volcano-sh/volcano,3805,54,22,6,2,14.192,0,0,1894,206,Go,false,39,Incubating,2020-04-09,2020-04-09,100.000,12,48,1.21,Orchestration & Management,Scheduling & Orchestration
-metallb/metallb,6682,78,43,26,3,11.673,0,4,2385,188,Go,false,26,Sandbox,2021-09-14,2021-09-14,86.000,4,16,1.21,Orchestration & Management,Service Proxy
-coredns/coredns,11867,94,42,19,5,7.921,0,0,2985,363,Go,false,35,Graduated,2017-02-27,2017-02-27,100.000,5,30,1.21,Orchestration & Management,Coordination & Service Discovery
-etcd-io/etcd,46536,281,117,66,10,6.038,0,0,3971,857,Go,false,21,Graduated,2018-12-11,2018-12-11,100.000,25,192,1.22,Orchestration & Management,Coordination & Service Discovery
-k8gb-io/k8gb,799,57,8,4,3,71.339,0,0,1636,23,Go,false,20,Sandbox,2021-03-30,2021-03-30,95.000,6,33,1.19,Orchestration & Management,Coordination & Service Discovery
-xline-kv/Xline,534,21,11,5,0,39.326,1,0,746,21,Rust,false,0,Sandbox,2023-06-30,2023-06-30,85.000,6,64,,Orchestration & Management,Coordination & Service Discovery
-grpc/grpc,40886,247,128,61,8,6.041,0,0,3451,897,C++,false,0,Incubating,2017-02-16,2017-02-16,100.000,26,165,,Orchestration & Management,Remote Procedure Call
-bfenetworks/bfe,6075,19,12,8,1,3.128,0,4,1755,101,Go,false,28,Sandbox,2020-06-25,2020-06-25,61.000,1,1,1.17,Orchestration & Management,Service Proxy
-projectcontour/contour,3647,14,10,2,0,3.839,3,0,2398,222,Go,false,42,Incubating,2020-07-07,2020-07-07,81.000,4,58,1.22.0,Orchestration & Management,Service Proxy
-envoyproxy/envoy,24054,200,105,51,8,8.315,0,0,2842,1185,C++,false,1,Graduated,2017-09-13,2017-09-13,100.000,65,297,1.20,Orchestration & Management,Service Proxy
-kumahq/kuma,3532,30,12,4,2,8.494,0,0,1895,97,Go,false,83,Sandbox,2020-06-25,2020-06-25,95.000,13,156,1.21.10,Orchestration & Management,Service Mesh
-openelb/openelb,1550,20,9,4,2,12.903,0,7,1935,27,Go,false,32,Sandbox,2021-11-09,2021-11-09,57.000,2,15,1.21,Orchestration & Management,Service Proxy
-easegress-io/easegress,5709,22,12,11,1,3.854,0,14,1088,62,Go,false,88,Sandbox,2023-12-19,2023-12-19,47.000,2,4,1.21,Orchestration & Management,API Gateway
-emissary-ingress/emissary,4291,22,10,5,0,5.127,1,11,2608,225,Python,false,0,Incubating,2021-04-13,2021-04-13,47.000,1,5,,Orchestration & Management,API Gateway
-aeraki-mesh/aeraki,728,8,4,1,0,10.989,6,40,1292,33,Go,false,29,Sandbox,2022-06-17,2022-06-17,18.000,0,0,1.20,Orchestration & Management,Service Mesh
-istio/istio,35095,186,88,49,3,5.300,0,0,2740,1062,Go,false,108,Graduated,2022-09-30,2022-09-30,100.000,29,229,1.22.0,Orchestration & Management,Service Mesh
-servicemeshinterface/smi-spec,1051,4,1,0,0,3.806,9,213,1885,43,Makefile,true,0,Archived,2020-03-19,2020-03-19,0.000,0,0,,Orchestration & Management,Service Mesh
-linkerd/linkerd2,10397,65,24,13,0,6.252,1,0,2359,354,Go,false,50,Graduated,2017-01-23,2017-01-23,90.000,12,127,1.22.0,Orchestration & Management,Service Mesh
-merbridge/merbridge,728,7,4,2,0,9.615,1,89,859,24,Go,false,18,Sandbox,2022-12-14,2022-12-14,12.000,0,0,1.19,Orchestration & Management,Service Mesh
-openservicemesh/osm,2583,4,2,1,0,1.549,3,315,1620,88,Go,true,62,Archived,2020-09-08,2020-09-08,0.000,0,0,1.19,Orchestration & Management,Service Mesh
-tikv/tikv,14584,110,56,20,4,7.543,0,0,3063,421,Rust,false,156,Graduated,2018-08-28,2018-08-28,100.000,18,36,,App Definition and Development,Database
-service-mesh-performance/service-mesh-performance,276,0,0,0,0,0.000,38,3,1934,90,Makefile,false,2,Sandbox,2021-06-22,2021-06-22,32.000,2,4,1.14,Orchestration & Management,Service Mesh
-schemahero/schemahero,956,6,3,1,0,6.276,3,5,1850,41,Go,false,24,Sandbox,2020-11-10,2020-11-10,44.000,2,4,1.21,App Definition and Development,Database
-cloudevents/spec,4825,57,25,9,1,11.813,0,18,2354,124,Python,false,0,Graduated,2018-05-15,2018-05-15,52.000,2,2,,App Definition and Development,Streaming & Messaging
-vitessio/vitess,17923,127,62,31,1,7.086,0,0,3980,382,Go,false,87,Graduated,2018-02-05,2018-02-05,100.000,18,87,1.22.3,App Definition and Development,Database
-pravega/pravega,1969,4,3,1,0,2.031,5,73,2870,104,Java,false,0,Sandbox,2020-11-10,2020-11-10,12.000,0,0,,App Definition and Development,Streaming & Messaging
-nats-io/nats-server,14888,183,75,36,3,12.292,0,0,4221,147,Go,false,11,Incubating,2018-03-15,2018-03-15,100.000,10,143,1.20,App Definition and Development,Streaming & Messaging
-strimzi/strimzi-kafka-operator,4538,94,39,13,0,20.714,1,0,2936,263,Java,false,0,Incubating,2019-08-28,2019-08-28,100.000,12,57,,App Definition and Development,Streaming & Messaging
-tremor-rs/tremor-runtime,827,9,7,5,1,10.883,0,0,1694,45,Rust,false,28,Sandbox,2020-09-08,2020-09-08,87.000,4,69,,App Definition and Development,Streaming & Messaging
-artifacthub/hub,1534,15,6,4,1,9.778,0,0,1588,41,TypeScript,false,52,Sandbox,2020-06-25,2020-06-25,83.000,3,9,1.22.0,App Definition and Development,Application Definition & Image Build
-backstage/backstage,26620,386,169,80,10,14.500,0,0,1578,1489,TypeScript,false,0,Incubating,2020-09-08,2020-09-08,100.000,74,746,,App Definition and Development,Application Definition & Image Build
-buildpacks/pack,2426,25,9,6,2,10.305,0,0,2156,131,Go,false,36,Incubating,2018-10-03,2018-10-03,95.000,6,53,1.22,App Definition and Development,Application Definition & Image Build
-dapr/dapr,23361,115,49,26,3,4.923,0,6,1798,267,Go,false,77,Incubating,2021-11-09,2021-11-09,82.000,3,7,1.22.2,App Definition and Development,Application Definition & Image Build
-carvel-dev/ytt,1596,13,5,5,1,8.145,0,3,1908,66,Go,false,11,Sandbox,2022-09-14,2022-09-14,58.000,2,3,1.22.3,App Definition and Development,Application Definition & Image Build
-devfile/api,235,4,1,1,0,17.021,3,10,1628,31,Go,false,13,Sandbox,2022-01-11,2022-01-11,32.000,1,1,1.19,App Definition and Development,Application Definition & Image Build
-devspace-sh/devspace,4119,51,24,14,1,12.382,0,5,2103,88,Go,false,63,Sandbox,2022-12-13,2022-12-13,76.000,3,11,1.20,App Definition and Development,Application Definition & Image Build
-helm/helm,26118,152,69,35,9,5.820,0,4,3150,675,Go,false,43,Graduated,2018-06-01,2018-06-01,100.000,8,22,1.22.0,App Definition and Development,Application Definition & Image Build
-ko-build/ko,7280,54,20,10,2,7.418,0,0,1887,90,Go,false,19,Sandbox,2022-12-14,2022-12-14,95.000,5,49,1.21,App Definition and Development,Application Definition & Image Build
-konveyor/operator,25,2,0,0,0,80.000,15,40,823,33,Jinja,false,0,Sandbox,2022-07-26,2022-07-26,10.000,0,0,,App Definition and Development,Application Definition & Image Build
-krator-rs/krator,158,1,1,1,0,6.329,1,767,1099,21,Rust,false,0,Archived,2021-07-13,2021-07-13,10.000,0,0,,App Definition and Development,Application Definition & Image Build
-kubevela/kubevela,6141,89,23,15,2,14.493,0,28,1417,230,Go,false,92,Incubating,2021-06-22,2021-06-22,50.000,1,1,1.19,App Definition and Development,Application Definition & Image Build
-kubevirt/kubevirt,5153,93,41,20,6,18.048,0,0,2712,313,Go,false,84,Incubating,2019-09-06,2019-09-06,100.000,36,341,1.22,App Definition and Development,Application Definition & Image Build
-kudobuilder/kudo,1163,2,0,0,0,1.720,26,1053,2007,66,Go,false,29,Sandbox,2020-06-25,2020-06-25,4.000,0,0,1.16,App Definition and Development,Application Definition & Image Build
-microcks/microcks,1220,24,18,11,7,19.672,0,56,3374,41,Java,false,0,Sandbox,2023-06-22,2023-06-22,43.000,0,0,,App Definition and Development,Application Definition & Image Build
-nocalhost/nocalhost,1784,14,7,3,0,7.848,1,354,1288,36,Go,false,82,Sandbox,2021-11-16,2021-11-16,21.000,0,0,1.16,App Definition and Development,Application Definition & Image Build
-operator-framework/operator-sdk,7031,46,19,11,1,6.542,0,5,2294,357,Go,false,42,Incubating,2020-07-09,2020-07-09,67.000,7,7,1.21,App Definition and Development,Application Definition & Image Build
-getporter/porter,1160,14,5,2,0,12.069,1,0,2026,106,Go,false,64,Sandbox,2020-09-08,2020-09-08,76.000,7,72,1.21,App Definition and Development,Application Definition & Image Build
-radius-project/radius,1404,40,12,6,0,28.490,4,0,1186,49,Go,false,90,Sandbox,2024-04-16,2024-04-16,85.000,11,29,1.22.0,App Definition and Development,Application Definition & Image Build
-sealerio/sealer,2016,15,6,4,0,7.440,1,13,1117,77,Go,false,63,Sandbox,2022-04-26,2022-04-26,41.000,1,1,1.17,App Definition and Development,Application Definition & Image Build
-serverlessworkflow/specification,700,11,9,7,0,15.714,3,3,1466,42,TypeScript,false,0,Sandbox,2020-07-14,2020-07-14,61.000,2,45,,App Definition and Development,Application Definition & Image Build
-telepresenceio/telepresence,6386,48,25,11,1,7.516,0,4,2643,89,Go,false,60,Sandbox,2018-05-15,2018-05-15,80.000,3,32,1.22.0,App Definition and Development,Application Definition & Image Build
-vscode-kubernetes-tools/vscode-kubernetes-tools,665,5,2,2,0,7.519,3,23,2491,121,TypeScript,false,1,Sandbox,2021-11-09,2021-11-09,22.000,1,1,1.16,App Definition and Development,Application Definition & Image Build
-argoproj/argo-cd,16342,269,127,65,8,16.461,0,0,2292,1367,Go,false,105,Graduated,2020-03-26,2020-03-26,100.000,61,123,1.21,App Definition and Development,Continuous Integration & Delivery
-brigadecore/brigade,2398,0,0,0,0,0.000,30,601,2401,92,Go,false,0,Archived,2019-03-18,2019-03-18,0.000,0,0,,App Definition and Development,Continuous Integration & Delivery
-fluxcd/flux2,6010,91,51,27,3,15.141,0,7,1487,152,Go,false,56,Graduated,2019-07-15,2019-07-15,90.000,10,69,1.22.0,App Definition and Development,Continuous Integration & Delivery
-keptn/lifecycle-toolkit,244,14,4,2,0,57.377,3,3,626,81,Go,false,0,Incubating,2020-06-25,2020-06-25,56.000,8,75,,App Definition and Development,Continuous Integration & Delivery
-open-gitops/project,862,18,7,2,1,20.882,0,11,1047,16,unknown,false,0,Sandbox,2021-01-26,2021-01-26,53.000,1,2,,App Definition and Development,Continuous Integration & Delivery
-openkruise/kruise,4392,36,15,7,2,8.197,0,5,1817,122,Go,false,37,Incubating,2020-11-10,2020-11-10,71.000,9,19,1.20,App Definition and Development,Continuous Integration & Delivery
-pipe-cd/pipecd,969,16,6,3,0,16.512,4,5,1438,88,Go,false,54,Sandbox,2023-05-17,2023-05-17,57.000,7,14,1.20,App Definition and Development,Continuous Integration & Delivery
-werf/werf,3937,31,22,13,2,7.874,0,0,3038,52,Go,false,85,Sandbox,2022-12-13,2022-12-13,100.000,6,106,1.21.1,App Definition and Development,Continuous Integration & Delivery
-kube-burner/kube-burner,455,11,5,2,0,24.176,4,4,1356,41,Go,false,16,Sandbox,2023-12-18,2023-12-18,52.000,5,14,1.21,App Definition and Development,Continuous Integration & Delivery
-k3s-io/k3s,26640,281,124,52,10,10.548,0,3,2181,1854,Go,false,89,Sandbox,2020-08-19,2020-08-19,98.000,8,11,1.22.2,Platform,Certified Kubernetes - Distribution
-kubean-io/kubean,426,20,5,1,0,46.948,5,0,685,30,Go,false,14,Sandbox,2024-04-16,2024-04-16,76.000,9,79,1.20,Platform,Certified Kubernetes - Installer
-kubeclipper/kubeclipper,254,2,2,1,0,7.874,5,4,703,17,Go,false,60,Sandbox,2023-06-30,2023-06-30,42.000,1,1,1.20,Platform,Certified Kubernetes - Installer
-open-feature/spec,553,20,11,4,1,36.166,0,11,829,55,Python,false,0,Incubating,2022-06-17,2022-06-17,53.000,2,2,,Observability and Analysis,Feature Flagging
-chaos-mesh/chaos-mesh,6438,86,22,12,4,13.358,0,6,1720,195,Go,false,81,Incubating,2020-07-14,2020-07-14,70.000,1,1,1.20,Observability and Analysis,Chaos Engineering
-chaosblade-io/chaosblade,5786,29,15,6,2,5.012,0,61,1896,57,Go,false,15,Sandbox,2021-04-28,2021-04-28,35.000,0,0,1.20,Observability and Analysis,Chaos Engineering
-litmuschaos/litmus,4211,30,15,6,1,7.124,0,0,2623,190,Go,false,0,Incubating,2020-06-25,2020-06-25,95.000,11,51,,Observability and Analysis,Chaos Engineering
-krkn-chaos/krkn,251,1,0,0,0,3.984,25,0,1492,41,Python,false,40,Sandbox,2023-12-19,2023-12-19,58.000,4,18,,Observability and Analysis,Chaos Engineering
-opencost/opencost,4759,59,29,14,0,12.398,1,5,1881,113,Go,false,56,Sandbox,2022-06-17,2022-06-17,70.000,10,46,1.21.0,Observability and Analysis,Continuous Optimization
-cortexproject/cortex,5362,24,10,4,1,4.476,0,1,2810,286,Go,false,77,Incubating,2018-09-20,2018-09-20,85.000,14,96,1.21,Observability and Analysis,Observability
-fluent/fluentd,12590,68,30,15,1,5.401,0,3,4719,248,Ruby,false,0,Graduated,2016-11-08,2016-11-08,80.000,4,23,,Observability and Analysis,Observability
-foniod/foniod,411,0,0,0,0,0.000,165,1106,2224,4,Rust,true,34,Archived,2021-03-30,2021-03-30,0.000,0,0,,Observability and Analysis,Observability
-headlamp-k8s/headlamp,1654,50,24,13,4,30.230,0,0,1655,44,TypeScript,false,0,Sandbox,2023-05-17,2023-05-17,100.000,11,115,,Observability and Analysis,Observability
-inspektor-gadget/inspektor-gadget,1965,40,27,20,11,20.356,0,0,1861,42,C,false,65,Sandbox,2023-03-07,2023-03-07,100.000,11,241,1.22.0,Observability and Analysis,Observability
-jaegertracing/jaeger,19602,248,92,44,9,12.652,0,0,2957,337,Go,false,78,Graduated,2017-09-13,2017-09-13,100.000,13,54,1.21.0,Observability and Analysis,Observability
-k8sgpt-ai/k8sgpt,4987,107,56,27,5,21.456,0,0,426,74,Go,false,44,Sandbox,2023-12-19,2023-12-19,100.000,8,31,1.21,Observability and Analysis,Observability
-sustainable-computing-io/kepler,1012,38,15,6,0,37.549,5,0,839,50,Go,false,24,Sandbox,2023-05-17,2023-05-17,85.000,12,104,1.21,Observability and Analysis,Observability
-kuberhealthy/kuberhealthy,1929,15,4,3,0,7.776,1,21,2162,91,Go,false,18,Sandbox,2021-03-30,2021-03-30,28.000,2,10,1.22,Observability and Analysis,Observability
-kube-logging/logging-operator,1495,12,7,1,0,8.027,4,7,2155,120,Go,false,22,Sandbox,2023-09-19,2023-09-19,51.000,5,22,1.21,Observability and Analysis,Observability
-OpenObservability/OpenMetrics,2270,18,8,3,1,7.930,0,497,2524,37,Go,false,0,Incubating,2018-08-10,2018-08-10,31.000,0,0,,Observability and Analysis,Observability
-open-telemetry/community,701,11,2,1,0,15.692,2,0,1845,293,Python,false,0,Incubating,2019-05-07,2019-05-07,76.000,16,28,,Observability and Analysis,Observability
-opentracing/opentracing-go,3489,4,1,0,0,1.146,12,812,3098,58,Go,true,1,Archived,2016-10-11,2016-10-11,0.000,0,0,1.14,Observability and Analysis,Observability
-pixie-io/pixie,5317,57,28,7,1,10.720,0,0,1545,77,C++,false,97,Sandbox,2021-06-22,2021-06-22,96.000,7,18,1.21,Observability and Analysis,Observability
-prometheus/prometheus,53113,506,250,123,21,9.527,0,1,4195,906,Go,false,87,Graduated,2016-05-09,2016-05-09,100.000,28,134,1.21,Observability and Analysis,Observability
-skooner-k8s/skooner,1256,12,5,2,0,9.554,6,137,1893,48,JavaScript,false,0,Sandbox,2021-01-26,2021-01-26,16.000,0,0,,Observability and Analysis,Observability
-thanos-io/thanos,12640,77,42,22,2,6.092,0,0,2392,604,Go,false,95,Incubating,2019-07-14,2019-07-14,100.000,13,50,1.21,Observability and Analysis,Observability
-trickstercache/trickster,1958,6,6,3,1,3.064,0,2,2244,67,Go,false,25,Sandbox,2021-03-30,2021-03-30,69.000,2,8,1.22,Observability and Analysis,Observability
-kairos-io/kairos,956,32,13,8,1,33.473,0,4,1025,46,Go,false,0,Sandbox,2024-04-13,2024-04-13,75.000,5,34,,Wasm,Edge/Bare metal
+project-akri/akri,1065,11,5,2,0,10.329,5,119,1320,38,Rust,false,0,Sandbox,2021-09-14,2021-09-14,16.000,0,0,,Provisioning,Automation & Configuration
+devstream-io/devstream,843,2,1,0,0,2.372,7,378,955,56,Go,false,7,Sandbox,2022-06-17,2022-06-17,7.000,0,0,1.20,Provisioning,Automation & Configuration
+cdk8s-team/cdk8s,4158,45,20,14,2,10.823,0,0,2421,97,JavaScript,false,22,Sandbox,2020-11-10,2020-11-10,95.000,1,41,,Provisioning,Automation & Configuration
+cloud-custodian/cloud-custodian,5251,54,21,12,3,10.284,0,0,3004,433,Python,false,11,Incubating,2020-06-25,2020-06-25,100.000,12,25,,Provisioning,Automation & Configuration
+kubeedge/kubeedge,6458,73,20,11,2,11.304,0,4,2062,294,Go,false,61,Incubating,2019-03-18,2019-03-18,75.000,9,35,1.20,Provisioning,Automation & Configuration
+kcl-lang/kcl,1348,104,19,12,2,77.151,0,0,747,31,Rust,false,0,Sandbox,2023-09-20,2023-09-20,95.000,10,66,,Provisioning,Automation & Configuration
+kptdev/kpt,1648,22,10,4,1,13.350,0,0,1709,98,Go,false,34,Sandbox,2023-06-30,2023-06-30,91.000,7,19,1.21,Provisioning,Automation & Configuration
+kubedl-io/kubedl,485,7,3,1,0,14.433,6,79,1624,26,Go,false,37,Sandbox,2021-06-22,2021-06-22,12.000,0,0,1.18,Provisioning,Automation & Configuration
+tinkerbell/tink,880,14,6,2,1,15.909,0,1,1681,48,Go,false,33,Sandbox,2020-11-10,2020-11-10,81.000,3,35,1.22.0,Provisioning,Automation & Configuration
+meshery/meshery,4924,101,68,45,8,20.512,0,0,2015,607,JavaScript,false,0,Sandbox,2021-06-22,2021-06-22,100.000,34,603,,Provisioning,Automation & Configuration
+metal3-io/baremetal-operator,533,7,3,1,1,13.133,0,0,1945,122,Go,false,19,Sandbox,2020-09-08,2020-09-08,82.000,14,66,1.21,Provisioning,Automation & Configuration
+openyurtio/openyurt,1667,10,4,3,1,5.999,0,4,1461,124,Go,false,50,Sandbox,2020-09-08,2020-09-08,54.000,4,7,1.20,Provisioning,Automation & Configuration
+superedge/superedge,1009,8,4,2,1,7.929,0,91,1249,60,Go,false,37,Sandbox,2021-09-14,2021-09-14,22.000,0,0,1.17,Provisioning,Automation & Configuration
+project-zot/zot,761,39,16,4,2,51.248,0,1,1796,36,Go,false,65,Sandbox,2022-12-13,2022-12-13,77.000,2,6,1.21,Provisioning,Container Registry
+distribution/distribution,8470,102,57,23,1,12.043,0,5,3438,429,Go,false,37,Sandbox,2021-01-26,2021-01-26,100.000,10,25,1.21.8,Provisioning,Container Registry
+dragonflyoss/Dragonfly2,2034,50,21,8,1,24.582,0,0,1294,80,Go,false,97,Incubating,2018-11-13,2018-11-13,100.000,8,53,1.21,Provisioning,Container Registry
+goharbor/harbor,22671,255,114,55,7,11.248,0,0,3036,316,Go,false,0,Graduated,2018-07-31,2018-07-31,100.000,6,46,,Provisioning,Container Registry
+containerssh/containerssh,2586,23,13,5,1,8.894,0,52,1448,9,Go,false,5,Sandbox,2022-09-14,2022-09-14,41.000,0,0,1.18,Provisioning,Security & Compliance
+cert-manager/cert-manager,11556,130,59,28,6,11.250,0,0,2554,441,Go,false,44,Incubating,2020-11-10,2020-11-10,100.000,12,142,1.22.0,Provisioning,Security & Compliance
+confidential-containers/confidential-containers,130,5,2,1,0,38.462,1,6,920,57,unknown,false,0,Sandbox,2022-03-08,2022-03-08,44.000,2,4,,Provisioning,Security & Compliance
+curiefense/curiefense,715,5,1,0,0,6.993,13,317,1302,31,Rust,false,0,Sandbox,2021-01-26,2021-01-26,7.000,0,0,,Provisioning,Security & Compliance
+project-copacetic/copacetic,810,34,15,8,1,41.975,0,1,496,18,Go,false,25,Sandbox,2023-09-19,2023-09-19,85.000,5,30,1.21,Provisioning,Security & Compliance
+dexidp/dex,9094,91,41,15,5,10.007,0,8,3200,267,Go,false,36,Sandbox,2020-06-25,2020-06-25,80.000,4,36,1.21,Provisioning,Security & Compliance
+external-secrets/external-secrets,3993,99,40,21,0,24.793,1,0,1281,368,Go,false,83,Sandbox,2022-07-26,2022-07-26,100.000,20,63,1.22.3,Provisioning,Security & Compliance
+falcosecurity/falco,6966,81,35,18,0,11.628,1,0,3045,189,C++,false,0,Graduated,2018-10-10,2018-10-10,100.000,8,80,,Provisioning,Security & Compliance
+hexa-org/policy-orchestrator,92,1,0,0,0,10.870,19,0,867,15,Shell,false,0,Sandbox,2022-07-26,2022-07-26,62.000,3,27,,Provisioning,Security & Compliance
+in-toto/in-toto,843,16,10,3,1,18.980,0,0,2919,42,Python,false,1,Incubating,2019-08-14,2019-08-14,91.000,3,47,,Provisioning,Security & Compliance
+clusternet/clusternet,1310,13,8,3,0,9.924,2,1,1079,43,Go,false,39,Sandbox,2023-03-07,2023-03-07,63.000,2,4,1.21,Orchestration & Management,Scheduling & Orchestration
+keycloak/keycloak,20190,422,184,82,18,20.901,0,0,3976,1095,Java,false,0,Incubating,2023-04-10,2023-04-10,100.000,68,262,,Provisioning,Security & Compliance
+keylime/keylime,391,16,11,11,1,40.921,0,4,2771,62,Python,false,15,Sandbox,2020-09-22,2020-09-22,61.000,1,1,,Provisioning,Security & Compliance
+kubearmor/kubearmor,1288,24,10,6,2,18.634,0,0,1272,87,Go,false,0,Sandbox,2021-11-16,2021-11-16,95.000,10,29,,Provisioning,Security & Compliance
+kubescape/kubescape,9791,119,63,36,6,12.154,0,12,1013,125,Go,false,54,Sandbox,2022-12-13,2022-12-13,92.000,4,30,1.21.1,Provisioning,Security & Compliance
+kubewarden/kubewarden-controller,177,0,0,0,0,0.000,44,0,1264,17,Go,false,15,Sandbox,2022-06-17,2022-06-17,60.000,6,40,1.22.0,Provisioning,Security & Compliance
+kyverno/kyverno,5186,88,42,18,3,16.969,0,0,1933,298,Go,false,92,Incubating,2020-11-10,2020-11-10,100.000,17,73,1.22.2,Provisioning,Security & Compliance
+notaryproject/notation,292,3,1,0,0,10.274,7,33,1492,38,Go,false,9,Incubating,2017-10-24,2017-10-24,13.000,0,0,1.22,Provisioning,Security & Compliance
+open-policy-agent/opa,9194,80,37,23,6,8.701,0,1,3067,431,Go,false,45,Graduated,2018-03-29,2018-03-29,100.000,11,28,1.21,Provisioning,Security & Compliance
+opcr-io/policy,204,3,1,1,0,14.706,4,18,966,11,Go,false,26,Sandbox,2022-12-13,2022-12-13,22.000,1,1,1.21,Provisioning,Security & Compliance
+openfga/openfga,2343,104,51,32,2,44.388,0,1,713,51,Go,false,48,Sandbox,2022-09-14,2022-09-14,100.000,8,38,1.22.3,Provisioning,Security & Compliance
+paralus/paralus,941,14,10,5,0,14.878,1,26,711,25,Go,false,47,Sandbox,2022-12-14,2022-12-14,31.000,1,1,1.20,Provisioning,Security & Compliance
+parallaxsecond/parsec,457,1,0,0,0,2.188,29,6,1853,35,Rust,false,28,Sandbox,2020-06-25,2020-06-25,38.000,2,17,,Provisioning,Security & Compliance
+slimtoolkit/slim,18320,172,76,21,4,9.389,0,4,3177,63,Go,false,37,Sandbox,2023-05-17,2023-05-17,92.000,2,6,1.21,Provisioning,Security & Compliance
+getsops/sops,15274,201,94,46,6,13.160,0,1,3204,137,Go,false,40,Sandbox,2023-05-17,2023-05-17,100.000,2,18,1.19,Provisioning,Security & Compliance
+theupdateframework/python-tuf,1590,9,6,3,0,5.660,1,0,4128,86,Python,false,0,Graduated,2017-10-24,2017-10-24,77.000,4,54,,Provisioning,Security & Compliance
+AthenZ/athenz,869,13,2,0,0,14.960,7,1,2743,77,Java,false,26,Sandbox,2021-01-26,2021-01-26,61.000,5,36,1.22.0,Provisioning,Key Management
+spiffe/spiffe,1414,20,9,5,2,14.144,0,18,2479,50,Shell,false,0,Graduated,2018-03-29,2018-03-29,43.000,1,3,,Provisioning,Key Management
+spiffe/spire,1684,22,9,5,1,13.064,0,0,2475,172,Go,false,89,Graduated,2018-03-29,2018-03-29,95.000,9,55,1.22.3,Provisioning,Key Management
+tellerops/teller,2560,31,11,8,2,12.109,0,2,1154,31,Rust,false,17,Sandbox,2022-04-26,2022-04-26,85.000,4,35,,Provisioning,Key Management
+carina-io/carina,676,5,2,1,1,7.396,0,36,1007,16,Go,false,28,Sandbox,2022-12-14,2022-12-14,28.000,0,0,1.19,Runtime,Cloud Native Storage
+cubeFS/cubefs,4388,85,50,18,4,19.371,0,0,1918,110,Go,false,41,Incubating,2019-12-16,2019-12-16,100.000,9,36,1.17,Runtime,Cloud Native Storage
+opencurve/curve,2238,22,10,6,0,9.830,3,61,1420,76,C++,false,0,Sandbox,2022-06-17,2022-06-17,25.000,0,0,,Runtime,Cloud Native Storage
+hwameistor/hwameistor,513,7,2,1,0,13.645,6,0,806,39,Go,false,45,Sandbox,2023-06-22,2023-06-22,68.000,6,15,1.18,Runtime,Cloud Native Storage
+k8up-io/k8up,569,14,3,1,0,24.605,4,6,1951,43,Go,false,18,Sandbox,2021-11-16,2021-11-16,52.000,2,13,1.21,Runtime,Cloud Native Storage
+kanisterio/kanister,723,1,1,1,0,1.383,3,0,2373,86,Go,false,47,Sandbox,2023-09-20,2023-09-20,70.000,13,43,1.22,Runtime,Cloud Native Storage
+longhorn/longhorn,5659,105,49,30,3,18.555,0,1,2594,103,Shell,false,0,Incubating,2019-10-11,2019-10-11,96.000,7,14,,Runtime,Cloud Native Storage
+openebs/openebs,8685,53,25,14,1,6.102,0,1,2850,204,unknown,false,0,Archived,2019-05-14,2019-05-14,82.000,5,7,,Runtime,Cloud Native Storage
+oras-project/oras,1283,31,12,5,0,24.162,4,1,1975,61,Go,false,12,Sandbox,2021-07-13,2021-07-13,75.000,5,24,1.22.0,Runtime,Cloud Native Storage
+piraeusdatastore/piraeus-operator,356,12,8,6,1,33.708,0,0,1762,19,Go,false,20,Sandbox,2021-01-26,2021-01-26,87.000,2,14,1.22.0,Runtime,Cloud Native Storage
+rook/rook,11986,102,44,23,5,8.510,0,0,2874,502,Go,false,39,Graduated,2018-01-29,2018-01-29,100.000,17,75,1.21,Runtime,Cloud Native Storage
+v6d-io/v6d,804,4,2,1,0,4.975,6,0,1306,51,C++,false,0,Sandbox,2021-04-28,2021-04-28,64.000,2,7,,Runtime,Cloud Native Storage
+containerd/containerd,16453,178,77,40,7,10.819,0,0,3113,591,Go,false,79,Graduated,2017-03-29,2017-03-29,100.000,29,164,1.22.0,Runtime,Container Runtime
+cri-o/cri-o,5039,29,9,2,0,5.755,3,1,2811,297,Go,false,79,Graduated,2019-04-08,2019-04-08,75.000,13,164,1.22.0,Runtime,Container Runtime
+inclavare-containers/inclavare-containers,574,0,0,0,0,0.000,42,399,1470,26,C,false,0,Sandbox,2021-09-14,2021-09-14,0.000,0,0,,Runtime,Container Runtime
+krustlet/krustlet,3535,9,5,2,1,2.546,0,232,1625,45,Rust,false,14,Sandbox,2021-07-13,2021-07-13,22.000,0,0,,Runtime,Container Runtime
+kuasar-io/kuasar,1189,22,9,4,2,18.503,0,13,658,21,Rust,false,0,Sandbox,2023-12-19,2023-12-19,57.000,2,2,,Runtime,Container Runtime
+lima-vm/lima,14124,199,89,38,5,14.089,0,0,1103,105,Go,false,49,Sandbox,2022-09-14,2022-09-14,100.000,5,80,1.21,Runtime,Container Runtime
+rkt/rkt,8826,8,5,2,1,0.906,0,1548,3479,215,Go,true,0,Archived,2017-03-29,2017-03-29,0.000,0,0,,Runtime,Container Runtime
+virtual-kubelet/virtual-kubelet,4101,30,12,6,1,7.315,0,6,2360,134,Go,false,30,Sandbox,2018-12-04,2018-12-04,71.000,3,13,1.20,Runtime,Container Runtime
+WasmEdge/WasmEdge,8024,105,54,28,4,13.086,0,0,1635,165,C++,false,0,Sandbox,2021-04-28,2021-04-28,100.000,8,52,,Runtime,Container Runtime
+antrea-io/antrea,1612,13,6,1,0,8.065,6,0,1671,121,Go,false,79,Sandbox,2021-04-28,2021-04-28,81.000,23,72,1.21.0,Runtime,Cloud Native Network
+cilium/cilium,18740,253,111,46,10,13.501,0,0,3079,747,Go,false,126,Graduated,2021-10-13,2021-10-13,100.000,81,575,1.22.0,Runtime,Cloud Native Network
+cni-genie/CNI-Genie,529,2,1,0,0,3.781,8,180,2614,21,Go,false,0,Sandbox,2020-06-25,2020-06-25,7.000,0,0,,Runtime,Cloud Native Network
+containernetworking/cni,5348,50,26,9,3,9.349,0,8,3334,145,Go,false,4,Incubating,2017-05-23,2017-05-23,62.000,3,8,1.21,Runtime,Cloud Native Network
+FabEdge/fabedge,519,1,1,0,0,1.927,8,62,1040,17,Go,false,31,Sandbox,2022-03-08,2022-03-08,5.000,0,0,1.17,Runtime,Cloud Native Network
+kubeovn/kube-ovn,1841,33,18,8,1,17.925,0,0,1887,99,Go,false,51,Sandbox,2021-01-26,2021-01-26,95.000,12,80,1.22.3,Runtime,Cloud Native Network
+kube-vip/kube-vip,1875,53,27,13,0,28.267,1,4,1570,87,Go,false,33,Sandbox,2021-06-26,2021-06-26,70.000,8,22,1.21,Runtime,Cloud Native Network
+networkservicemesh/api,12,0,0,0,0,0.000,147,2,1579,25,Go,false,4,Sandbox,2019-04-11,2019-04-11,42.000,2,2,1.20,Runtime,Cloud Native Network
+spidernet-io/spiderpool,491,26,18,12,0,52.953,2,5,806,33,Go,false,65,Sandbox,2023-12-19,2023-12-19,65.000,6,60,1.22.0,Runtime,Cloud Native Network
+submariner-io/submariner,2343,24,11,4,0,10.243,2,0,1898,36,Go,false,28,Sandbox,2021-04-28,2021-04-28,85.000,5,44,1.22.0,Runtime,Cloud Native Network
+armadaproject/armada,424,10,6,1,0,23.585,4,0,1798,89,Go,false,76,Sandbox,2022-07-25,2022-07-25,77.000,9,53,1.20,Orchestration & Management,Scheduling & Orchestration
+projectcapsule/capsule,1476,32,17,13,0,21.680,1,4,1422,51,Go,false,17,Sandbox,2022-12-13,2022-12-13,65.000,2,35,1.22.0,Orchestration & Management,Scheduling & Orchestration
+service-mesh-performance/service-mesh-performance,277,1,1,1,1,3.610,0,4,1935,90,Makefile,false,2,Sandbox,2021-06-22,2021-06-22,52.000,2,4,1.14,Orchestration & Management,Service Mesh
+clusterpedia-io/clusterpedia,765,48,15,2,0,62.745,4,13,956,45,Go,false,36,Sandbox,2022-06-17,2022-06-17,37.000,2,6,1.20,Orchestration & Management,Scheduling & Orchestration
+crossplane/crossplane,8887,171,79,32,6,19.242,0,0,2083,224,Go,false,44,Incubating,2020-06-25,2020-06-25,100.000,15,131,1.22.0,Orchestration & Management,Scheduling & Orchestration
+eraser-dev/eraser,436,1,0,0,0,2.294,27,0,1089,30,Go,false,26,Sandbox,2023-06-30,2023-06-30,54.000,1,6,1.18,Orchestration & Management,Scheduling & Orchestration
+fluid-cloudnative/fluid,1541,18,9,4,1,11.681,0,0,1410,750,Go,false,32,Sandbox,2021-04-28,2021-04-28,91.000,147,172,1.21,Orchestration & Management,Scheduling & Orchestration
+karmada-io/karmada,4156,68,32,24,8,16.362,0,0,1288,234,Go,false,57,Incubating,2021-09-14,2021-09-14,100.000,15,135,1.21.10,Orchestration & Management,Scheduling & Orchestration
+kcp-dev/kcp,2256,16,10,5,2,7.092,0,1,1147,110,Go,false,39,Sandbox,2023-09-19,2023-09-19,81.000,4,25,1.21,Orchestration & Management,Scheduling & Orchestration
+kedacore/keda,7868,149,59,37,3,18.937,0,1,1925,364,Go,false,116,Graduated,2020-03-12,2020-03-12,100.000,14,33,1.21,Orchestration & Management,Scheduling & Orchestration
+knative/serving,5412,30,14,8,2,5.543,0,0,2309,297,Go,false,36,Incubating,2022-03-02,2022-03-02,95.000,7,59,1.21,Orchestration & Management,Scheduling & Orchestration
+kube-rs/kube,2734,61,28,15,4,22.312,0,4,2018,118,Rust,false,58,Sandbox,2021-11-16,2021-11-16,76.000,6,13,,Orchestration & Management,Scheduling & Orchestration
+kubeflow/kubeflow,13768,118,63,29,3,8.571,0,0,2364,373,TypeScript,false,0,Incubating,2023-07-25,2023-07-25,100.000,4,6,,Orchestration & Management,Scheduling & Orchestration
+kubernetes/kubernetes,107317,753,375,183,27,7.017,0,0,3637,3814,Go,false,112,Graduated,2016-03-10,2016-03-10,100.000,84,518,1.22.0,Orchestration & Management,Scheduling & Orchestration
+kubestellar/kubestellar,229,5,4,1,1,21.834,0,0,565,36,Go,false,20,Sandbox,2023-12-19,2023-12-19,82.000,10,159,1.20,Orchestration & Management,Scheduling & Orchestration
+kubereboot/kured,2078,14,3,2,1,6.737,0,6,2590,59,Go,false,14,Sandbox,2022-09-14,2022-09-14,58.000,2,8,1.21,Orchestration & Management,Scheduling & Orchestration
+open-cluster-management-io/api,244,2,2,1,1,8.197,0,0,1532,53,Go,false,14,Sandbox,2021-11-09,2021-11-09,74.000,3,4,1.21,Orchestration & Management,Scheduling & Orchestration
+OpenFunction/OpenFunction,1459,18,9,4,0,12.337,4,242,1251,30,Go,false,18,Sandbox,2022-04-26,2022-04-26,21.000,0,0,1.19,Orchestration & Management,Scheduling & Orchestration
+serverless-devs/serverless-devs,1671,14,8,3,1,8.378,0,13,1308,35,TypeScript,false,0,Sandbox,2022-09-14,2022-09-14,53.000,1,6,,Orchestration & Management,Scheduling & Orchestration
+volcano-sh/volcano,3805,54,19,7,2,14.192,0,1,1895,206,Go,false,39,Incubating,2020-04-09,2020-04-09,85.000,12,48,1.21,Orchestration & Management,Scheduling & Orchestration
+wasmCloud/wasmCloud,1280,38,8,5,2,29.688,0,0,1314,72,Rust,false,154,Sandbox,2021-07-13,2021-07-13,95.000,16,206,,Orchestration & Management,Scheduling & Orchestration
+coredns/coredns,11868,92,37,19,1,7.752,0,1,2986,363,Go,false,35,Graduated,2017-02-27,2017-02-27,100.000,5,30,1.21,Orchestration & Management,Coordination & Service Discovery
+etcd-io/etcd,46542,284,116,61,7,6.102,0,0,3972,858,Go,false,21,Graduated,2018-12-11,2018-12-11,100.000,26,191,1.22,Orchestration & Management,Coordination & Service Discovery
+k8gb-io/k8gb,801,59,9,7,3,73.658,0,1,1637,23,Go,false,20,Sandbox,2021-03-30,2021-03-30,85.000,6,32,1.19,Orchestration & Management,Coordination & Service Discovery
+xline-kv/Xline,534,21,10,5,0,39.326,2,1,747,21,Rust,false,0,Sandbox,2023-06-30,2023-06-30,75.000,6,64,,Orchestration & Management,Coordination & Service Discovery
+grpc/grpc,40889,248,125,55,5,6.065,0,0,3452,898,C++,false,0,Incubating,2017-02-16,2017-02-16,100.000,28,174,,Orchestration & Management,Remote Procedure Call
+connectrpc/connect-go,2634,49,18,6,3,18.603,0,0,1023,39,Go,false,3,Sandbox,2024-04-13,2024-04-13,87.000,3,5,1.20,Orchestration & Management,Remote Procedure Call
+bfenetworks/bfe,6075,19,12,5,0,3.128,1,5,1756,101,Go,false,28,Sandbox,2020-06-25,2020-06-25,51.000,1,1,1.17,Orchestration & Management,Service Proxy
+projectcontour/contour,3647,14,8,1,0,3.839,4,1,2399,222,Go,false,42,Incubating,2020-07-07,2020-07-07,71.000,4,58,1.22.0,Orchestration & Management,Service Proxy
+envoyproxy/envoy,24060,200,97,46,6,8.313,0,0,2843,1185,C++,false,1,Graduated,2017-09-13,2017-09-13,100.000,67,310,1.20,Orchestration & Management,Service Proxy
+metallb/metallb,6687,83,45,26,5,12.412,0,5,2386,188,Go,false,26,Sandbox,2021-09-14,2021-09-14,86.000,4,16,1.21,Orchestration & Management,Service Proxy
+openelb/openelb,1553,23,10,6,3,14.810,0,0,1936,28,Go,false,32,Sandbox,2021-11-09,2021-11-09,91.000,3,16,1.21,Orchestration & Management,Service Proxy
+easegress-io/easegress,5710,23,13,12,1,4.028,0,15,1089,62,Go,false,88,Sandbox,2023-12-19,2023-12-19,47.000,2,4,1.21,Orchestration & Management,API Gateway
+emissary-ingress/emissary,4292,23,10,6,1,5.359,0,12,2609,225,Python,false,0,Incubating,2021-04-13,2021-04-13,57.000,1,5,,Orchestration & Management,API Gateway
+aeraki-mesh/aeraki,728,8,4,1,1,10.989,0,41,1293,33,Go,false,29,Sandbox,2022-06-17,2022-06-17,28.000,0,0,1.20,Orchestration & Management,Service Mesh
+istio/istio,35102,191,88,47,8,5.441,0,0,2741,1062,Go,false,108,Graduated,2022-09-30,2022-09-30,100.000,31,240,1.22.0,Orchestration & Management,Service Mesh
+kumahq/kuma,3535,33,11,7,3,9.335,0,0,1896,97,Go,false,83,Sandbox,2020-06-25,2020-06-25,95.000,13,164,1.21.10,Orchestration & Management,Service Mesh
+linkerd/linkerd2,10400,65,23,13,3,6.250,0,0,2360,354,Go,false,50,Graduated,2017-01-23,2017-01-23,100.000,12,136,1.22.0,Orchestration & Management,Service Mesh
+merbridge/merbridge,729,7,4,3,1,9.602,0,90,860,24,Go,false,18,Sandbox,2022-12-14,2022-12-14,22.000,0,0,1.19,Orchestration & Management,Service Mesh
+openservicemesh/osm,2583,4,2,1,0,1.549,4,316,1621,88,Go,true,62,Archived,2020-09-08,2020-09-08,0.000,0,0,1.19,Orchestration & Management,Service Mesh
+servicemeshinterface/smi-spec,1051,4,1,0,0,3.806,10,214,1886,43,Makefile,true,0,Archived,2020-03-19,2020-03-19,0.000,0,0,,Orchestration & Management,Service Mesh
+getporter/porter,1160,13,5,2,0,11.207,2,0,2027,106,Go,false,64,Sandbox,2020-09-08,2020-09-08,76.000,7,74,1.21,App Definition and Development,Application Definition & Image Build
+schemahero/schemahero,956,6,3,1,0,6.276,4,6,1851,41,Go,false,24,Sandbox,2020-11-10,2020-11-10,44.000,2,4,1.21,App Definition and Development,Database
+tikv/tikv,14585,107,50,19,2,7.336,0,1,3064,421,Rust,false,156,Graduated,2018-08-28,2018-08-28,100.000,18,36,,App Definition and Development,Database
+vitessio/vitess,17928,128,61,32,6,7.140,0,1,3981,382,Go,false,87,Graduated,2018-02-05,2018-02-05,100.000,18,87,1.22.3,App Definition and Development,Database
+cloudevents/spec,4826,55,24,6,1,11.397,0,0,2355,125,Python,false,0,Graduated,2018-05-15,2018-05-15,92.000,3,4,,App Definition and Development,Streaming & Messaging
+nats-io/nats-server,14889,181,74,36,3,12.157,0,0,4222,147,Go,false,11,Incubating,2018-03-15,2018-03-15,100.000,10,145,1.20,App Definition and Development,Streaming & Messaging
+pravega/pravega,1969,4,3,1,0,2.031,6,74,2871,104,Java,false,0,Sandbox,2020-11-10,2020-11-10,12.000,0,0,,App Definition and Development,Streaming & Messaging
+strimzi/strimzi-kafka-operator,4541,98,31,16,4,21.581,0,0,2937,264,Java,false,0,Incubating,2019-08-28,2019-08-28,100.000,14,59,,App Definition and Development,Streaming & Messaging
+tremor-rs/tremor-runtime,827,9,7,4,0,10.883,1,1,1695,45,Rust,false,28,Sandbox,2020-09-08,2020-09-08,67.000,4,69,,App Definition and Development,Streaming & Messaging
+artifacthub/hub,1534,14,6,4,0,9.126,1,0,1589,41,TypeScript,false,52,Sandbox,2020-06-25,2020-06-25,73.000,3,10,1.22.0,App Definition and Development,Application Definition & Image Build
+backstage/backstage,26627,388,164,75,9,14.572,0,0,1579,1489,TypeScript,false,0,Incubating,2020-09-08,2020-09-08,100.000,73,776,,App Definition and Development,Application Definition & Image Build
+buildpacks/pack,2427,25,9,6,1,10.301,0,1,2157,131,Go,false,36,Incubating,2018-10-03,2018-10-03,85.000,6,53,1.22,App Definition and Development,Application Definition & Image Build
+carvel-dev/ytt,1596,13,5,4,0,8.145,1,4,1909,66,Go,false,11,Sandbox,2022-09-14,2022-09-14,48.000,2,3,1.22.3,App Definition and Development,Application Definition & Image Build
+dapr/dapr,23366,114,48,26,5,4.879,0,7,1799,267,Go,false,77,Incubating,2021-11-09,2021-11-09,72.000,3,7,1.22.2,App Definition and Development,Application Definition & Image Build
+devfile/api,235,4,1,1,0,17.021,4,11,1629,31,Go,false,13,Sandbox,2022-01-11,2022-01-11,32.000,1,1,1.19,App Definition and Development,Application Definition & Image Build
+devspace-sh/devspace,4118,51,21,12,0,12.385,1,6,2104,88,Go,false,63,Sandbox,2022-12-13,2022-12-13,66.000,3,11,1.20,App Definition and Development,Application Definition & Image Build
+helm/helm,26123,154,69,39,7,5.895,0,5,3151,675,Go,false,43,Graduated,2018-06-01,2018-06-01,100.000,7,21,1.22.0,App Definition and Development,Application Definition & Image Build
+ko-build/ko,7279,53,18,10,1,7.281,0,0,1888,90,Go,false,19,Sandbox,2022-12-14,2022-12-14,95.000,5,53,1.21,App Definition and Development,Application Definition & Image Build
+konveyor/operator,25,2,0,0,0,80.000,16,41,824,33,Jinja,false,0,Sandbox,2022-07-26,2022-07-26,10.000,0,0,,App Definition and Development,Application Definition & Image Build
+krator-rs/krator,158,1,1,1,0,6.329,2,768,1100,21,Rust,false,0,Archived,2021-07-13,2021-07-13,10.000,0,0,,App Definition and Development,Application Definition & Image Build
+kubevela/kubevela,6141,87,22,14,0,14.167,1,0,1418,230,Go,false,92,Incubating,2021-06-22,2021-06-22,82.000,2,4,1.19,App Definition and Development,Application Definition & Image Build
+kubevirt/kubevirt,5155,94,37,20,2,18.235,0,0,2713,313,Go,false,84,Incubating,2019-09-06,2019-09-06,100.000,36,345,1.22,App Definition and Development,Application Definition & Image Build
+kudobuilder/kudo,1163,2,0,0,0,1.720,27,1054,2008,66,Go,false,29,Sandbox,2020-06-25,2020-06-25,4.000,0,0,1.16,App Definition and Development,Application Definition & Image Build
+microcks/microcks,1221,25,18,12,1,20.475,0,57,3375,41,Java,false,0,Sandbox,2023-06-22,2023-06-22,41.000,0,0,,App Definition and Development,Application Definition & Image Build
+nocalhost/nocalhost,1784,13,6,3,0,7.287,2,355,1289,36,Go,false,82,Sandbox,2021-11-16,2021-11-16,21.000,0,0,1.16,App Definition and Development,Application Definition & Image Build
+operator-framework/operator-sdk,7035,46,23,15,4,6.539,0,6,2295,357,Go,false,42,Incubating,2020-07-09,2020-07-09,72.000,7,7,1.21,App Definition and Development,Application Definition & Image Build
+kubeclipper/kubeclipper,255,3,2,2,1,11.765,0,5,704,17,Go,false,60,Sandbox,2023-06-30,2023-06-30,52.000,1,1,1.20,Platform,Certified Kubernetes - Installer
+radius-project/radius,1405,38,11,5,1,27.046,0,0,1187,50,Go,false,90,Sandbox,2024-04-16,2024-04-16,95.000,13,33,1.22.0,App Definition and Development,Application Definition & Image Build
+sealerio/sealer,2018,17,8,5,2,8.424,0,14,1118,77,Go,false,63,Sandbox,2022-04-26,2022-04-26,41.000,1,1,1.17,App Definition and Development,Application Definition & Image Build
+serverlessworkflow/specification,701,12,9,4,1,17.118,0,4,1467,42,TypeScript,false,0,Sandbox,2020-07-14,2020-07-14,71.000,2,45,,App Definition and Development,Application Definition & Image Build
+telepresenceio/telepresence,6387,50,26,12,2,7.828,0,5,2644,89,Go,false,60,Sandbox,2018-05-15,2018-05-15,80.000,3,32,1.22.0,App Definition and Development,Application Definition & Image Build
+vscode-kubernetes-tools/vscode-kubernetes-tools,666,6,3,3,1,9.009,0,24,2492,121,TypeScript,false,1,Sandbox,2021-11-09,2021-11-09,32.000,1,1,1.16,App Definition and Development,Application Definition & Image Build
+argoproj/argo-cd,16352,274,130,62,13,16.756,0,0,2293,1371,Go,false,105,Graduated,2020-03-26,2020-03-26,100.000,65,140,1.21,App Definition and Development,Continuous Integration & Delivery
+brigadecore/brigade,2398,0,0,0,0,0.000,31,602,2402,92,Go,false,0,Archived,2019-03-18,2019-03-18,0.000,0,0,,App Definition and Development,Continuous Integration & Delivery
+fluxcd/flux2,6009,90,50,17,0,14.978,1,8,1488,152,Go,false,56,Graduated,2019-07-15,2019-07-15,70.000,10,67,1.22.0,App Definition and Development,Continuous Integration & Delivery
+keptn/lifecycle-toolkit,244,13,4,2,0,53.279,4,0,627,81,Go,false,0,Incubating,2020-06-25,2020-06-25,76.000,8,78,,App Definition and Development,Continuous Integration & Delivery
+open-gitops/project,863,19,7,3,1,22.016,0,12,1048,16,unknown,false,0,Sandbox,2021-01-26,2021-01-26,53.000,1,2,,App Definition and Development,Continuous Integration & Delivery
+openkruise/kruise,4393,38,17,8,2,8.650,0,6,1818,122,Go,false,37,Incubating,2020-11-10,2020-11-10,71.000,9,19,1.20,App Definition and Development,Continuous Integration & Delivery
+pipe-cd/pipecd,969,16,6,2,0,16.512,5,6,1439,88,Go,false,54,Sandbox,2023-05-17,2023-05-17,57.000,6,13,1.20,App Definition and Development,Continuous Integration & Delivery
+werf/werf,3936,33,22,13,2,8.384,0,0,3039,52,Go,false,85,Sandbox,2022-12-13,2022-12-13,100.000,6,102,1.21.1,App Definition and Development,Continuous Integration & Delivery
+kube-burner/kube-burner,456,12,6,2,1,26.316,0,5,1357,41,Go,false,16,Sandbox,2023-12-18,2023-12-18,67.000,5,13,1.21,App Definition and Development,Continuous Integration & Delivery
+k3s-io/k3s,26644,282,120,52,5,10.584,0,4,2182,1854,Go,false,89,Sandbox,2020-08-19,2020-08-19,96.000,8,11,1.22.2,Platform,Certified Kubernetes - Distribution
+kubean-io/kubean,426,20,5,1,0,46.948,6,0,686,30,Go,false,14,Sandbox,2024-04-16,2024-04-16,76.000,9,81,1.20,Platform,Certified Kubernetes - Installer
+cortexproject/cortex,5363,25,10,5,1,4.662,0,0,2811,286,Go,false,77,Incubating,2018-09-20,2018-09-20,95.000,15,98,1.21,Observability and Analysis,Observability
+open-feature/spec,555,21,13,6,2,37.838,0,12,830,55,Python,false,0,Incubating,2022-06-17,2022-06-17,57.000,2,2,,Observability and Analysis,Feature Flagging
+chaos-mesh/chaos-mesh,6449,93,32,23,12,14.421,0,7,1721,195,Go,false,81,Incubating,2020-07-14,2020-07-14,72.000,1,1,1.20,Observability and Analysis,Chaos Engineering
+chaosblade-io/chaosblade,5789,31,16,9,3,5.355,0,62,1897,57,Go,false,15,Sandbox,2021-04-28,2021-04-28,35.000,0,0,1.20,Observability and Analysis,Chaos Engineering
+litmuschaos/litmus,4213,32,16,8,2,7.596,0,0,2624,190,Go,false,0,Incubating,2020-06-25,2020-06-25,95.000,11,53,,Observability and Analysis,Chaos Engineering
+krkn-chaos/krkn,251,1,0,0,0,3.984,26,1,1493,41,Python,false,40,Sandbox,2023-12-19,2023-12-19,48.000,4,18,,Observability and Analysis,Chaos Engineering
+opencost/opencost,4762,62,31,11,3,13.020,0,6,1882,113,Go,false,56,Sandbox,2022-06-17,2022-06-17,90.000,10,46,1.21.0,Observability and Analysis,Continuous Optimization
+kuberhealthy/kuberhealthy,1929,14,4,3,0,7.258,2,22,2163,91,Go,false,18,Sandbox,2021-03-30,2021-03-30,28.000,2,10,1.22,Observability and Analysis,Observability
+fluent/fluentd,12590,68,28,13,1,5.401,0,4,4720,248,Ruby,false,0,Graduated,2016-11-08,2016-11-08,80.000,4,23,,Observability and Analysis,Observability
+foniod/foniod,411,0,0,0,0,0.000,166,1107,2225,4,Rust,true,34,Archived,2021-03-30,2021-03-30,0.000,0,0,,Observability and Analysis,Observability
+headlamp-k8s/headlamp,1655,47,24,13,1,28.399,0,1,1656,44,TypeScript,false,0,Sandbox,2023-05-17,2023-05-17,90.000,11,114,,Observability and Analysis,Observability
+inspektor-gadget/inspektor-gadget,1975,51,36,29,11,25.823,0,1,1862,42,C,false,65,Sandbox,2023-03-07,2023-03-07,100.000,11,241,1.22.0,Observability and Analysis,Observability
+jaegertracing/jaeger,19606,246,87,44,6,12.547,0,0,2958,337,Go,false,78,Graduated,2017-09-13,2017-09-13,100.000,13,57,1.21.0,Observability and Analysis,Observability
+k8sgpt-ai/k8sgpt,4989,107,58,24,2,21.447,0,1,427,74,Go,false,44,Sandbox,2023-12-19,2023-12-19,100.000,8,31,1.21,Observability and Analysis,Observability
+sustainable-computing-io/kepler,1014,41,16,7,3,40.434,0,0,840,50,Go,false,24,Sandbox,2023-05-17,2023-05-17,95.000,12,112,1.21,Observability and Analysis,Observability
+opentracing/opentracing-go,3489,4,1,0,0,1.146,13,813,3099,58,Go,true,1,Archived,2016-10-11,2016-10-11,0.000,0,0,1.14,Observability and Analysis,Observability
+kube-logging/logging-operator,1495,12,6,1,0,8.027,5,0,2156,121,Go,false,22,Sandbox,2023-09-19,2023-09-19,81.000,6,25,1.21,Observability and Analysis,Observability
+OpenObservability/OpenMetrics,2272,20,9,5,2,8.803,0,498,2525,37,Go,false,0,Incubating,2018-08-10,2018-08-10,31.000,0,0,,Observability and Analysis,Observability
+open-telemetry/community,702,12,3,2,1,17.094,0,1,1846,293,Python,false,0,Incubating,2019-05-07,2019-05-07,76.000,16,28,,Observability and Analysis,Observability
+skooner-k8s/skooner,1257,12,6,1,1,9.547,0,138,1894,48,JavaScript,false,0,Sandbox,2021-01-26,2021-01-26,31.000,0,0,,Observability and Analysis,Observability
+pixie-io/pixie,5318,57,26,8,2,10.718,0,0,1546,77,C++,false,97,Sandbox,2021-06-22,2021-06-22,96.000,7,19,1.21,Observability and Analysis,Observability
+prometheus/prometheus,53135,516,259,131,24,9.711,0,0,4196,906,Go,false,87,Graduated,2016-05-09,2016-05-09,100.000,30,139,1.21,Observability and Analysis,Observability
+thanos-io/thanos,12641,77,41,17,2,6.091,0,0,2393,604,Go,false,95,Incubating,2019-07-14,2019-07-14,100.000,13,54,1.21,Observability and Analysis,Observability
+trickstercache/trickster,1959,7,7,4,1,3.573,0,3,2245,67,Go,false,25,Sandbox,2021-03-30,2021-03-30,59.000,2,8,1.22,Observability and Analysis,Observability
+kairos-io/kairos,957,32,13,9,1,33.438,0,0,1026,46,Go,false,0,Sandbox,2024-04-13,2024-04-13,95.000,5,35,,Wasm,Edge/Bare metal
