@@ -6,7 +6,7 @@ require (
 	github.com/emanuelef/github-repo-activity-stats v0.2.21
 	github.com/go-resty/resty/v2 v2.13.1
 	github.com/joho/godotenv v1.5.1
-	go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace v0.48.0
+	go.opentelemetry.io/contrib/instrumentation/net/http/httptrace/otelhttptrace v0.52.0
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.52.0
 	go.opentelemetry.io/otel v1.27.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.27.0
